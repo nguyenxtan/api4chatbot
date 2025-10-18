@@ -12,7 +12,7 @@ python-docx==1.1.2
 openpyxl==3.1.5
 
 # Vietnamese NLP
-underthesea==6.8.2
+underthesea==6.8.4
 pyvi==0.1.1
 
 # Schema & Configuration
