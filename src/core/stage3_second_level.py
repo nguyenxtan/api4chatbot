@@ -169,7 +169,9 @@ class SecondLevelChunker:
 
         content = "\n".join(content_lines)
 
-        chunk_id = f"{parent.chunk_id}_sub_row_{container_type.replace(' ', '_').replace(\"'\", '')}"
+        # Fix: f-string cannot contain backslash, so process replacement first
+        sanitized_type = container_type.replace(' ', '_').replace("'", '')
+        chunk_id = f"{parent.chunk_id}_sub_row_{sanitized_type}"
 
         return Chunk(
             chunk_id=chunk_id,
