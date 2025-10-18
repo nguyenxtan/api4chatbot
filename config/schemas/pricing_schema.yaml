@@ -1,0 +1,188 @@
+# Schema for Pricing Documents (Biểu giá dịch vụ)
+document_type: pricing
+description: "Schema for Vietnamese pricing documents with service charges, surcharges, and conditions"
+
+# First-level chunking: Split by sections and major tables
+first_level_boundaries:
+  - type: section
+    marker: "^#{1,3}\\s+.*"  # Headings level 1-3
+    keep_heading_hierarchy: true
+    min_length: 100  # Minimum characters for a section
+
+  - type: table
+    marker: "^\\|.*\\|$"  # Markdown table rows
+    extract_full_table: true
+    include_caption: true
+
+  - type: named_section
+    markers:
+      - "^I{1,3}\\."  # Roman numerals (I. II. III.)
+      - "^\\d+\\."    # Arabic numerals (1. 2. 3.)
+    preserve_numbering: true
+
+# Metadata fields to extract for first-level chunks
+first_level_metadata_fields:
+  - heading_path        # "II.Cước Tác Nghiệp > 1.Cước xếp dỡ"
+  - page_range          # "4-6"
+  - effective_date      # "2025-03-10"
+  - container_types     # ["20'", "40'", "45'"]
+  - service_type        # "Xếp dỡ", "Lưu bãi", etc.
+  - unit                # "VND/container", "VND/tấn", etc.
+  - applies_to          # ["container_hàng", "container_rỗng"]
+  - references          # ["Bảng 23", "Điều 4"]
+  - conditions          # Any conditional clauses
+
+# Second-level decomposition rules
+second_level_decomposition:
+  table:
+    - type: row_group
+      description: "Group table rows by container size"
+      group_by: container_size
+      patterns:
+        - "20'"
+        - "40'"
+        - "45'"
+        - "20' (DC|GP|HC)"
+        - "40' (DC|GP|HC)"
+
+    - type: rule
+      description: "Extract surcharge rules"
+      extract: surcharges
+      patterns:
+        - "Phụ thu"
+        - "Cộng thêm"
+        - "Tính thêm"
+        - "Điều chỉnh"
+
+    - type: condition
+      description: "Extract timing/conditional clauses"
+      extract: timing_conditions
+      patterns:
+        - "ngày thứ \\d+"
+        - "từ ngày.*đến ngày"
+        - "trong trường hợp"
+        - "nếu|khi"
+        - "tính từ"
+        - "không vượt quá"
+
+    - type: calculation
+      description: "Extract calculation formulas"
+      extract: formulas
+      patterns:
+        - "tính.*%"
+        - "lũy tiến"
+        - "tính bằng.*so với"
+        - "=|\\+|\\-|\\*|/"
+
+  section:
+    - type: definition
+      description: "Extract term definitions"
+      patterns:
+        - "là"
+        - "được định nghĩa"
+        - "có nghĩa là"
+        - "bao gồm"
+
+    - type: rule
+      description: "Extract regulatory rules"
+      patterns:
+        - "quy định"
+        - "điều khoản"
+        - "áp dụng"
+        - "thực hiện theo"
+
+    - type: exception
+      description: "Extract exceptions and special cases"
+      patterns:
+        - "ngoài trừ"
+        - "không áp dụng"
+        - "trừ trường hợp"
+        - "riêng đối với"
+
+  list:
+    - type: item
+      description: "Split numbered/bulleted lists"
+      preserve_hierarchy: true
+      max_depth: 3
+
+# Relationship patterns to identify cross-references
+relationship_patterns:
+  - name: table_reference
+    pattern: "Bảng\\s+(\\d+|[IVX]+|\\d+-[A-Z]+)"
+    type: reference
+    description: "References to tables (e.g., 'Bảng 23', 'Bảng IV', 'Bảng 23-TT.9')"
+
+  - name: surcharge_link
+    pattern: "phụ thu.*(?:Bảng|theo|tại)\\s+(\\d+|[IVX]+)"
+    type: surcharge
+    description: "Links to surcharge tables"
+
+  - name: exception_link
+    pattern: "(?:ngoài trừ|không áp dụng).*(?:Bảng|điểm|khoản)\\s+(\\d+|[a-z])"
+    type: exception
+    description: "Links to exceptions"
+
+  - name: calculation_reference
+    pattern: "tính theo.*(?:Bảng|điểm|khoản)\\s+(\\d+|[a-z]|[IVX]+)"
+    type: reference
+    description: "References to calculation methods"
+
+  - name: cross_document_reference
+    pattern: "(?:Thông tư|Nghị định|Quyết định)\\s+\\d+[/-]\\d+"
+    type: reference
+    description: "References to external legal documents"
+
+# Metadata extractors (custom patterns)
+metadata_extractors:
+  effective_date:
+    patterns:
+      - "có hiệu lực từ ngày\\s+(\\d{1,2}[/-]\\d{1,2}[/-]\\d{4})"
+      - "áp dụng từ\\s+(\\d{1,2}[/-]\\d{1,2}[/-]\\d{4})"
+    format: "DD/MM/YYYY"
+
+  container_types:
+    patterns:
+      - "(20'|40'|45')(?:\\s*(?:DC|GP|HC|OT|FR))?"
+    extract_all: true
+
+  service_type:
+    vocabulary:
+      - "Xếp dỡ"
+      - "Lưu bãi"
+      - "Nâng hạ"
+      - "Vận chuyển"
+      - "Niêm phong"
+      - "Đóng mở cửa"
+      - "Làm hàng"
+
+  unit:
+    patterns:
+      - "VND/(container|tấn|cbm|chuyến|lượt)"
+      - "(USD|EUR)/(container|tấn)"
+
+  pricing_structure:
+    keywords:
+      - "lũy tiến"
+      - "cố định"
+      - "theo tỷ lệ"
+      - "theo khối lượng"
+
+# Chunk size constraints
+first_level_min_tokens: 1500
+first_level_max_tokens: 3000
+second_level_min_tokens: 500
+second_level_max_tokens: 1500
+
+# Vietnamese-specific settings
+language_settings:
+  tokenizer: "pyvi"
+  preserve_tone_marks: true
+  recognize_abbreviations:
+    - "TT"   # Thông tư
+    - "NĐ"   # Nghị định
+    - "QĐ"   # Quyết định
+    - "GP"   # General Purpose
+    - "DC"   # Dry Container
+    - "HC"   # High Cube
+    - "OT"   # Open Top
+    - "FR"   # Flat Rack
