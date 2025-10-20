@@ -45,6 +45,65 @@ async def root():
     }
 
 
+@app.post("/documents/markdown")
+async def convert_to_markdown(
+    file: UploadFile = File(...),
+):
+    """
+    Convert document to markdown format.
+
+    Args:
+        file: Document file (PDF, DOCX, PPTX, CSV only)
+
+    Returns:
+        Markdown content
+    """
+    # Validate file extension
+    allowed_extensions = {".pdf", ".docx", ".pptx", ".csv"}
+    file_ext = Path(file.filename).suffix.lower()
+
+    if file_ext not in allowed_extensions:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid file type. Only PDF, DOCX, PPTX, CSV are allowed. Got: {file_ext}"
+        )
+
+    logger.info(f"Converting to markdown: {file.filename}")
+
+    # Save uploaded file temporarily
+    temp_dir = Path("temp")
+    temp_dir.mkdir(exist_ok=True)
+    temp_file = temp_dir / file.filename
+
+    try:
+        # Save file
+        content = await file.read()
+        with open(temp_file, "wb") as f:
+            f.write(content)
+
+        # Parse request with default document_type
+        request = ProcessDocumentRequest(
+            document_type="report",  # Default type for markdown conversion
+            document_name=file.filename,
+            effective_date=None,
+            tags=[],
+        )
+
+        # Process document
+        result = processor.process_document(str(temp_file), request)
+
+        return result
+
+    except Exception as e:
+        logger.error(f"Error converting document: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        # Clean up temp file
+        if temp_file.exists():
+            temp_file.unlink()
+
+
 @app.post("/documents/process", response_model=ChunkingResult)
 async def process_document(
     file: UploadFile = File(...),
