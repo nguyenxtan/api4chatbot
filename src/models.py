@@ -10,7 +10,7 @@ class DocumentMetadata(BaseModel):
     """Metadata for a processed document."""
     document_id: str = Field(..., description="Unique document identifier")
     document_name: str = Field(..., description="Original document name")
-    document_type: Literal["pricing", "regulation", "contract", "sop", "report"] = Field(
+    document_type: Literal["pricing", "regulation", "contract", "sop", "report", "document"] = Field(
         ..., description="Document type/category"
     )
     source_file: str = Field(..., description="Source file path")
@@ -242,7 +242,7 @@ class DocumentSchema(BaseModel):
 
 class ProcessDocumentRequest(BaseModel):
     """Request model for document processing."""
-    document_type: Literal["pricing", "regulation", "contract", "sop", "report"]
+    document_type: Literal["pricing", "regulation", "contract", "sop", "report", "document"]
     document_name: Optional[str] = None
     effective_date: Optional[date] = None
     tags: List[str] = Field(default_factory=list)
