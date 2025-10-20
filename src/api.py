@@ -56,7 +56,7 @@ async def convert_to_markdown(
         file: Document file (PDF, DOCX, PPTX, CSV only)
 
     Returns:
-        Markdown content
+        Markdown content (watermark removed)
     """
     # Validate file extension
     allowed_extensions = {".pdf", ".docx", ".pptx", ".csv"}
@@ -81,18 +81,16 @@ async def convert_to_markdown(
         with open(temp_file, "wb") as f:
             f.write(content)
 
-        # Parse request with default document_type
-        request = ProcessDocumentRequest(
-            document_type="document",  # Use simple document schema for markdown conversion
-            document_name=file.filename,
-            effective_date=None,
-            tags=[],
-        )
+        # Convert to markdown directly
+        from src.core.stage1_markdown import MarkdownConverter
+        converter = MarkdownConverter()
+        markdown_result = converter.convert(str(temp_file))
 
-        # Process document
-        result = processor.process_document(str(temp_file), request)
-
-        return result
+        return {
+            "filename": file.filename,
+            "markdown_content": markdown_result["markdown"],
+            "metadata": markdown_result["metadata"]
+        }
 
     except Exception as e:
         logger.error(f"Error converting document: {e}", exc_info=True)
