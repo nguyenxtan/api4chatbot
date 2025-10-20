@@ -105,7 +105,8 @@ class Chunk(BaseModel):
     level: Literal[1, 2] = Field(..., description="Chunk level (1=primary, 2=sub-chunk)")
     type: Literal[
         "section", "table", "rule", "clause", "procedure",
-        "step", "definition", "condition", "row_group", "metadata"
+        "step", "definition", "condition", "row_group", "metadata",
+        "article", "chapter", "heading", "paragraph", "list", "point"
     ] = Field(..., description="Chunk type")
     title: str = Field(..., description="Chunk title/heading")
     content: str = Field(..., description="Chunk text content")
