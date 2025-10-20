@@ -1,0 +1,55 @@
+# Schema for General Document Conversion to Markdown
+document_type: document
+description: "Simple schema for converting documents (PDF, DOCX, PPTX, CSV) to markdown"
+
+# First-level chunking: Split by major sections
+first_level_boundaries:
+  - type: heading
+    marker: "^#{1,3}\\s+.*"
+    levels: [1, 2, 3]
+
+  - type: section
+    marker: "^\\n\\s*\\n"
+    description: "Split by paragraphs"
+
+# Metadata fields
+first_level_metadata_fields:
+  - heading_level
+  - heading_text
+  - section_number
+
+# Second-level decomposition
+second_level_decomposition:
+  heading:
+    - type: paragraph
+      description: "Split by paragraphs"
+      patterns:
+        - "^\\n\\s*\\n"
+
+  section:
+    - type: paragraph
+      preserve_formatting: true
+
+  list:
+    - type: list_item
+      preserve_hierarchy: true
+      max_depth: 4
+
+# Relationship patterns
+relationship_patterns:
+  - name: heading_hierarchy
+    pattern: "^#{1,6}\\s+.*"
+    type: hierarchy
+    description: "Heading relationships"
+
+# Chunk size constraints
+first_level_min_tokens: 800
+first_level_max_tokens: 2000
+second_level_min_tokens: 200
+second_level_max_tokens: 800
+
+# General document settings
+language_settings:
+  tokenizer: "underthesea"
+  preserve_tone_marks: true
+  preserve_formatting: true

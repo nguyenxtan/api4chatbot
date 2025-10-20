@@ -83,7 +83,7 @@ async def convert_to_markdown(
 
         # Parse request with default document_type
         request = ProcessDocumentRequest(
-            document_type="report",  # Default type for markdown conversion
+            document_type="document",  # Use simple document schema for markdown conversion
             document_name=file.filename,
             effective_date=None,
             tags=[],
