@@ -121,6 +121,8 @@ async def convert_to_markdown(
 async def chunk_markdown(request: MarkdownChunkRequest):
     """
     Chunk markdown content by headings, numbered sections, and tables.
+    - 1 table = 1 chunk (or split if >20 data rows, keeping header)
+    - Each chunk includes: index, title, content, type
 
     Args:
         request: Contains markdown_content to chunk
@@ -133,17 +135,22 @@ async def chunk_markdown(request: MarkdownChunkRequest):
         chunks = []
         index = 0
 
-        # Split by patterns: headings (###), Điều, numbered items (I., II., 1., 2.1., etc), and tables
         lines = markdown.split('\n')
+        i = 0
         current_chunk = []
         current_title = ""
         current_type = "section"
 
-        for i, line in enumerate(lines):
+        # Track the last heading for table context
+        last_heading = ""
+
+        while i < len(lines):
+            line = lines[i]
             line_stripped = line.strip()
 
             # Check for heading (###)
             if line_stripped.startswith('###'):
+                # Save previous chunk
                 if current_chunk:
                     index += 1
                     chunks.append(MarkdownChunk(
@@ -155,8 +162,10 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                     current_chunk = []
 
                 current_title = line_stripped.replace('###', '').strip()
+                last_heading = current_title
                 current_type = "heading"
                 current_chunk.append(line)
+                i += 1
 
             # Check for "Điều X:"
             elif re.match(r'^Điều\s+\d+:', line_stripped):
@@ -173,6 +182,7 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                 current_title = line_stripped
                 current_type = "numbered_item"
                 current_chunk.append(line)
+                i += 1
 
             # Check for numbered items (I., II., 1., 2.1., etc.)
             elif re.match(r'^([IVX]+\.|[0-9]+\.(\d+\.)*)\s+', line_stripped):
@@ -189,19 +199,11 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                 current_title = line_stripped[:50] + "..." if len(line_stripped) > 50 else line_stripped
                 current_type = "numbered_item"
                 current_chunk.append(line)
+                i += 1
 
             # Check for table start
-            elif line_stripped.startswith('|') and i > 0:
-                # Find table title from previous heading
-                table_title = current_title or "Table"
-
-                # Collect entire table
-                table_lines = [line]
-                j = i + 1
-                while j < len(lines) and lines[j].strip().startswith('|'):
-                    table_lines.append(lines[j])
-                    j += 1
-
+            elif line_stripped.startswith('|'):
+                # Save previous chunk
                 if current_chunk:
                     index += 1
                     chunks.append(MarkdownChunk(
@@ -212,20 +214,53 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                     ))
                     current_chunk = []
 
-                index += 1
-                chunks.append(MarkdownChunk(
-                    index=index,
-                    title=f"{table_title} - Table",
-                    content='\n'.join(table_lines),
-                    type="table"
-                ))
+                # Collect entire table
+                table_lines = []
+                j = i
+                while j < len(lines) and lines[j].strip().startswith('|'):
+                    table_lines.append(lines[j])
+                    j += 1
 
-                # Skip processed table lines
-                for _ in range(len(table_lines) - 1):
-                    i += 1
+                # Extract header (first 2 rows: header + separator)
+                header_lines = table_lines[:2] if len(table_lines) >= 2 else table_lines
+                data_lines = table_lines[2:] if len(table_lines) > 2 else []
+
+                # Table title
+                table_title = last_heading or current_title or "Table"
+
+                # If table has <= 20 data rows, keep as 1 chunk
+                if len(data_lines) <= 20:
+                    index += 1
+                    chunks.append(MarkdownChunk(
+                        index=index,
+                        title=f"{table_title}",
+                        content='\n'.join(table_lines),
+                        type="table"
+                    ))
+                else:
+                    # Split table into multiple chunks (20 rows each, keep header)
+                    chunk_size = 20
+                    for part_num, start in enumerate(range(0, len(data_lines), chunk_size), 1):
+                        end = min(start + chunk_size, len(data_lines))
+                        part_data = data_lines[start:end]
+
+                        # Reconstruct table with header + data slice
+                        part_table = header_lines + part_data
+
+                        index += 1
+                        chunks.append(MarkdownChunk(
+                            index=index,
+                            title=f"{table_title} - Part {part_num}",
+                            content='\n'.join(part_table),
+                            type="table"
+                        ))
+
+                # Skip processed lines
+                i = j
 
             else:
                 current_chunk.append(line)
+                i += 1
 
         # Add last chunk if exists
         if current_chunk:
