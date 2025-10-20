@@ -15,6 +15,8 @@ from src.models import (
     ChunkSearchQuery,
     DocumentMetadata,
 )
+import re
+from pydantic import BaseModel
 from src.core.document_processor import DocumentProcessor
 from src.schemas.schema_loader import get_schema_loader
 
@@ -43,6 +45,19 @@ async def root():
         "status": "running",
         "available_document_types": schema_loader.list_available_schemas(),
     }
+
+
+class MarkdownChunkRequest(BaseModel):
+    """Request model for chunking markdown content."""
+    markdown_content: str
+
+
+class MarkdownChunk(BaseModel):
+    """Chunk from markdown content."""
+    index: int
+    title: str
+    content: str
+    type: str  # "heading", "section", "table", "numbered_item"
 
 
 @app.post("/documents/markdown")
@@ -100,6 +115,136 @@ async def convert_to_markdown(
         # Clean up temp file
         if temp_file.exists():
             temp_file.unlink()
+
+
+@app.post("/documents/chunk")
+async def chunk_markdown(request: MarkdownChunkRequest):
+    """
+    Chunk markdown content by headings, numbered sections, and tables.
+
+    Args:
+        request: Contains markdown_content to chunk
+
+    Returns:
+        List of chunks with index, title, content, type
+    """
+    try:
+        markdown = request.markdown_content
+        chunks = []
+        index = 0
+
+        # Split by patterns: headings (###), Điều, numbered items (I., II., 1., 2.1., etc), and tables
+        lines = markdown.split('\n')
+        current_chunk = []
+        current_title = ""
+        current_type = "section"
+
+        for i, line in enumerate(lines):
+            line_stripped = line.strip()
+
+            # Check for heading (###)
+            if line_stripped.startswith('###'):
+                if current_chunk:
+                    index += 1
+                    chunks.append(MarkdownChunk(
+                        index=index,
+                        title=current_title or f"Section {index}",
+                        content='\n'.join(current_chunk),
+                        type=current_type
+                    ))
+                    current_chunk = []
+
+                current_title = line_stripped.replace('###', '').strip()
+                current_type = "heading"
+                current_chunk.append(line)
+
+            # Check for "Điều X:"
+            elif re.match(r'^Điều\s+\d+:', line_stripped):
+                if current_chunk:
+                    index += 1
+                    chunks.append(MarkdownChunk(
+                        index=index,
+                        title=current_title or f"Section {index}",
+                        content='\n'.join(current_chunk),
+                        type=current_type
+                    ))
+                    current_chunk = []
+
+                current_title = line_stripped
+                current_type = "numbered_item"
+                current_chunk.append(line)
+
+            # Check for numbered items (I., II., 1., 2.1., etc.)
+            elif re.match(r'^([IVX]+\.|[0-9]+\.(\d+\.)*)\s+', line_stripped):
+                if current_chunk:
+                    index += 1
+                    chunks.append(MarkdownChunk(
+                        index=index,
+                        title=current_title or f"Section {index}",
+                        content='\n'.join(current_chunk),
+                        type=current_type
+                    ))
+                    current_chunk = []
+
+                current_title = line_stripped[:50] + "..." if len(line_stripped) > 50 else line_stripped
+                current_type = "numbered_item"
+                current_chunk.append(line)
+
+            # Check for table start
+            elif line_stripped.startswith('|') and i > 0:
+                # Find table title from previous heading
+                table_title = current_title or "Table"
+
+                # Collect entire table
+                table_lines = [line]
+                j = i + 1
+                while j < len(lines) and lines[j].strip().startswith('|'):
+                    table_lines.append(lines[j])
+                    j += 1
+
+                if current_chunk:
+                    index += 1
+                    chunks.append(MarkdownChunk(
+                        index=index,
+                        title=current_title or f"Section {index}",
+                        content='\n'.join(current_chunk),
+                        type=current_type
+                    ))
+                    current_chunk = []
+
+                index += 1
+                chunks.append(MarkdownChunk(
+                    index=index,
+                    title=f"{table_title} - Table",
+                    content='\n'.join(table_lines),
+                    type="table"
+                ))
+
+                # Skip processed table lines
+                for _ in range(len(table_lines) - 1):
+                    i += 1
+
+            else:
+                current_chunk.append(line)
+
+        # Add last chunk if exists
+        if current_chunk:
+            index += 1
+            chunks.append(MarkdownChunk(
+                index=index,
+                title=current_title or f"Section {index}",
+                content='\n'.join(current_chunk),
+                type=current_type
+            ))
+
+        return {
+            "total_chunks": len(chunks),
+            "chunks": chunks
+        }
+
+    except Exception as e:
+        logger.error(f"Error chunking markdown: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/documents/process", response_model=ChunkingResult)
