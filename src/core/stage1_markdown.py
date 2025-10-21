@@ -232,57 +232,69 @@ class MarkdownConverter:
         if not lines:
             return markdown
 
-        # Remove empty lines from start (header padding)
+        # Step 1: Remove empty lines from start and end
         while lines and not lines[0].strip():
             lines.pop(0)
-
-        # Remove empty lines from end (footer padding)
         while lines and not lines[-1].strip():
             lines.pop()
 
-        # Find content start: first meaningful heading or table
-        # Content typically starts with numbered sections like "II.", "1.", etc.
+        # Step 2: Find content start - first numbered section heading or table
         content_start = 0
         for i, line in enumerate(lines):
             line_stripped = line.strip()
-            # Match: numbered heading (I., 1., 1.1., etc.) or table
+            # Match: numbered heading (I., 1., 1.1., II., etc.) or table
             if (re.match(r'^###\s+([IVX]+\.|[0-9]+(\.[0-9]+)*\.)', line_stripped) or
                 line_stripped.startswith('|')):
                 content_start = i
                 break
 
-        # Find content end: before footer keywords
-        # Footer keywords appear near the end of document
-        content_end = len(lines)
+        # Step 3: Remove header (lines before content start)
+        lines = lines[content_start:]
+
+        # Step 4: Remove footer lines (lines containing footer keywords)
         footer_keywords = [
             'Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY',
             'Chủ tịch', 'Ký duyệt', 'Người ký', 'Ngày ký',
             'Trưởng ban', 'Phó giám đốc'
         ]
 
-        # Search from the end, but only consider lines in last 30%
-        search_start = max(0, int(len(lines) * 0.7))
-        for i in range(len(lines) - 1, search_start, -1):
+        # Find first footer line from the end
+        # Work backwards to find where footer section starts
+        content_end = len(lines)
+        footer_start = -1
+
+        for i in range(len(lines) - 1, -1, -1):
             line_stripped = lines[i].strip()
-            if line_stripped and any(keyword in line_stripped for keyword in footer_keywords):
-                content_end = i
+            # Remove markdown symbols to check content
+            line_cleaned = line_stripped.replace('###', '').replace('##', '').replace('#', '').strip()
+
+            if line_cleaned and any(keyword in line_cleaned for keyword in footer_keywords):
+                # Found footer keyword, mark this as part of footer
+                footer_start = i
+            elif footer_start >= 0 and line_cleaned:
+                # We found footer before, and now hit a non-empty line
+                # This means footer section starts after this line
+                content_end = i + 1
                 break
+            elif i == 0 and footer_start >= 0:
+                # Reached beginning with footer found
+                content_end = footer_start
 
-        # Extract content section
-        if content_start < content_end:
-            content_lines = lines[content_start:content_end]
-        else:
-            content_lines = lines
+        # If we found footer at the end, use that position
+        if footer_start >= 0 and content_end == len(lines):
+            content_end = footer_start
 
-        # Remove trailing empty lines from content
-        while content_lines and not content_lines[-1].strip():
-            content_lines.pop()
+        # Remove all lines from content_end onwards (footer section)
+        if content_end < len(lines):
+            lines = lines[:content_end]
 
-        # Remove leading empty lines from content
-        while content_lines and not content_lines[0].strip():
-            content_lines.pop(0)
+        # Step 5: Clean up trailing/leading empty lines
+        while lines and not lines[0].strip():
+            lines.pop(0)
+        while lines and not lines[-1].strip():
+            lines.pop()
 
-        return '\n'.join(content_lines).strip()
+        return '\n'.join(lines).strip()
 
     def _extract_table_from_pdf(self, table) -> str:
         """Extract table from PDF using PyMuPDF table detection."""
