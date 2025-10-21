@@ -399,16 +399,23 @@ class FileCleaner:
                         continue
 
                 # Detect and skip graphics line-drawing commands (footer lines)
-                # Pattern: "0 0 m" (moveto origin) followed by "X 0 l" (lineto) and "S" (stroke)
+                # Pattern: "0 0 m" (moveto origin) followed by "X 0 l" (lineto at Y=0) and "S" (stroke)
                 # This creates horizontal lines commonly used in footers
-                elif line_stripped in ['m', 'l', 'S'] or line_stripped.endswith(' m') or line_stripped.endswith(' l'):
-                    # Skip standalone graphics drawing commands
-                    # These are often parts of decorative lines (footer separator lines)
-                    if line_stripped in ['S', 'm', 'l'] or (line_stripped.endswith(' m') and ' 0 m' in line_stripped) or (line_stripped.endswith(' l') and ' 0 l' in line_stripped):
-                        # Likely part of line drawing (especially "X Y m" and "X 0 l")
+                elif line_stripped in ['m', 'l', 'S'] or ' m' in line_stripped or ' l' in line_stripped:
+                    # Skip graphics drawing commands
+                    # Specifically: moveto (m), lineto (l), stroke (S) commands
+                    if line_stripped in ['S', 'm', 'l']:
+                        # Standalone command
                         logger.debug(f"Skipping graphics line-drawing command: {line_stripped[:50]}")
                         removed_count += 1
                         continue
+                    elif ' m' in line_stripped or ' l' in line_stripped:
+                        # Positioning with command: "X Y m" or "X Y l"
+                        # Only skip if it looks like line drawing (Y = 0 or very small)
+                        if ' 0 m' in line_stripped or ' 0 l' in line_stripped or ' 0.0 m' in line_stripped or ' 0.0 l' in line_stripped:
+                            logger.debug(f"Skipping graphics line-drawing command: {line_stripped[:50]}")
+                            removed_count += 1
+                            continue
 
                 # Reset flag on text object end (ET) or start (BT)
                 elif line_stripped == 'ET':  # End text object
