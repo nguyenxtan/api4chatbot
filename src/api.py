@@ -16,6 +16,7 @@ from src.models import (
     DocumentMetadata,
 )
 import re
+from typing import Optional
 from pydantic import BaseModel
 from src.core.document_processor import DocumentProcessor
 from src.schemas.schema_loader import get_schema_loader
@@ -58,6 +59,7 @@ class MarkdownChunk(BaseModel):
     title: str
     content: str
     type: str  # "heading", "section", "table", "numbered_item"
+    heading_path: Optional[str] = None  # e.g., "II. CƯỚC TÁC NGHIỆP > 1. Cước xếp dỡ > 1.1. Đối với container"
 
 
 @app.post("/documents/markdown")
@@ -122,13 +124,13 @@ async def chunk_markdown(request: MarkdownChunkRequest):
     """
     Chunk markdown content - ONLY extracts tables.
     - 1 table = 1 chunk (or split if >20 data rows, keeping header)
-    - Ignores headings, text, numbered items - only chunks tables
+    - Tracks heading hierarchy (II., 1., 1.1., etc.) for context
 
     Args:
         request: Contains markdown_content to chunk
 
     Returns:
-        List of table chunks with index, title, content, type
+        List of table chunks with index, title, content, type, heading_path
     """
     try:
         markdown = request.markdown_content
@@ -138,16 +140,44 @@ async def chunk_markdown(request: MarkdownChunkRequest):
         lines = markdown.split('\n')
         i = 0
 
-        # Track the last heading before each table for naming
-        last_heading = ""
+        # Track heading hierarchy for context
+        heading_stack = []  # Stack to maintain hierarchy
 
         while i < len(lines):
             line = lines[i]
             line_stripped = line.strip()
 
-            # Track headings for table naming (but don't create chunks)
+            # Track headings (###)
             if line_stripped.startswith('###'):
-                last_heading = line_stripped.replace('###', '').strip()
+                heading_text = line_stripped.replace('###', '').strip()
+
+                # Check if it's a numbered heading (II., 1., 1.1., etc.)
+                if re.match(r'^([IVX]+\.|[0-9]+(\.[0-9]+)*\.)\s+', heading_text):
+                    # Extract level from numbering
+                    match = re.match(r'^([IVX]+\.|[0-9]+(\.[0-9]+)*\.)', heading_text)
+                    numbering = match.group(1)
+
+                    # Determine level (count dots)
+                    if re.match(r'^[IVX]+\.', numbering):
+                        level = 0  # Roman numerals = top level
+                    else:
+                        level = numbering.count('.')
+
+                    # Update stack based on level
+                    if level < len(heading_stack):
+                        heading_stack = heading_stack[:level]
+
+                    if level == len(heading_stack):
+                        heading_stack.append(heading_text)
+                    else:
+                        heading_stack = heading_stack[:level] + [heading_text]
+                else:
+                    # Non-numbered heading - might be table name like "Bảng 01"
+                    if heading_stack:
+                        heading_stack.append(heading_text)
+                    else:
+                        heading_stack = [heading_text]
+
                 i += 1
 
             # ONLY process tables - create chunks
@@ -163,8 +193,11 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                 header_lines = table_lines[:2] if len(table_lines) >= 2 else table_lines
                 data_lines = table_lines[2:] if len(table_lines) > 2 else []
 
-                # Table title from last heading
-                table_title = last_heading if last_heading else f"Table {index + 1}"
+                # Build heading path
+                heading_path = " > ".join(heading_stack) if heading_stack else ""
+
+                # Table title (last item in stack or generic)
+                table_title = heading_stack[-1] if heading_stack else f"Table {index + 1}"
 
                 # If table has <= 20 data rows, keep as 1 chunk
                 if len(data_lines) <= 20:
@@ -173,7 +206,8 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                         index=index,
                         title=table_title,
                         content='\n'.join(table_lines),
-                        type="table"
+                        type="table",
+                        heading_path=heading_path
                     ))
                 else:
                     # Split table into multiple chunks (20 rows each, keep header)
@@ -190,14 +224,15 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                             index=index,
                             title=f"{table_title} - Part {part_num}",
                             content='\n'.join(part_table),
-                            type="table"
+                            type="table",
+                            heading_path=heading_path
                         ))
 
                 # Skip processed lines
                 i = j
 
             else:
-                # Skip all other content (headings, text, numbered items)
+                # Skip all other content
                 i += 1
 
         return {
