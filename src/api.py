@@ -151,12 +151,15 @@ async def chunk_markdown(request: MarkdownChunkRequest):
             line = lines[i]
             line_stripped = line.strip()
 
-            # Track headings (###)
+            # Track headings (###) - ONLY numbered headings and "Bảng XX"
             if line_stripped.startswith('###'):
                 heading_text = line_stripped.replace('###', '').strip()
 
-                # Check if it's a numbered heading (II., 1., 1.1., etc.)
-                if re.match(r'^([IVX]+\.|[0-9]+(\.[0-9]+)*\.)\s+', heading_text):
+                # Check if it's a numbered heading (II., 1., 1.1., etc.) OR "Bảng XX"
+                is_numbered = re.match(r'^([IVX]+\.|[0-9]+(\.[0-9]+)*\.)\s+', heading_text)
+                is_table_name = re.match(r'^Bảng\s+\d+', heading_text, re.IGNORECASE)
+
+                if is_numbered:
                     # Extract level from numbering
                     match = re.match(r'^([IVX]+\.|[0-9]+(\.[0-9]+)*\.)', heading_text)
                     numbering = match.group(1)
@@ -175,12 +178,12 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                         heading_stack.append(heading_text)
                     else:
                         heading_stack = heading_stack[:level] + [heading_text]
-                else:
-                    # Non-numbered heading - might be table name like "Bảng 01"
-                    if heading_stack:
-                        heading_stack.append(heading_text)
-                    else:
-                        heading_stack = [heading_text]
+
+                elif is_table_name:
+                    # "Bảng XX" heading - add to stack
+                    heading_stack.append(heading_text)
+
+                # Ignore all other ### headings (like text content)
 
                 i += 1
 
