@@ -200,14 +200,18 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                 header_lines = table_lines[:2] if len(table_lines) >= 2 else table_lines
                 data_lines = table_lines[2:] if len(table_lines) > 2 else []
 
-                # Extract heading levels from stack
-                h1 = heading_stack[0] if len(heading_stack) > 0 else None
-                h2 = heading_stack[1] if len(heading_stack) > 1 else None
-                h3 = heading_stack[2] if len(heading_stack) > 2 else None
-                h4 = heading_stack[3] if len(heading_stack) > 3 else None
-                table_name = heading_stack[-1] if len(heading_stack) > 0 else None
+                # Extract heading levels from stack (only numbered headings, not "Bảng XX")
+                numbered_headings = [h for h in heading_stack if not re.match(r'^Bảng\s+\d+', h, re.IGNORECASE)]
+                h1 = numbered_headings[0] if len(numbered_headings) > 0 else None
+                h2 = numbered_headings[1] if len(numbered_headings) > 1 else None
+                h3 = numbered_headings[2] if len(numbered_headings) > 2 else None
+                h4 = numbered_headings[3] if len(numbered_headings) > 3 else None
 
-                # Table title (last item in stack or generic)
+                # Table name - only "Bảng XX" items
+                table_name_items = [h for h in heading_stack if re.match(r'^Bảng\s+\d+', h, re.IGNORECASE)]
+                table_name = table_name_items[-1] if table_name_items else None
+
+                # Table title (prefer table name, fallback to generic)
                 table_title = table_name if table_name else f"Table {index + 1}"
 
                 # If table has <= 20 data rows, keep as 1 chunk
