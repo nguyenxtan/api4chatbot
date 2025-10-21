@@ -179,23 +179,33 @@ async def chunk_markdown(request: MarkdownChunkRequest):
 
             # ONLY process tables - create chunks
             elif line_stripped.startswith('|'):
-                # Collect entire table (skip lines that don't start with |, but continue if next line has |)
+                # Collect entire table - consecutive lines starting with |
                 table_lines = []
                 j = i
-                while j < len(lines):
-                    line_j = lines[j].strip()
-                    if line_j.startswith('|'):
+                while j < len(lines) and lines[j].strip().startswith('|'):
+                    # Only include lines that end with | (complete rows)
+                    line_content = lines[j].strip()
+                    if line_content.endswith('|'):
                         table_lines.append(lines[j])
-                        j += 1
-                    elif j + 1 < len(lines) and lines[j + 1].strip().startswith('|'):
-                        # Skip garbage line, continue to next
-                        j += 1
-                    else:
-                        # End of table
-                        break
+                    j += 1
+
+                # Validate table: must have at least header + separator (2 lines)
+                if len(table_lines) < 2:
+                    i = j
+                    continue
+
+                # Check if second line is separator (contains ---)
+                second_line = table_lines[1].strip() if len(table_lines) > 1 else ""
+                if "---" not in second_line:
+                    # Invalid table structure
+                    i = j
+                    continue
+
+                # Valid table found
+                index += 1
 
                 # Extract header (first 2 rows: header + separator)
-                header_lines = table_lines[:2] if len(table_lines) >= 2 else table_lines
+                header_lines = table_lines[:2]
                 data_lines = table_lines[2:] if len(table_lines) > 2 else []
 
                 # Extract heading levels from stack (only numbered headings, not "Bảng XX")
@@ -208,9 +218,6 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                 # Table name - only "Bảng XX" items
                 table_name_items = [h for h in heading_stack if re.match(r'^Bảng\s+\d+', h, re.IGNORECASE)]
                 table_name = table_name_items[-1] if table_name_items else None
-
-                # Table title (prefer table name, fallback to generic)
-                table_title = table_name if table_name else f"Table {index + 1}"
 
                 # If table has <= 20 data rows, keep as 1 chunk
                 if len(data_lines) <= 20:
