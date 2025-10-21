@@ -58,8 +58,12 @@ class MarkdownChunk(BaseModel):
     index: int
     title: str
     content: str
-    type: str  # "heading", "section", "table", "numbered_item"
-    heading_path: Optional[str] = None  # e.g., "II. CƯỚC TÁC NGHIỆP > 1. Cước xếp dỡ > 1.1. Đối với container"
+    type: str  # "table"
+    heading_level_1: Optional[str] = None  # e.g., "II. CƯỚC TÁC NGHIỆP CONTAINER"
+    heading_level_2: Optional[str] = None  # e.g., "1. Cước xếp dỡ container"
+    heading_level_3: Optional[str] = None  # e.g., "1.1. Đối với container hàng"
+    heading_level_4: Optional[str] = None  # e.g., "1.1.1. Tác nghiệp tại cầu tàu"
+    table_name: Optional[str] = None  # e.g., "Bảng 01"
 
 
 @app.post("/documents/markdown")
@@ -124,13 +128,13 @@ async def chunk_markdown(request: MarkdownChunkRequest):
     """
     Chunk markdown content - ONLY extracts tables.
     - 1 table = 1 chunk (or split if >20 data rows, keeping header)
-    - Tracks heading hierarchy (II., 1., 1.1., etc.) for context
+    - Tracks heading hierarchy in separate fields
 
     Args:
         request: Contains markdown_content to chunk
 
     Returns:
-        List of table chunks with index, title, content, type, heading_path
+        List of table chunks with separate heading level fields
     """
     try:
         markdown = request.markdown_content
@@ -193,11 +197,15 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                 header_lines = table_lines[:2] if len(table_lines) >= 2 else table_lines
                 data_lines = table_lines[2:] if len(table_lines) > 2 else []
 
-                # Build heading path
-                heading_path = " > ".join(heading_stack) if heading_stack else ""
+                # Extract heading levels from stack
+                h1 = heading_stack[0] if len(heading_stack) > 0 else None
+                h2 = heading_stack[1] if len(heading_stack) > 1 else None
+                h3 = heading_stack[2] if len(heading_stack) > 2 else None
+                h4 = heading_stack[3] if len(heading_stack) > 3 else None
+                table_name = heading_stack[-1] if len(heading_stack) > 0 else None
 
                 # Table title (last item in stack or generic)
-                table_title = heading_stack[-1] if heading_stack else f"Table {index + 1}"
+                table_title = table_name if table_name else f"Table {index + 1}"
 
                 # If table has <= 20 data rows, keep as 1 chunk
                 if len(data_lines) <= 20:
@@ -207,7 +215,11 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                         title=table_title,
                         content='\n'.join(table_lines),
                         type="table",
-                        heading_path=heading_path
+                        heading_level_1=h1,
+                        heading_level_2=h2,
+                        heading_level_3=h3,
+                        heading_level_4=h4,
+                        table_name=table_name
                     ))
                 else:
                     # Split table into multiple chunks (20 rows each, keep header)
@@ -225,7 +237,11 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                             title=f"{table_title} - Part {part_num}",
                             content='\n'.join(part_table),
                             type="table",
-                            heading_path=heading_path
+                            heading_level_1=h1,
+                            heading_level_2=h2,
+                            heading_level_3=h3,
+                            heading_level_4=h4,
+                            table_name=table_name
                         ))
 
                 # Skip processed lines
