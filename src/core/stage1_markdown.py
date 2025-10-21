@@ -195,10 +195,19 @@ class MarkdownConverter:
             r"CONFIDENTIAL\s*",
             r"Internal Use Only\s*",
             r"Do Not Copy\s*",
+            # Remove [Image on page X] patterns - common watermark placeholders
+            r"\[Image on page \d+\]",
+            # Remove print metadata (Người in, Ngày in, Thời gian ký)
+            r"###\s+Người in:.*?(?=\n###|\n\n|$)",
+            r"###\s+Ngày in:.*?(?=\n###|\n\n|$)",
+            r"###\s+Thời gian ký:.*?(?=\n###|\n\n|$)",
+            r"Người in:.*?(?=\n|$)",
+            r"Ngày in:.*?(?=\n|$)",
+            r"Thời gian ký:.*?(?=\n|$)",
         ]
 
         for pattern in patterns_to_remove:
-            markdown = re.sub(pattern, "", markdown, flags=re.IGNORECASE)
+            markdown = re.sub(pattern, "", markdown, flags=re.IGNORECASE | re.DOTALL)
 
         return markdown
 
