@@ -194,12 +194,32 @@ class FileCleaner:
 
                     logger.info(f"Page {page_num}: {len(blocks_to_remove)} blocks marked for removal")
 
-                    # Remove marked blocks by covering with white rectangles
+                    # Remove marked blocks - redact/delete them
+                    redaction_rects = []
                     for block in blocks_to_remove:
                         rect = fitz.Rect(block["bbox"])
-                        # Draw white rectangle to cover the block (RGB: 1,1,1 = white)
-                        page.draw_rect(rect, fill=(1, 1, 1))
-                        header_footer_count += 1
+                        try:
+                            # Add redaction annotation (will apply at end of page)
+                            page.add_redact_annot(rect)
+                            redaction_rects.append(rect)
+                            header_footer_count += 1
+                        except Exception as redact_err:
+                            logger.debug(f"Redact annotation failed for block: {redact_err}")
+                            continue
+
+                    # Apply all redactions for this page at once
+                    if redaction_rects:
+                        try:
+                            page.apply_redactions()
+                            logger.debug(f"Page {page_num}: Applied {len(redaction_rects)} redactions")
+                        except Exception as apply_err:
+                            logger.debug(f"Apply redactions failed: {apply_err}")
+                            # Fallback: draw white rectangles
+                            for rect in redaction_rects:
+                                try:
+                                    page.draw_rect(rect, fill=(1, 1, 1))
+                                except:
+                                    pass
 
                 except Exception as page_error:
                     logger.error(f"Error processing page {page_num}: {page_error}", exc_info=True)
