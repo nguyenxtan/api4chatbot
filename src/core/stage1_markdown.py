@@ -160,8 +160,11 @@ class MarkdownConverter:
         # Remove watermark text (basic cleanup for markdown artifacts)
         markdown_content = self._remove_watermark_text(markdown_content)
 
-        # Note: Header/footer removal should be done via /documents/cleanfile API
-        # This is a simplified version for markdown conversion only
+        # Remove document header and footer sections
+        markdown_content = self._remove_header_footer(markdown_content)
+
+        # Final cleanup
+        markdown_content = self._clean_markdown(markdown_content)
 
         return {
             "markdown": markdown_content,
@@ -219,41 +222,67 @@ class MarkdownConverter:
     def _remove_header_footer(self, markdown: str) -> str:
         """Remove document header and footer sections.
 
-        Header typically contains: title, author, approval info
-        Footer typically contains: signature lines, page info
+        Header typically contains: title, author, approval info, stamp
+        Footer typically contains: signature lines, recipient info
         """
         import re
 
         lines = markdown.split('\n')
 
-        # Find content start: first table or numbered section
+        if not lines:
+            return markdown
+
+        # Remove empty lines from start (header padding)
+        while lines and not lines[0].strip():
+            lines.pop(0)
+
+        # Remove empty lines from end (footer padding)
+        while lines and not lines[-1].strip():
+            lines.pop()
+
+        # Find content start: first meaningful heading or table
+        # Content typically starts with numbered sections like "II.", "1.", etc.
         content_start = 0
         for i, line in enumerate(lines):
-            # Look for first table or numbered heading
-            if line.strip().startswith('|') or re.match(r'^###\s+[IVX]+\.|^###\s+\d+\.', line):
+            line_stripped = line.strip()
+            # Match: numbered heading (I., 1., 1.1., etc.) or table
+            if (re.match(r'^###\s+([IVX]+\.|[0-9]+(\.[0-9]+)*\.)', line_stripped) or
+                line_stripped.startswith('|')):
                 content_start = i
                 break
 
-        # Find content end: last table or before footer keywords
+        # Find content end: before footer keywords
+        # Footer keywords appear near the end of document
         content_end = len(lines)
-        footer_keywords = ['Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY', 'Chủ tịch', 'Ký duyệt']
+        footer_keywords = [
+            'Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY',
+            'Chủ tịch', 'Ký duyệt', 'Người ký', 'Ngày ký',
+            'Trưởng ban', 'Phó giám đốc'
+        ]
 
-        for i in range(len(lines) - 1, -1, -1):
+        # Search from the end, but only consider lines in last 30%
+        search_start = max(0, int(len(lines) * 0.7))
+        for i in range(len(lines) - 1, search_start, -1):
             line_stripped = lines[i].strip()
-            # If we find footer keywords at the end, mark as content end
             if line_stripped and any(keyword in line_stripped for keyword in footer_keywords):
-                # Check if this is near the end (likely footer)
-                if i > len(lines) * 0.8:  # More than 80% through document
-                    content_end = i
-                    break
+                content_end = i
+                break
 
         # Extract content section
         if content_start < content_end:
-            content = '\n'.join(lines[content_start:content_end])
+            content_lines = lines[content_start:content_end]
         else:
-            content = markdown
+            content_lines = lines
 
-        return content.strip()
+        # Remove trailing empty lines from content
+        while content_lines and not content_lines[-1].strip():
+            content_lines.pop()
+
+        # Remove leading empty lines from content
+        while content_lines and not content_lines[0].strip():
+            content_lines.pop(0)
+
+        return '\n'.join(content_lines).strip()
 
     def _extract_table_from_pdf(self, table) -> str:
         """Extract table from PDF using PyMuPDF table detection."""
