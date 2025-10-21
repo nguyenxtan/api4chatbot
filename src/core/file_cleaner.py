@@ -139,8 +139,10 @@ class FileCleaner:
     def _remove_header_footer_from_content(self, page, pdf) -> int:
         """Remove header/footer content from page content stream.
 
-        Strategy: Parse content streams as an array, track text positioning state,
-        and filter out text drawing commands in top/bottom regions.
+        Strategy: Use multi-pronged approach:
+        1. Remove entire streams that appear to be header/footer (small, isolated)
+        2. Filter text operators in remaining streams by position
+        3. Handle coordinate transformations for accurate positioning
 
         Args:
             page: pikepdf page object
@@ -186,11 +188,58 @@ class FileCleaner:
                 # Fallback: treat as single stream
                 content_streams = [contents]
 
-            # Process each stream and collect filtered content
+            # First pass: Identify streams to remove entirely (small header/footer streams)
+            streams_to_remove = set()
+            total_stream_size = sum(len(stream.read_bytes()) for stream in content_streams)
+
+            for stream_idx, stream in enumerate(content_streams):
+                try:
+                    content_data = stream.read_bytes()
+                    stream_size = len(content_data)
+                    content_str = content_data.decode('latin-1', errors='ignore')
+                    lines = content_str.split('\n')
+
+                    # Count text and graphics operators
+                    text_ops = sum(1 for line in lines if line.strip().endswith(('Tj', 'TJ')))
+
+                    # Check for rotation/skew/transformation indicators (header/footer watermarks)
+                    has_rotation = any(
+                        line.strip().startswith(('-')) and 'Tm' in line  # Negative scale = rotation/flip
+                        for line in lines
+                    )
+
+                    # Check for very high X positions (right side of page - signature box)
+                    has_right_edge_text = any(
+                        float(parts[-3]) > 350  # X position > 350 (close to right edge of ~595 width page)
+                        for line in lines
+                        if line.strip().endswith('Tm') and len((parts := line.strip().split())) >= 6
+                        for _ in [None]  # Dummy to allow parts to be defined
+                    )
+
+                    # Heuristic: Stream is likely header/footer if:
+                    # 1. Has rotated text (skewed transformation)
+                    # 2. Small size (< 5% of total) with few text operators
+                    # 3. OR positioned at far right edge with few text ops
+                    is_small_isolated = stream_size < total_stream_size * 0.05 and text_ops < 25
+                    is_rotated_or_edge = (has_rotation or has_right_edge_text) and text_ops < 30
+
+                    if is_small_isolated or is_rotated_or_edge:
+                        logger.debug(f"Stream {stream_idx}: Marked for removal (size={stream_size}, text_ops={text_ops}, rotation={has_rotation}, right_edge={has_right_edge_text})")
+                        streams_to_remove.add(stream_idx)
+                except Exception as e:
+                    logger.debug(f"Error analyzing stream {stream_idx}: {e}")
+
+            # Second pass: Process remaining streams
             total_text_ops_removed = 0
             new_streams = []
 
             for stream_idx, stream in enumerate(content_streams):
+                if stream_idx in streams_to_remove:
+                    # Skip this stream entirely
+                    total_text_ops_removed += 1
+                    logger.debug(f"Stream {stream_idx}: Removed entirely (header/footer)")
+                    continue
+
                 try:
                     content_data = stream.read_bytes()
                     filtered_content, text_ops_removed = self._filter_content_stream(
