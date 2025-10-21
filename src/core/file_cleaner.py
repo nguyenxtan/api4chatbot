@@ -61,7 +61,14 @@ class FileCleaner:
             return False, f"Error processing file: {str(e)}", None
 
     def _clean_pdf(self, file_path: Path) -> Tuple[bool, str, Optional[str]]:
-        """Clean PDF by removing watermarks, annotations, headers and footers.
+        """Clean PDF by removing watermarks, annotations, headers and footers using hybrid approach.
+
+        Uses multiple detection signals:
+        1. Annotations (overlay watermarks)
+        2. Position-based (top/bottom regions)
+        3. Height-based (tall blocks = diagonal watermarks)
+        4. Repetition-based (same block across pages = header/footer)
+        5. Content-based (optional keywords)
 
         Args:
             file_path: Path to PDF file
@@ -81,102 +88,95 @@ class FileCleaner:
             annotation_count = 0
             header_footer_count = 0
 
-            # Process each page
+            # Analyze document structure FIRST (before cleaning)
+            # Track blocks across pages to find repeated ones (header/footer)
+            block_signatures = {}  # signature -> [pages where it appears]
+
+            # Phase 1: Analyze all pages to find patterns
+            for page_num, page in enumerate(doc):
+                try:
+                    blocks = page.get_text("dict")["blocks"]
+                    for block in blocks:
+                        if block["type"] == 0:  # Text block
+                            # Create signature (position + text)
+                            text = self._extract_block_text(block)
+                            y0, y1 = block["bbox"][1], block["bbox"][3]
+                            sig = (round(y0, 1), round(y1, 1), text[:50])  # Round Y to handle slight variations
+
+                            if sig not in block_signatures:
+                                block_signatures[sig] = []
+                            block_signatures[sig].append(page_num)
+                except Exception as e:
+                    logger.debug(f"Error analyzing page {page_num}: {e}")
+                    continue
+
+            logger.debug(f"Found {len(block_signatures)} unique block signatures")
+
+            # Find repeated blocks (likely header/footer)
+            repeated_blocks = {sig: pages for sig, pages in block_signatures.items()
+                             if len(pages) > len(doc) * 0.7}  # Appears in >70% of pages
+            logger.info(f"Detected {len(repeated_blocks)} repeated blocks (likely header/footer)")
+
+            # Phase 2: Clean each page
             for page_num, page in enumerate(doc, start=1):
                 try:
-                    # Step 1: Remove annotations (watermarks overlay)
-                    try:
-                        if hasattr(page, 'get_annotations'):
-                            annotations = page.get_annotations()
-                        else:
-                            annotations = page.annots()
+                    # Remove annotations
+                    annotation_count += self._remove_annotations(page, page_num)
 
-                        if annotations:
-                            for annot in annotations:
-                                try:
-                                    if hasattr(page, 'delete_annot'):
-                                        page.delete_annot(annot)
-                                    else:
-                                        annot_obj = page.get_annot(annot)
-                                        if annot_obj:
-                                            annot_obj.delete()
-                                    annotation_count += 1
-                                except Exception as annot_error:
-                                    logger.debug(f"Could not delete annotation on page {page_num}: {annot_error}")
-                                    continue
-                    except Exception as annot_err:
-                        logger.debug(f"Could not access annotations on page {page_num}: {annot_err}")
-
-                    # Step 2: Remove header and footer text blocks
-                    # Get page text with layout to identify position
+                    # Remove header/footer blocks using hybrid approach
                     blocks = page.get_text("dict")["blocks"]
-
                     page_height = page.rect.height
-                    # Reduced thresholds to avoid removing important content
-                    header_threshold = page_height * 0.08  # Top 8% only = ~67 points
-                    footer_threshold = page_height * 0.92  # Bottom 8% only = ~774 points
+                    page_width = page.rect.width
 
-                    footer_keywords = [
-                        'Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY',
-                        'Chủ tịch', 'Ký duyệt', 'Người ký', 'Ngày ký',
-                        'Trưởng ban', 'Phó giám đốc'
-                    ]
+                    # Detect regions
+                    header_threshold = page_height * 0.10  # Top 10%
+                    footer_threshold = page_height * 0.90  # Bottom 10%
 
-                    watermark_keywords = [
-                        'Người in:', 'Ngày in:', 'Thời gian ký:',
-                        '@saigonnewport.com.vn', 'chitvk@'
-                    ]
-
-                    important_keywords = [
-                        'QUYẾT ĐỊNH', 'BIỂU GIÁ', 'QUY ĐỊNH CHUNG',
-                        'Điều ', 'I.', 'II.', 'III.', 'IV.', 'V.',
-                        'Container', 'Cước', 'Dịch vụ'
-                    ]
-
-                    # Identify blocks to remove (header/footer)
                     blocks_to_remove = []
                     for block in blocks:
                         if block["type"] == 0:  # Text block
-                            # Get block position
-                            y0 = block["bbox"][1]
-                            y1 = block["bbox"][3]
+                            # Collect signals
+                            signals = []
+
+                            block_text = self._extract_block_text(block)
+                            y0, y1 = block["bbox"][1], block["bbox"][3]
+                            x0, x1 = block["bbox"][0], block["bbox"][2]
                             block_height = y1 - y0
+                            block_width = x1 - x0
 
-                            # Check for footer keywords
-                            block_text = ""
-                            for line in block.get("lines", []):
-                                for span in line.get("spans", []):
-                                    block_text += span.get("text", "")
+                            # Signal 1: Position-based (top/bottom 10%)
+                            if y1 < header_threshold:
+                                signals.append(("position_header", 0.7))
+                            elif y0 > footer_threshold:
+                                signals.append(("position_footer", 0.7))
 
-                            # Check if content is important
-                            has_important_content = any(kw in block_text for kw in important_keywords)
+                            # Signal 2: Height-based (very tall = diagonal watermark)
+                            if block_height > 150:
+                                signals.append(("height_tall", 0.6))
 
-                            # Check if it's a watermark (very tall block with watermark keywords)
-                            is_watermark = (block_height > 200 and
-                                          any(kw in block_text for kw in watermark_keywords))
+                            # Signal 3: Repetition (same block across many pages)
+                            sig = (round(y0, 1), round(y1, 1), block_text[:50])
+                            if sig in repeated_blocks:
+                                signals.append(("repetition", 0.9))  # Highest confidence
 
-                            # Check if block is in header or footer region (both edges must be in region)
-                            is_header = (y0 < header_threshold and y1 < header_threshold)
-                            is_footer = (y0 > footer_threshold and y1 > footer_threshold)
+                            # Signal 4: Content keywords (optional enhancement)
+                            footer_keywords = ['Nơi nhận', 'Người ký', 'Ký duyệt', 'Ngày in:', 'Người in:']
+                            if any(kw in block_text for kw in footer_keywords):
+                                signals.append(("keyword", 0.8))
 
-                            has_footer_keyword = any(keyword in block_text for keyword in footer_keywords)
+                            # Signal 5: Font size (very small = might be header/footer)
+                            avg_font_size = self._get_avg_font_size(block)
+                            if avg_font_size < 8 or avg_font_size > 20:
+                                signals.append(("font_size", 0.5))
 
-                            # Mark for removal if:
-                            # - In header/footer region AND not important content
-                            # - Has footer keyword AND not important content
-                            # - Is watermark
-                            should_remove = (
-                                (is_watermark) or
-                                ((is_header or is_footer or has_footer_keyword) and not has_important_content)
-                            )
-
-                            if should_remove:
+                            # Voting: if >= 2 signals agree, remove block
+                            if len(signals) >= 2:
                                 blocks_to_remove.append(block)
+                                logger.debug(f"Page {page_num}: Remove block (signals: {[s[0] for s in signals]})")
 
-                    # Remove marked blocks by drawing over them with white rectangles
+                    # Remove marked blocks
                     for block in blocks_to_remove:
                         rect = fitz.Rect(block["bbox"])
-                        # Draw white rectangle to cover the block
                         page.draw_rect(rect, color=None, fill=fitz.pdfcolor.white)
                         header_footer_count += 1
 
@@ -202,6 +202,51 @@ class FileCleaner:
         except Exception as e:
             logger.error(f"Error cleaning PDF: {e}", exc_info=True)
             return False, f"Error cleaning PDF: {str(e)}", None
+
+    def _extract_block_text(self, block: dict) -> str:
+        """Extract text from PDF block."""
+        text = ""
+        for line in block.get("lines", []):
+            for span in line.get("spans", []):
+                text += span.get("text", "")
+        return text.strip()
+
+    def _get_avg_font_size(self, block: dict) -> float:
+        """Get average font size of block."""
+        sizes = []
+        for line in block.get("lines", []):
+            for span in line.get("spans", []):
+                size = span.get("size", 0)
+                if size > 0:
+                    sizes.append(size)
+        return sum(sizes) / len(sizes) if sizes else 12
+
+    def _remove_annotations(self, page, page_num: int) -> int:
+        """Remove annotations from page. Returns count removed."""
+        count = 0
+        try:
+            if hasattr(page, 'get_annotations'):
+                annotations = page.get_annotations()
+            else:
+                annotations = page.annots()
+
+            if annotations:
+                for annot in annotations:
+                    try:
+                        if hasattr(page, 'delete_annot'):
+                            page.delete_annot(annot)
+                        else:
+                            annot_obj = page.get_annot(annot)
+                            if annot_obj:
+                                annot_obj.delete()
+                        count += 1
+                    except Exception as e:
+                        logger.debug(f"Could not delete annotation on page {page_num}: {e}")
+                        continue
+        except Exception as e:
+            logger.debug(f"Could not access annotations on page {page_num}: {e}")
+
+        return count
 
     def _clean_docx(self, file_path: Path) -> Tuple[bool, str, Optional[str]]:
         """Clean DOCX by removing headers, footers, and watermarks.
