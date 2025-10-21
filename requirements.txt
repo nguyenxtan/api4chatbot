@@ -7,6 +7,7 @@ python-multipart==0.0.12
 
 # Document Processing
 pymupdf==1.24.13
+pikepdf==8.14.0
 markitdown==0.0.1a2
 python-docx==1.1.2
 openpyxl==3.1.5
