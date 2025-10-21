@@ -227,10 +227,26 @@ class FileCleaner:
 
             logger.info(f"Removed {annotation_count} annotations and {header_footer_count} header/footer blocks")
 
-            # Save cleaned PDF
+            # Clean up document before saving (commit all changes)
+            try:
+                doc.cleanup()
+                logger.debug("Document cleanup completed")
+            except Exception as cleanup_err:
+                logger.debug(f"Cleanup warning: {cleanup_err}")
+
+            # Save cleaned PDF with garbage collection
             output_filename = f"cleaned_{file_path.stem}.pdf"
             output_path = self.output_dir / output_filename
-            doc.save(str(output_path))
+
+            # Save with garbage collection enabled (remove unused objects)
+            doc.save(str(output_path), garbage=4)
+
+            original_size = file_path.stat().st_size
+            cleaned_size = Path(output_path).stat().st_size
+            size_reduction = ((original_size - cleaned_size) / original_size * 100) if original_size > 0 else 0
+
+            logger.info(f"Original size: {original_size} bytes, Cleaned size: {cleaned_size} bytes ({size_reduction:.1f}% reduction)")
+
             doc.close()
 
             logger.info(f"Cleaned PDF saved to: {output_path}")
