@@ -350,32 +350,37 @@ class FileCleaner:
                 elif line_stripped.endswith('Td') or line_stripped.endswith('TD'):
                     pass  # Keep skip flag if already in header/footer text
 
-                # Skip text drawing operators if in header/footer region
-                # Note: Skip ALL text operators (Tj, TJ, ', ") in header/footer, don't reset after each
-                elif skip_next_text and (line_stripped.endswith('Tj') or line_stripped.endswith('TJ') or line_stripped.endswith('\'') or line_stripped.endswith('"')):
-                    # Skip this text operator
-                    removed_count += 1
-                    continue
-
-                # Also skip if content looks like page numbers (only digits and special chars, no words)
-                # Pattern: [<hex>], [(number)], etc - but not real text content
-                elif line_stripped.endswith(('Tj', 'TJ')) and not skip_next_text:
-                    # Check if this looks like encoded page number/footer
-                    # Common pattern: line contains ONLY hex codes or simple numbers
-                    # e.g., [<0015002D002B0034>] or [(1)], [(2)], etc.
+                # Check if this looks like page number/footer (before checking skip_next_text)
+                # Pattern: [<hex>], [(number)], etc - simple content only
+                elif line_stripped.endswith(('Tj', 'TJ')):
                     content = line_stripped
 
-                    # Very simple content = likely page number
-                    # If it only has [ ] < > digits parentheses, it's probably page number
-                    is_simple_content = (
-                        len(content) < 60 and  # Short content
-                        all(c in '[]()<>0123456789 \t' for c in content.replace('Tj', '').replace('TJ', ''))
+                    # Check if this is a page number like [(1)], [(2)], etc.
+                    # Page numbers are simple: parentheses with only digits/space
+                    stripped_content = content.replace('Tj', '').replace('TJ', '').strip()
+
+                    # Pattern: [(digits)] or [( digits )], etc - page numbers
+                    # Very specifically: starts with [(, contains only digits/spaces, ends with )]
+                    is_page_number = (
+                        stripped_content.startswith('[') and
+                        stripped_content.endswith(']') and
+                        '(' in stripped_content and ')' in stripped_content and
+                        # Must contain at least one digit
+                        any(c in '0123456789' for c in stripped_content) and
+                        # Only allowed: brackets, parens, digits, spaces, hyphens, plus
+                        all(c in '[]()0123456789 \t-+' for c in stripped_content)
                     )
 
-                    if is_simple_content:
-                        # Likely a page number/footer
+                    is_simple_content = is_page_number
+
+                    # Also check if in header/footer region
+                    in_header_footer_region = skip_next_text
+
+                    # Skip if either: (1) looks like page number OR (2) in header/footer region
+                    if is_simple_content or in_header_footer_region:
+                        if is_simple_content:
+                            logger.debug(f"Skipping likely page number: {content[:50]}")
                         removed_count += 1
-                        logger.debug(f"Skipping likely page number: {content[:50]}")
                         continue
 
                 # Reset flag on text object end (ET) or start (BT)
