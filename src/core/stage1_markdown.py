@@ -160,6 +160,12 @@ class MarkdownConverter:
         # Remove watermark text
         markdown_content = self._remove_watermark_text(markdown_content)
 
+        # Remove header and footer sections
+        markdown_content = self._remove_header_footer(markdown_content)
+
+        # Final cleanup
+        markdown_content = self._clean_markdown(markdown_content)
+
         return {
             "markdown": markdown_content,
             "metadata": metadata,
@@ -204,12 +210,53 @@ class MarkdownConverter:
             r"Người in:.*?(?=\n|$)",
             r"Ngày in:.*?(?=\n|$)",
             r"Thời gian ký:.*?(?=\n|$)",
+            # Remove HTML page comments
+            r"<!--\s+Page \d+\s+-->",
         ]
 
         for pattern in patterns_to_remove:
             markdown = re.sub(pattern, "", markdown, flags=re.IGNORECASE | re.DOTALL)
 
         return markdown
+
+    def _remove_header_footer(self, markdown: str) -> str:
+        """Remove document header and footer sections.
+
+        Header typically contains: title, author, approval info
+        Footer typically contains: signature lines, page info
+        """
+        import re
+
+        lines = markdown.split('\n')
+
+        # Find content start: first table or numbered section
+        content_start = 0
+        for i, line in enumerate(lines):
+            # Look for first table or numbered heading
+            if line.strip().startswith('|') or re.match(r'^###\s+[IVX]+\.|^###\s+\d+\.', line):
+                content_start = i
+                break
+
+        # Find content end: last table or before footer keywords
+        content_end = len(lines)
+        footer_keywords = ['Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY', 'Chủ tịch', 'Ký duyệt']
+
+        for i in range(len(lines) - 1, -1, -1):
+            line_stripped = lines[i].strip()
+            # If we find footer keywords at the end, mark as content end
+            if line_stripped and any(keyword in line_stripped for keyword in footer_keywords):
+                # Check if this is near the end (likely footer)
+                if i > len(lines) * 0.8:  # More than 80% through document
+                    content_end = i
+                    break
+
+        # Extract content section
+        if content_start < content_end:
+            content = '\n'.join(lines[content_start:content_end])
+        else:
+            content = markdown
+
+        return content.strip()
 
     def _extract_table_from_pdf(self, table) -> str:
         """Extract table from PDF using PyMuPDF table detection."""
