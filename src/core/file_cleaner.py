@@ -327,19 +327,23 @@ class FileCleaner:
                             # 3. Y is negative (common for headers/footers in rotated content)
                             # 4. Y is way below page (footer outside visible area)
                             # 5. Page numbers/footers: Very bottom (0 < Y < 50) - usually contains page numbers
-                            # 6. Center top: Very top (y > 95% height) AND center X (200-400)
+                            # 6. Footer specific Y positions: 0, 13.07, 28.3, 29.97, 30.97 (Vietnamese doc pattern)
+                            # 7. Center top: Very top (y > 95% height) AND center X (200-400)
                             is_header = y_pos >= header_threshold
                             is_footer = y_pos <= footer_threshold
                             is_unusual = y_pos < 0 or y_pos > page_height + 100
-                            is_very_bottom = 0 < y_pos < 50  # Page numbers usually at bottom
                             is_page_number_top = y_pos >= page_height * 0.95 and 200 < x_pos < 400
+                            # Very specific footer Y positions for Vietnamese documents
+                            # Only use when we have strong pattern matches (hex-encoded text)
+                            is_footer_specific_y = any(abs(y_pos - fy) < 1.0 for fy in [0, 10, 13.07, 28.3, 29.97, 30.97, 46.87])
 
-                            if is_header or is_footer or is_unusual or is_very_bottom or is_page_number_top:
+                            if is_header or is_footer or is_unusual or is_page_number_top:
                                 skip_next_text = True
-                                if is_very_bottom:
-                                    logger.debug(f"Footer/page number detected at bottom Y={y_pos:.1f}")
-                                elif is_page_number_top:
+                                if is_page_number_top:
                                     logger.debug(f"Page number detected at top X={x_pos:.1f}, Y={y_pos:.1f}")
+                            elif is_footer_specific_y:
+                                # Mark as footer region for hex pattern matching
+                                skip_next_text = True
                             else:
                                 skip_next_text = False
                         except (ValueError, IndexError):
@@ -379,14 +383,28 @@ class FileCleaner:
                         any(c in '-_' for c in stripped_content)
                     )
 
+                    # 3. Hex-encoded footer text at footer-specific positions
+                    # Pattern like [<0015002D002B0034>] only when we're in footer region
+                    is_hex_footer = (
+                        skip_next_text and  # Only if we detected footer position
+                        stripped_content.startswith('[<') and
+                        stripped_content.endswith('>]') and
+                        len(stripped_content) < 80 and  # Short
+                        all(c in '[]<>0123456789ABCDEFabcdef \t-' for c in stripped_content)
+                    )
+
                     in_header_footer_region = skip_next_text
 
-                    # ONLY skip very specific patterns - don't remove general content!
-                    if (is_page_number or is_footer_line) or (in_header_footer_region and (is_page_number or is_footer_line)):
+                    # Skip specific patterns - page numbers, footer lines, and hex-encoded footer text
+                    should_skip = is_page_number or is_footer_line or is_hex_footer
+
+                    if should_skip:
                         if is_page_number:
                             logger.debug(f"Skipping page number: {content[:50]}")
                         elif is_footer_line:
                             logger.debug(f"Skipping footer line: {content[:50]}")
+                        elif is_hex_footer:
+                            logger.debug(f"Skipping hex-encoded footer: {content[:50]}")
                         removed_count += 1
                         continue
 
