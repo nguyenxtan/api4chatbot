@@ -356,41 +356,33 @@ class FileCleaner:
                     content = line_stripped
                     stripped_content = content.replace('Tj', '').replace('TJ', '').strip()
 
-                    # Check patterns:
-                    # 1. Page number: [(digits)] or [( digits )]
-                    # 2. Footer line: [(-----)], [(______)], etc - dashes/underscores
-                    # 3. Simple encoded: very short hex-only content
+                    # Check patterns VERY CAREFULLY to avoid removing main content:
+                    # Only remove SPECIFIC patterns, not all short text!
 
+                    # 1. ONLY page numbers: very specific patterns like [(1)], [( 1 )], [(1: )], etc
+                    # Must be 1-3 digits only, with optional spaces and colon
                     is_page_number = (
                         stripped_content.startswith('[') and
                         stripped_content.endswith(']') and
                         '(' in stripped_content and ')' in stripped_content and
-                        any(c in '0123456789' for c in stripped_content) and
-                        all(c in '[]()0123456789 \t-+' for c in stripped_content)
+                        len(stripped_content) < 30 and  # Very short
+                        # Extract content between [ and ]
+                        all(c in '()0123456789 \t:' for c in stripped_content)  # Only parens, digits, colon
                     )
 
-                    # Footer line detection: content with only dashes/underscores/spaces in parens
+                    # 2. Footer lines: ONLY dashes/underscores (decoration lines)
                     is_footer_line = (
                         stripped_content.startswith('[') and
                         stripped_content.endswith(']') and
                         '(' in stripped_content and ')' in stripped_content and
-                        all(c in '[]() \t-_' for c in stripped_content) and
-                        any(c in '-_' for c in stripped_content)  # Must have dash or underscore
-                    )
-
-                    # Very short hex-only (likely digit/symbol encoding)
-                    is_short_encoded = (
-                        len(stripped_content) < 40 and
-                        '[' in stripped_content and '<' in stripped_content and
-                        '>' in stripped_content and
-                        all(c in '[]<>0123456789ABCDEFabcdef \t-' for c in stripped_content)
+                        all(c in '()- _\t' for c in stripped_content) and
+                        any(c in '-_' for c in stripped_content)
                     )
 
                     in_header_footer_region = skip_next_text
 
-                    # Skip if: (1) looks like footer/page number OR (2) in header/footer region
-                    # Note: is_short_encoded can trigger even outside header/footer region (page numbers can be anywhere)
-                    if is_page_number or is_footer_line or is_short_encoded or in_header_footer_region:
+                    # ONLY skip very specific patterns - don't remove general content!
+                    if (is_page_number or is_footer_line) or (in_header_footer_region and (is_page_number or is_footer_line)):
                         if is_page_number:
                             logger.debug(f"Skipping page number: {content[:50]}")
                         elif is_footer_line:
@@ -398,24 +390,11 @@ class FileCleaner:
                         removed_count += 1
                         continue
 
-                # Detect and skip graphics line-drawing commands (footer lines)
-                # Pattern: "0 0 m" (moveto origin) followed by "X 0 l" (lineto at Y=0) and "S" (stroke)
-                # This creates horizontal lines commonly used in footers
-                elif line_stripped in ['m', 'l', 'S'] or ' m' in line_stripped or ' l' in line_stripped:
-                    # Skip graphics drawing commands
-                    # Specifically: moveto (m), lineto (l), stroke (S) commands
-                    if line_stripped in ['S', 'm', 'l']:
-                        # Standalone command
-                        logger.debug(f"Skipping graphics line-drawing command: {line_stripped[:50]}")
-                        removed_count += 1
-                        continue
-                    elif ' m' in line_stripped or ' l' in line_stripped:
-                        # Positioning with command: "X Y m" or "X Y l"
-                        # Only skip if it looks like line drawing (Y = 0 or very small)
-                        if ' 0 m' in line_stripped or ' 0 l' in line_stripped or ' 0.0 m' in line_stripped or ' 0.0 l' in line_stripped:
-                            logger.debug(f"Skipping graphics line-drawing command: {line_stripped[:50]}")
-                            removed_count += 1
-                            continue
+                # NOTE: Graphics command removal disabled due to false positives
+                # These commands (m, l, S) are part of normal PDF graphics and are difficult to
+                # distinguish from footer-drawing commands without more context.
+                # Footer detection by position (via Tm/text positioning) is more reliable.
+                # TODO: Implement more sophisticated footer line detection if needed
 
                 # Reset flag on text object end (ET) or start (BT)
                 elif line_stripped == 'ET':  # End text object
