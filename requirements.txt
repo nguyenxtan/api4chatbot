@@ -2,38 +2,22 @@
 fastapi==0.115.0
 uvicorn[standard]==0.32.0
 pydantic==2.9.2
-pydantic-settings==2.6.0
 python-multipart==0.0.12
 
 # Document Processing
 pymupdf==1.24.13
-pikepdf==8.14.0
+pikepdf==9.11.0
 markitdown==0.0.1a2
 python-docx==1.1.2
-openpyxl==3.1.5
-
-# Vietnamese NLP
-underthesea==6.8.4
-pyvi==0.1.1
-
-# Schema & Configuration
-pyyaml==6.0.2
-jsonschema==4.23.0
-
-# Storage & Database
-sqlalchemy==2.0.35
-alembic==1.13.3
-aiosqlite==0.20.0
 
 # Utilities
 python-dateutil==2.9.0
-regex==2024.9.11
-tiktoken==0.8.0
+pyyaml==6.0.2
 
 # Logging & Monitoring
 loguru==0.7.2
 
-# Testing
+# Testing (Optional)
 pytest==8.3.3
 pytest-asyncio==0.24.0
 httpx==0.27.2
