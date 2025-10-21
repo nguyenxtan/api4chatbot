@@ -187,19 +187,20 @@ class FileCleaner:
                 content_streams = [contents]
 
             # Process each stream and collect filtered content
-            total_removed = 0
+            total_text_ops_removed = 0
             new_streams = []
 
             for stream_idx, stream in enumerate(content_streams):
                 try:
                     content_data = stream.read_bytes()
-                    filtered_content = self._filter_content_stream(
+                    filtered_content, text_ops_removed = self._filter_content_stream(
                         content_data, header_threshold, footer_threshold, page_height
                     )
 
+                    total_text_ops_removed += text_ops_removed
+
                     if filtered_content != content_data:
-                        total_removed += 1
-                        logger.debug(f"Filtered stream {stream_idx}: content changed")
+                        logger.debug(f"Stream {stream_idx}: Removed {text_ops_removed} text operators")
                         # Create new stream with filtered content
                         # Note: pikepdf.Stream requires (pdf, bytes) not (page, bytes)
                         new_stream = pikepdf.Stream(pdf, filtered_content)
@@ -212,23 +213,26 @@ class FileCleaner:
                     new_streams.append(stream)
 
             # Replace content streams if any were modified
-            if total_removed > 0:
+            if total_text_ops_removed > 0:
                 if len(new_streams) == 1:
                     page["/Contents"] = new_streams[0]
                 else:
                     page["/Contents"] = pikepdf.Array(new_streams)
 
-            return total_removed
+            return total_text_ops_removed
 
         except Exception as e:
             logger.debug(f"Error filtering content: {e}")
             return 0
 
-    def _filter_content_stream(self, content: bytes, header_threshold: float, footer_threshold: float, page_height: float) -> bytes:
+    def _filter_content_stream(self, content: bytes, header_threshold: float, footer_threshold: float, page_height: float) -> Tuple[bytes, int]:
         """Filter content stream to remove header/footer text.
 
         Strategy: Parse PDF content operators, track text matrix (Tm), and skip
         text drawing commands (Tj, TJ) when text positioning indicates header/footer.
+
+        Note: Y coordinates can be negative or outside normal page range due to
+        coordinate transformations (cm commands). We detect these as header/footer.
 
         Args:
             content: PDF content stream bytes
@@ -237,7 +241,7 @@ class FileCleaner:
             page_height: Total page height for context
 
         Returns:
-            Filtered content bytes
+            Tuple of (filtered content bytes, count of text operators removed)
         """
         try:
             content_str = content.decode('latin-1', errors='ignore')
@@ -245,8 +249,8 @@ class FileCleaner:
             # Split into tokens/lines for processing
             lines = content_str.split('\n')
             filtered_lines = []
-            current_text_y = None
             skip_next_text = False
+            removed_count = 0
 
             for i, line in enumerate(lines):
                 line_stripped = line.strip()
@@ -263,40 +267,50 @@ class FileCleaner:
                         try:
                             # f is the Y coordinate (second to last token)
                             y_pos = float(parts[-3])
-                            current_text_y = y_pos
 
-                            # Check if this Y position is in header/footer region
-                            if y_pos >= header_threshold or y_pos <= footer_threshold:
+                            # Detect header/footer by multiple criteria:
+                            # 1. Y is in top 10% (y > 90% of height)
+                            # 2. Y is in bottom 10% (y < 10% of height)
+                            # 3. Y is negative (common for headers/footers in rotated content)
+                            # 4. Y is way below page (footer outside visible area)
+                            is_header = y_pos >= header_threshold
+                            is_footer = y_pos <= footer_threshold
+                            is_unusual = y_pos < 0 or y_pos > page_height + 100  # Outside normal range
+
+                            if is_header or is_footer or is_unusual:
                                 skip_next_text = True
-                                logger.debug(f"Header/footer detected at Y={y_pos:.1f} (header_th={header_threshold:.1f}, footer_th={footer_threshold:.1f})")
+                                logger.debug(f"Header/footer detected at Y={y_pos:.1f} (header={is_header}, footer={is_footer}, unusual={is_unusual})")
                             else:
                                 skip_next_text = False
                         except (ValueError, IndexError):
                             pass
 
-                # Also track Td/TD (relative positioning)
+                # Also track Td/TD (relative positioning) - this resets positioning within text object
+                # but we keep skip flag since we're still in the same text object
                 elif line_stripped.endswith('Td') or line_stripped.endswith('TD'):
-                    skip_next_text = False  # Relative movements are usually small, reset
+                    pass  # Keep skip flag if already in header/footer text
 
                 # Skip text drawing operators if in header/footer region
+                # Note: Skip ALL text operators (Tj, TJ, ', ") in header/footer, don't reset after each
                 elif skip_next_text and (line_stripped.endswith('Tj') or line_stripped.endswith('TJ') or line_stripped.endswith('\'') or line_stripped.endswith('"')):
-                    # Skip text operators in header/footer
-                    logger.debug(f"Skipping text operator: {line_stripped[:60]}")
+                    # Skip this text operator
+                    removed_count += 1
                     continue
 
-                # Reset flag when we encounter graphics state changes
-                elif line_stripped in ['q', 'Q', 'BT', 'ET']:
-                    if line_stripped in ['q', 'Q']:
-                        skip_next_text = False  # Graphics state change, reset
+                # Reset flag on text object end (ET) or start (BT)
+                elif line_stripped == 'ET':  # End text object
+                    skip_next_text = False
+                elif line_stripped == 'BT':  # Begin text object - start fresh
+                    skip_next_text = False
 
                 filtered_lines.append(line)
 
             filtered_content = '\n'.join(filtered_lines)
-            return filtered_content.encode('latin-1', errors='ignore')
+            return filtered_content.encode('latin-1', errors='ignore'), removed_count
 
         except Exception as e:
             logger.debug(f"Error in content filtering: {e}")
-            return content
+            return content, 0
 
     def _clean_docx(self, file_path: Path) -> Tuple[bool, str, Optional[str]]:
         """Clean DOCX by removing headers, footers, and watermarks.
