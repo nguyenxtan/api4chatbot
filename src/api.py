@@ -53,17 +53,20 @@ class MarkdownChunkRequest(BaseModel):
     markdown_content: str
 
 
+class TieuDeMuc(BaseModel):
+    """Tiêu đề mục phân cấp."""
+    muc_chinh: Optional[str] = None
+    muc_cap_1: Optional[str] = None
+    muc_cap_2: Optional[str] = None
+    muc_cap_3: Optional[str] = None
+    muc_cap_4: Optional[str] = None
+
+
 class MarkdownChunk(BaseModel):
     """Chunk from markdown content."""
-    index: int
-    title: str
-    content: str
-    type: str  # "table"
-    heading_level_1: Optional[str] = None  # e.g., "II. CƯỚC TÁC NGHIỆP CONTAINER"
-    heading_level_2: Optional[str] = None  # e.g., "1. Cước xếp dỡ container"
-    heading_level_3: Optional[str] = None  # e.g., "1.1. Đối với container hàng"
-    heading_level_4: Optional[str] = None  # e.g., "1.1.1. Tác nghiệp tại cầu tàu"
-    table_name: Optional[str] = None  # e.g., "Bảng 01"
+    ten_bang: Optional[str] = None
+    tieu_de_muc: TieuDeMuc
+    noi_dung_bang: str
 
 
 @app.post("/documents/markdown")
@@ -224,17 +227,16 @@ async def chunk_markdown(request: MarkdownChunkRequest):
 
                 # If table has <= 20 data rows, keep as 1 chunk
                 if len(data_lines) <= 20:
-                    index += 1
                     chunks.append(MarkdownChunk(
-                        index=index,
-                        title=table_title,
-                        content='\n'.join(table_lines),
-                        type="table",
-                        heading_level_1=h1,
-                        heading_level_2=h2,
-                        heading_level_3=h3,
-                        heading_level_4=h4,
-                        table_name=table_name
+                        ten_bang=table_name,
+                        tieu_de_muc=TieuDeMuc(
+                            muc_chinh=h1,
+                            muc_cap_1=h2,
+                            muc_cap_2=h3,
+                            muc_cap_3=h4,
+                            muc_cap_4=None
+                        ),
+                        noi_dung_bang='\n'.join(table_lines)
                     ))
                 else:
                     # Split table into multiple chunks (20 rows each, keep header)
@@ -246,17 +248,16 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                         # Reconstruct table with header + data slice
                         part_table = header_lines + part_data
 
-                        index += 1
                         chunks.append(MarkdownChunk(
-                            index=index,
-                            title=f"{table_title} - Part {part_num}",
-                            content='\n'.join(part_table),
-                            type="table",
-                            heading_level_1=h1,
-                            heading_level_2=h2,
-                            heading_level_3=h3,
-                            heading_level_4=h4,
-                            table_name=table_name
+                            ten_bang=f"{table_name} - Part {part_num}" if table_name else f"Table Part {part_num}",
+                            tieu_de_muc=TieuDeMuc(
+                                muc_chinh=h1,
+                                muc_cap_1=h2,
+                                muc_cap_2=h3,
+                                muc_cap_3=h4,
+                                muc_cap_4=None
+                            ),
+                            noi_dung_bang='\n'.join(part_table)
                         ))
 
                 # Skip processed lines
@@ -266,10 +267,7 @@ async def chunk_markdown(request: MarkdownChunkRequest):
                 # Skip all other content
                 i += 1
 
-        return {
-            "total_chunks": len(chunks),
-            "chunks": chunks
-        }
+        return chunks
 
     except Exception as e:
         logger.error(f"Error chunking markdown: {e}", exc_info=True)
