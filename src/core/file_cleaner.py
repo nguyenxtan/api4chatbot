@@ -301,6 +301,9 @@ class FileCleaner:
             skip_next_text = False
             removed_count = 0
 
+            # Page dimensions (approximate - typical A4 PDF)
+            page_width = 595  # Approximate standard page width
+
             for i, line in enumerate(lines):
                 line_stripped = line.strip()
 
@@ -314,7 +317,8 @@ class FileCleaner:
                     parts = line_stripped.split()
                     if len(parts) >= 6:
                         try:
-                            # f is the Y coordinate (second to last token)
+                            # Extract positioning
+                            x_pos = float(parts[-4])
                             y_pos = float(parts[-3])
 
                             # Detect header/footer by multiple criteria:
@@ -322,13 +326,20 @@ class FileCleaner:
                             # 2. Y is in bottom 10% (y < 10% of height)
                             # 3. Y is negative (common for headers/footers in rotated content)
                             # 4. Y is way below page (footer outside visible area)
+                            # 5. Page numbers/footers: Very bottom (0 < Y < 50) - usually contains page numbers
+                            # 6. Center top: Very top (y > 95% height) AND center X (200-400)
                             is_header = y_pos >= header_threshold
                             is_footer = y_pos <= footer_threshold
-                            is_unusual = y_pos < 0 or y_pos > page_height + 100  # Outside normal range
+                            is_unusual = y_pos < 0 or y_pos > page_height + 100
+                            is_very_bottom = 0 < y_pos < 50  # Page numbers usually at bottom
+                            is_page_number_top = y_pos >= page_height * 0.95 and 200 < x_pos < 400
 
-                            if is_header or is_footer or is_unusual:
+                            if is_header or is_footer or is_unusual or is_very_bottom or is_page_number_top:
                                 skip_next_text = True
-                                logger.debug(f"Header/footer detected at Y={y_pos:.1f} (header={is_header}, footer={is_footer}, unusual={is_unusual})")
+                                if is_very_bottom:
+                                    logger.debug(f"Footer/page number detected at bottom Y={y_pos:.1f}")
+                                elif is_page_number_top:
+                                    logger.debug(f"Page number detected at top X={x_pos:.1f}, Y={y_pos:.1f}")
                             else:
                                 skip_next_text = False
                         except (ValueError, IndexError):
@@ -345,6 +356,27 @@ class FileCleaner:
                     # Skip this text operator
                     removed_count += 1
                     continue
+
+                # Also skip if content looks like page numbers (only digits and special chars, no words)
+                # Pattern: [<hex>], [(number)], etc - but not real text content
+                elif line_stripped.endswith(('Tj', 'TJ')) and not skip_next_text:
+                    # Check if this looks like encoded page number/footer
+                    # Common pattern: line contains ONLY hex codes or simple numbers
+                    # e.g., [<0015002D002B0034>] or [(1)], [(2)], etc.
+                    content = line_stripped
+
+                    # Very simple content = likely page number
+                    # If it only has [ ] < > digits parentheses, it's probably page number
+                    is_simple_content = (
+                        len(content) < 60 and  # Short content
+                        all(c in '[]()<>0123456789 \t' for c in content.replace('Tj', '').replace('TJ', ''))
+                    )
+
+                    if is_simple_content:
+                        # Likely a page number/footer
+                        removed_count += 1
+                        logger.debug(f"Skipping likely page number: {content[:50]}")
+                        continue
 
                 # Reset flag on text object end (ET) or start (BT)
                 elif line_stripped == 'ET':  # End text object
