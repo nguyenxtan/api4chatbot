@@ -352,6 +352,70 @@ async def chunk_markdown(request: MarkdownChunkRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/documents/download/{filename}")
+async def download_file(filename: str):
+    """
+    Download cleaned or processed file.
+
+    Args:
+        filename: Name of the file to download (from temp/cleaned/ directory)
+
+    Returns:
+        File for download
+    """
+    # Security: only allow files from temp/cleaned directory
+    temp_dir = Path("temp/cleaned")
+    file_path = temp_dir / filename
+
+    # Prevent directory traversal attacks
+    try:
+        file_path = file_path.resolve()
+        temp_dir = temp_dir.resolve()
+        if not str(file_path).startswith(str(temp_dir)):
+            raise HTTPException(status_code=403, detail="Access denied")
+    except Exception as e:
+        raise HTTPException(status_code=403, detail="Invalid file path")
+
+    if not file_path.exists():
+        raise HTTPException(status_code=404, detail=f"File not found: {filename}")
+
+    logger.info(f"Downloading file: {filename}")
+
+    return FileResponse(
+        path=file_path,
+        filename=filename,
+        media_type="application/octet-stream"
+    )
+
+
+@app.get("/documents/list-files")
+async def list_cleaned_files():
+    """
+    List all cleaned files available for download.
+
+    Returns:
+        List of cleaned files
+    """
+    temp_dir = Path("temp/cleaned")
+    temp_dir.mkdir(parents=True, exist_ok=True)
+
+    files = []
+    if temp_dir.exists():
+        for file_path in sorted(temp_dir.glob("*"), key=lambda p: p.stat().st_mtime, reverse=True):
+            if file_path.is_file():
+                files.append({
+                    "filename": file_path.name,
+                    "size": file_path.stat().st_size,
+                    "modified": file_path.stat().st_mtime,
+                    "download_url": f"/documents/download/{file_path.name}"
+                })
+
+    return {
+        "total": len(files),
+        "files": files
+    }
+
+
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
