@@ -81,14 +81,32 @@ class FileCleaner:
             # Remove annotations (watermarks) from all pages
             annotation_count = 0
             for page_num, page in enumerate(doc, start=1):
-                # Get all annotations
-                annotations = page.get_annotations()
+                try:
+                    # Try new API (PyMuPDF >= 1.23)
+                    if hasattr(page, 'get_annotations'):
+                        annotations = page.get_annotations()
+                    else:
+                        # Fallback for older versions - use annots()
+                        annotations = page.annots()
 
-                if annotations:
-                    for annot in annotations:
-                        # Remove annotation
-                        page.delete_annot(annot)
-                        annotation_count += 1
+                    if annotations:
+                        for annot in annotations:
+                            try:
+                                if hasattr(page, 'delete_annot'):
+                                    page.delete_annot(annot)
+                                else:
+                                    # Fallback: delete_widget or other method
+                                    annot_obj = page.get_annot(annot)
+                                    if annot_obj:
+                                        annot_obj.delete()
+                                annotation_count += 1
+                            except Exception as annot_error:
+                                logger.debug(f"Could not delete annotation on page {page_num}: {annot_error}")
+                                continue
+
+                except Exception as page_error:
+                    logger.warning(f"Could not access annotations on page {page_num}: {page_error}")
+                    continue
 
             logger.info(f"Removed {annotation_count} annotations from {len(doc)} pages")
 
