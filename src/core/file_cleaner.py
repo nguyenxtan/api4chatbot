@@ -93,31 +93,44 @@ class FileCleaner:
             block_signatures = {}  # signature -> [pages where it appears]
 
             # Phase 1: Analyze all pages to find patterns
+            total_pages = len(doc)
+            logger.info(f"=== PHASE 1: Analyzing {total_pages} pages ===")
+
             for page_num, page in enumerate(doc):
                 try:
                     blocks = page.get_text("dict")["blocks"]
-                    for block in blocks:
+                    logger.debug(f"Page {page_num}: Found {len(blocks)} blocks")
+
+                    for block_idx, block in enumerate(blocks):
                         if block["type"] == 0:  # Text block
                             # Create signature (position + text)
                             text = self._extract_block_text(block)
                             y0, y1 = block["bbox"][1], block["bbox"][3]
-                            sig = (round(y0, 1), round(y1, 1), text[:50])  # Round Y to handle slight variations
+                            sig = (round(y0, 1), round(y1, 1), text[:50])
 
                             if sig not in block_signatures:
                                 block_signatures[sig] = []
                             block_signatures[sig].append(page_num)
+
+                            if page_num < 2:  # Log first 2 pages for debug
+                                logger.debug(f"  Block {block_idx}: y={y0:.0f}-{y1:.0f}, text={text[:30]}")
                 except Exception as e:
-                    logger.debug(f"Error analyzing page {page_num}: {e}")
+                    logger.error(f"Error analyzing page {page_num}: {e}", exc_info=True)
                     continue
 
-            logger.debug(f"Found {len(block_signatures)} unique block signatures")
+            logger.info(f"Found {len(block_signatures)} unique block signatures")
 
             # Find repeated blocks (likely header/footer)
             repeated_blocks = {sig: pages for sig, pages in block_signatures.items()
-                             if len(pages) > len(doc) * 0.7}  # Appears in >70% of pages
-            logger.info(f"Detected {len(repeated_blocks)} repeated blocks (likely header/footer)")
+                             if len(pages) > total_pages * 0.7}  # Appears in >70% of pages
+            logger.info(f"Detected {len(repeated_blocks)} repeated blocks (>70% of {total_pages} pages)")
+
+            for sig, pages in list(repeated_blocks.items())[:5]:  # Show first 5
+                _, _, text = sig
+                logger.info(f"  Repeated: '{text}' on pages {pages[:3]}...")
 
             # Phase 2: Clean each page
+            logger.info(f"=== PHASE 2: Cleaning {total_pages} pages ===")
             for page_num, page in enumerate(doc, start=1):
                 try:
                     # Remove annotations
@@ -132,8 +145,10 @@ class FileCleaner:
                     header_threshold = page_height * 0.10  # Top 10%
                     footer_threshold = page_height * 0.90  # Bottom 10%
 
+                    logger.debug(f"Page {page_num}: height={page_height:.0f}, header_threshold={header_threshold:.0f}, footer_threshold={footer_threshold:.0f}")
+
                     blocks_to_remove = []
-                    for block in blocks:
+                    for block_idx, block in enumerate(blocks):
                         if block["type"] == 0:  # Text block
                             # Collect signals
                             signals = []
@@ -172,7 +187,12 @@ class FileCleaner:
                             # Voting: if >= 2 signals agree, remove block
                             if len(signals) >= 2:
                                 blocks_to_remove.append(block)
-                                logger.debug(f"Page {page_num}: Remove block (signals: {[s[0] for s in signals]})")
+                                if page_num <= 2:  # Log first 2 pages
+                                    logger.info(f"  Page {page_num} Block {block_idx}: REMOVE - signals={[s[0] for s in signals]}, text='{block_text[:40]}'")
+                            elif page_num <= 2 and len(signals) >= 1:
+                                logger.debug(f"  Page {page_num} Block {block_idx}: KEEP ({len(signals)} signal, need 2) - text='{block_text[:40]}'")
+
+                    logger.info(f"Page {page_num}: {len(blocks_to_remove)} blocks marked for removal")
 
                     # Remove marked blocks
                     for block in blocks_to_remove:
@@ -181,7 +201,7 @@ class FileCleaner:
                         header_footer_count += 1
 
                 except Exception as page_error:
-                    logger.warning(f"Error processing page {page_num}: {page_error}")
+                    logger.error(f"Error processing page {page_num}: {page_error}", exc_info=True)
                     continue
 
             logger.info(f"Removed {annotation_count} annotations and {header_footer_count} header/footer blocks")
