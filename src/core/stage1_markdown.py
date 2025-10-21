@@ -154,17 +154,11 @@ class MarkdownConverter:
 
         markdown_content = "\n".join(markdown_parts)
 
-        # Clean up excessive newlines
+        # Clean up excessive newlines (formatting only, no content removal)
         markdown_content = self._clean_markdown(markdown_content)
 
-        # Remove watermark text (basic cleanup for markdown artifacts)
-        markdown_content = self._remove_watermark_text(markdown_content)
-
-        # Remove document header and footer sections
-        markdown_content = self._remove_header_footer(markdown_content)
-
-        # Final cleanup
-        markdown_content = self._clean_markdown(markdown_content)
+        # Note: Watermark, header, footer removal should be handled by /documents/cleanfile API
+        # This markdown converter is responsible ONLY for text extraction and formatting
 
         return {
             "markdown": markdown_content,
@@ -187,114 +181,6 @@ class MarkdownConverter:
         # This would need additional metadata from PDF
 
         return False
-
-    def _remove_watermark_text(self, markdown: str) -> str:
-        """Remove common watermark text from markdown."""
-        import re
-
-        # Patterns to remove
-        patterns_to_remove = [
-            r"_Approved\s*",
-            r"APPROVED\s*",
-            r"Watermark\s*",
-            r"DRAFT\s*",
-            r"CONFIDENTIAL\s*",
-            r"Internal Use Only\s*",
-            r"Do Not Copy\s*",
-            # Remove [Image on page X] patterns - common watermark placeholders
-            r"\[Image on page \d+\]",
-            # Remove print metadata (Người in, Ngày in, Thời gian ký)
-            r"###\s+Người in:.*?(?=\n###|\n\n|$)",
-            r"###\s+Ngày in:.*?(?=\n###|\n\n|$)",
-            r"###\s+Thời gian ký:.*?(?=\n###|\n\n|$)",
-            r"Người in:.*?(?=\n|$)",
-            r"Ngày in:.*?(?=\n|$)",
-            r"Thời gian ký:.*?(?=\n|$)",
-            # Remove HTML page comments
-            r"<!--\s+Page \d+\s+-->",
-        ]
-
-        for pattern in patterns_to_remove:
-            markdown = re.sub(pattern, "", markdown, flags=re.IGNORECASE | re.DOTALL)
-
-        return markdown
-
-    def _remove_header_footer(self, markdown: str) -> str:
-        """Remove document header and footer sections.
-
-        Header typically contains: title, author, approval info, stamp
-        Footer typically contains: signature lines, recipient info
-        """
-        import re
-
-        lines = markdown.split('\n')
-
-        if not lines:
-            return markdown
-
-        # Step 1: Remove empty lines from start and end
-        while lines and not lines[0].strip():
-            lines.pop(0)
-        while lines and not lines[-1].strip():
-            lines.pop()
-
-        # Step 2: Find content start - first numbered section heading or table
-        content_start = 0
-        for i, line in enumerate(lines):
-            line_stripped = line.strip()
-            # Match: numbered heading (I., 1., 1.1., II., etc.) or table
-            if (re.match(r'^###\s+([IVX]+\.|[0-9]+(\.[0-9]+)*\.)', line_stripped) or
-                line_stripped.startswith('|')):
-                content_start = i
-                break
-
-        # Step 3: Remove header (lines before content start)
-        lines = lines[content_start:]
-
-        # Step 4: Remove footer lines (lines containing footer keywords)
-        footer_keywords = [
-            'Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY',
-            'Chủ tịch', 'Ký duyệt', 'Người ký', 'Ngày ký',
-            'Trưởng ban', 'Phó giám đốc'
-        ]
-
-        # Find first footer line from the end
-        # Work backwards to find where footer section starts
-        content_end = len(lines)
-        footer_start = -1
-
-        for i in range(len(lines) - 1, -1, -1):
-            line_stripped = lines[i].strip()
-            # Remove markdown symbols to check content
-            line_cleaned = line_stripped.replace('###', '').replace('##', '').replace('#', '').strip()
-
-            if line_cleaned and any(keyword in line_cleaned for keyword in footer_keywords):
-                # Found footer keyword, mark this as part of footer
-                footer_start = i
-            elif footer_start >= 0 and line_cleaned:
-                # We found footer before, and now hit a non-empty line
-                # This means footer section starts after this line
-                content_end = i + 1
-                break
-            elif i == 0 and footer_start >= 0:
-                # Reached beginning with footer found
-                content_end = footer_start
-
-        # If we found footer at the end, use that position
-        if footer_start >= 0 and content_end == len(lines):
-            content_end = footer_start
-
-        # Remove all lines from content_end onwards (footer section)
-        if content_end < len(lines):
-            lines = lines[:content_end]
-
-        # Step 5: Clean up trailing/leading empty lines
-        while lines and not lines[0].strip():
-            lines.pop(0)
-        while lines and not lines[-1].strip():
-            lines.pop()
-
-        return '\n'.join(lines).strip()
 
     def _extract_table_from_pdf(self, table) -> str:
         """Extract table from PDF using PyMuPDF table detection."""
