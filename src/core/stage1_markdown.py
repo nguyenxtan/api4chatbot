@@ -157,14 +157,11 @@ class MarkdownConverter:
         # Clean up excessive newlines
         markdown_content = self._clean_markdown(markdown_content)
 
-        # Remove watermark text
+        # Remove watermark text (basic cleanup for markdown artifacts)
         markdown_content = self._remove_watermark_text(markdown_content)
 
-        # Remove header and footer sections
-        markdown_content = self._remove_header_footer(markdown_content)
-
-        # Final cleanup
-        markdown_content = self._clean_markdown(markdown_content)
+        # Note: Header/footer removal should be done via /documents/cleanfile API
+        # This is a simplified version for markdown conversion only
 
         return {
             "markdown": markdown_content,

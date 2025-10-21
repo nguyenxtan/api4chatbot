@@ -4,10 +4,12 @@ FastAPI application for the document chunking pipeline.
 from pathlib import Path
 from typing import Optional
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import FileResponse
 from loguru import logger
 import re
 from pydantic import BaseModel
 from src.core.stage1_markdown import MarkdownConverter
+from src.core.file_cleaner import FileCleaner
 from src.schemas.schema_loader import get_schema_loader
 
 
@@ -21,6 +23,7 @@ app = FastAPI(
 # Initialize components
 schema_loader = get_schema_loader(schemas_dir="config/schemas")
 markdown_converter = MarkdownConverter()
+file_cleaner = FileCleaner()
 
 # Configure logging
 logger.add("logs/api.log", rotation="500 MB", retention="10 days", level="INFO")
@@ -58,18 +61,86 @@ class MarkdownChunk(BaseModel):
     noi_dung_bang: str
 
 
+@app.post("/documents/cleanfile")
+async def clean_file(file: UploadFile = File(...)):
+    """
+    Clean document by removing watermarks, headers, and footers.
+
+    Supports PDF and DOCX formats.
+
+    Args:
+        file: Document file (PDF or DOCX)
+
+    Returns:
+        Cleaned file ready for download
+    """
+    # Validate file extension
+    allowed_extensions = {".pdf", ".docx"}
+    file_ext = Path(file.filename).suffix.lower()
+
+    if file_ext not in allowed_extensions:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid file type. Only PDF and DOCX are allowed. Got: {file_ext}"
+        )
+
+    logger.info(f"Cleaning file: {file.filename}")
+
+    # Save uploaded file temporarily
+    temp_dir = Path("temp")
+    temp_dir.mkdir(exist_ok=True)
+    temp_file = temp_dir / file.filename
+
+    try:
+        # Save file
+        content = await file.read()
+        with open(temp_file, "wb") as f:
+            f.write(content)
+
+        # Clean file
+        success, message, output_path = file_cleaner.clean_file(str(temp_file))
+
+        if not success:
+            logger.error(f"File cleaning failed: {message}")
+            raise HTTPException(status_code=400, detail=message)
+
+        logger.info(f"File cleaned successfully: {output_path}")
+
+        return {
+            "status": "success",
+            "message": message,
+            "filename": Path(output_path).name,
+            "output_path": output_path,
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error cleaning file: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        # Clean up temp file
+        if temp_file.exists():
+            temp_file.unlink()
+
+
 @app.post("/documents/markdown")
 async def convert_to_markdown(
     file: UploadFile = File(...),
+    clean_before_convert: bool = True,
 ):
     """
     Convert document to markdown format.
 
+    Optionally cleans file first (removes watermarks, headers, footers).
+
     Args:
-        file: Document file (PDF, DOCX, PPTX, CSV only)
+        file: Document file (PDF, DOCX, PPTX, CSV)
+        clean_before_convert: If True, clean PDF/DOCX before conversion (default: True)
 
     Returns:
-        Markdown content (watermark removed)
+        Markdown content
     """
     # Validate file extension
     allowed_extensions = {".pdf", ".docx", ".pptx", ".csv"}
@@ -94,13 +165,26 @@ async def convert_to_markdown(
         with open(temp_file, "wb") as f:
             f.write(content)
 
-        # Convert to markdown directly
-        markdown_result = markdown_converter.convert(str(temp_file))
+        # Clean file if requested (for PDF/DOCX only)
+        file_to_convert = temp_file
+        if clean_before_convert and file_ext in {".pdf", ".docx"}:
+            logger.info(f"Cleaning file before conversion: {file.filename}")
+            success, message, cleaned_path = file_cleaner.clean_file(str(temp_file))
+
+            if success and cleaned_path:
+                file_to_convert = Path(cleaned_path)
+                logger.info(f"Using cleaned file: {cleaned_path}")
+            else:
+                logger.warning(f"File cleaning skipped, using original: {message}")
+
+        # Convert to markdown
+        markdown_result = markdown_converter.convert(str(file_to_convert))
 
         return {
             "filename": file.filename,
             "markdown_content": markdown_result["markdown"],
-            "metadata": markdown_result["metadata"]
+            "metadata": markdown_result["metadata"],
+            "cleaned": clean_before_convert and file_ext in {".pdf", ".docx"}
         }
 
     except Exception as e:
