@@ -61,7 +61,7 @@ class FileCleaner:
             return False, f"Error processing file: {str(e)}", None
 
     def _clean_pdf(self, file_path: Path) -> Tuple[bool, str, Optional[str]]:
-        """Clean PDF by removing watermarks and annotations.
+        """Clean PDF by removing watermarks, annotations, headers and footers.
 
         Args:
             file_path: Path to PDF file
@@ -78,37 +78,85 @@ class FileCleaner:
             # Open PDF
             doc = fitz.open(file_path)
 
-            # Remove annotations (watermarks) from all pages
             annotation_count = 0
+            header_footer_count = 0
+
+            # Process each page
             for page_num, page in enumerate(doc, start=1):
                 try:
-                    # Try new API (PyMuPDF >= 1.23)
-                    if hasattr(page, 'get_annotations'):
-                        annotations = page.get_annotations()
-                    else:
-                        # Fallback for older versions - use annots()
-                        annotations = page.annots()
+                    # Step 1: Remove annotations (watermarks overlay)
+                    try:
+                        if hasattr(page, 'get_annotations'):
+                            annotations = page.get_annotations()
+                        else:
+                            annotations = page.annots()
 
-                    if annotations:
-                        for annot in annotations:
-                            try:
-                                if hasattr(page, 'delete_annot'):
-                                    page.delete_annot(annot)
-                                else:
-                                    # Fallback: delete_widget or other method
-                                    annot_obj = page.get_annot(annot)
-                                    if annot_obj:
-                                        annot_obj.delete()
-                                annotation_count += 1
-                            except Exception as annot_error:
-                                logger.debug(f"Could not delete annotation on page {page_num}: {annot_error}")
-                                continue
+                        if annotations:
+                            for annot in annotations:
+                                try:
+                                    if hasattr(page, 'delete_annot'):
+                                        page.delete_annot(annot)
+                                    else:
+                                        annot_obj = page.get_annot(annot)
+                                        if annot_obj:
+                                            annot_obj.delete()
+                                    annotation_count += 1
+                                except Exception as annot_error:
+                                    logger.debug(f"Could not delete annotation on page {page_num}: {annot_error}")
+                                    continue
+                    except Exception as annot_err:
+                        logger.debug(f"Could not access annotations on page {page_num}: {annot_err}")
+
+                    # Step 2: Remove header and footer text blocks
+                    # Get page text with layout to identify position
+                    blocks = page.get_text("dict")["blocks"]
+
+                    page_height = page.rect.height
+                    header_threshold = page_height * 0.15  # Top 15% = header
+                    footer_threshold = page_height * 0.85  # Bottom 15% = footer
+
+                    footer_keywords = [
+                        'Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY',
+                        'Chủ tịch', 'Ký duyệt', 'Người ký', 'Ngày ký',
+                        'Trưởng ban', 'Phó giám đốc'
+                    ]
+
+                    # Identify blocks to remove (header/footer)
+                    blocks_to_remove = []
+                    for block in blocks:
+                        if block["type"] == 0:  # Text block
+                            # Get block position
+                            y0 = block["bbox"][1]
+                            y1 = block["bbox"][3]
+
+                            # Check if block is in header or footer region
+                            is_header = y1 < header_threshold
+                            is_footer = y0 > footer_threshold
+
+                            # Check for footer keywords
+                            block_text = ""
+                            for line in block.get("lines", []):
+                                for span in line.get("spans", []):
+                                    block_text += span.get("text", "")
+
+                            has_footer_keyword = any(keyword in block_text for keyword in footer_keywords)
+
+                            # Mark for removal if header, footer region, or has footer keyword
+                            if is_header or is_footer or has_footer_keyword:
+                                blocks_to_remove.append(block)
+
+                    # Remove marked blocks by drawing over them with white rectangles
+                    for block in blocks_to_remove:
+                        rect = fitz.Rect(block["bbox"])
+                        # Draw white rectangle to cover the block
+                        page.draw_rect(rect, color=None, fill=fitz.pdfcolor.white)
+                        header_footer_count += 1
 
                 except Exception as page_error:
-                    logger.warning(f"Could not access annotations on page {page_num}: {page_error}")
+                    logger.warning(f"Error processing page {page_num}: {page_error}")
                     continue
 
-            logger.info(f"Removed {annotation_count} annotations from {len(doc)} pages")
+            logger.info(f"Removed {annotation_count} annotations and {header_footer_count} header/footer blocks")
 
             # Save cleaned PDF
             output_filename = f"cleaned_{file_path.stem}.pdf"
@@ -117,7 +165,11 @@ class FileCleaner:
             doc.close()
 
             logger.info(f"Cleaned PDF saved to: {output_path}")
-            return True, f"PDF cleaned successfully. Removed {annotation_count} annotations.", str(output_path)
+            return (
+                True,
+                f"PDF cleaned successfully. Removed {annotation_count} annotations and {header_footer_count} header/footer blocks.",
+                str(output_path)
+            )
 
         except Exception as e:
             logger.error(f"Error cleaning PDF: {e}", exc_info=True)
