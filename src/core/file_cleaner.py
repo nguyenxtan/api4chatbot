@@ -234,18 +234,20 @@ class FileCleaner:
             except Exception as cleanup_err:
                 logger.debug(f"Cleanup warning: {cleanup_err}")
 
-            # Save cleaned PDF with garbage collection
+            # Save cleaned PDF with optimization
             output_filename = f"cleaned_{file_path.stem}.pdf"
             output_path = self.output_dir / output_filename
 
-            # Save with garbage collection enabled (remove unused objects)
-            doc.save(str(output_path), garbage=4)
+            # Save with compression and garbage collection to remove unused objects
+            # garbage=3: highest level of garbage collection (removes all unused objects)
+            # deflate=True: compress content streams
+            doc.save(str(output_path), garbage=3, deflate=True)
 
             original_size = file_path.stat().st_size
             cleaned_size = Path(output_path).stat().st_size
             size_reduction = ((original_size - cleaned_size) / original_size * 100) if original_size > 0 else 0
 
-            logger.info(f"Original size: {original_size} bytes, Cleaned size: {cleaned_size} bytes ({size_reduction:.1f}% reduction)")
+            logger.info(f"Original size: {original_size} bytes, Cleaned size: {cleaned_size} bytes, Reduction: {size_reduction:.1f}%")
 
             doc.close()
 
