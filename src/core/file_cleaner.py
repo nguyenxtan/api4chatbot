@@ -398,6 +398,18 @@ class FileCleaner:
                         removed_count += 1
                         continue
 
+                # Detect and skip graphics line-drawing commands (footer lines)
+                # Pattern: "0 0 m" (moveto origin) followed by "X 0 l" (lineto) and "S" (stroke)
+                # This creates horizontal lines commonly used in footers
+                elif line_stripped in ['m', 'l', 'S'] or line_stripped.endswith(' m') or line_stripped.endswith(' l'):
+                    # Skip standalone graphics drawing commands
+                    # These are often parts of decorative lines (footer separator lines)
+                    if line_stripped in ['S', 'm', 'l'] or (line_stripped.endswith(' m') and ' 0 m' in line_stripped) or (line_stripped.endswith(' l') and ' 0 l' in line_stripped):
+                        # Likely part of line drawing (especially "X Y m" and "X 0 l")
+                        logger.debug(f"Skipping graphics line-drawing command: {line_stripped[:50]}")
+                        removed_count += 1
+                        continue
+
                 # Reset flag on text object end (ET) or start (BT)
                 elif line_stripped == 'ET':  # End text object
                     skip_next_text = False
