@@ -189,12 +189,20 @@ async def chunk_markdown(request: MarkdownChunkRequest):
 
             # ONLY process tables - create chunks
             elif line_stripped.startswith('|'):
-                # Collect entire table
+                # Collect entire table (skip lines that don't start with |, but continue if next line has |)
                 table_lines = []
                 j = i
-                while j < len(lines) and lines[j].strip().startswith('|'):
-                    table_lines.append(lines[j])
-                    j += 1
+                while j < len(lines):
+                    line_j = lines[j].strip()
+                    if line_j.startswith('|'):
+                        table_lines.append(lines[j])
+                        j += 1
+                    elif j + 1 < len(lines) and lines[j + 1].strip().startswith('|'):
+                        # Skip garbage line, continue to next
+                        j += 1
+                    else:
+                        # End of table
+                        break
 
                 # Extract header (first 2 rows: header + separator)
                 header_lines = table_lines[:2] if len(table_lines) >= 2 else table_lines
