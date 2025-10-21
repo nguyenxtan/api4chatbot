@@ -112,13 +112,25 @@ class FileCleaner:
                     blocks = page.get_text("dict")["blocks"]
 
                     page_height = page.rect.height
-                    header_threshold = page_height * 0.15  # Top 15% = header
-                    footer_threshold = page_height * 0.85  # Bottom 15% = footer
+                    # Reduced thresholds to avoid removing important content
+                    header_threshold = page_height * 0.08  # Top 8% only = ~67 points
+                    footer_threshold = page_height * 0.92  # Bottom 8% only = ~774 points
 
                     footer_keywords = [
                         'Nơi nhận', 'TỔNG GIÁM ĐỐC', 'TỔNG CÔNG TY',
                         'Chủ tịch', 'Ký duyệt', 'Người ký', 'Ngày ký',
                         'Trưởng ban', 'Phó giám đốc'
+                    ]
+
+                    watermark_keywords = [
+                        'Người in:', 'Ngày in:', 'Thời gian ký:',
+                        '@saigonnewport.com.vn', 'chitvk@'
+                    ]
+
+                    important_keywords = [
+                        'QUYẾT ĐỊNH', 'BIỂU GIÁ', 'QUY ĐỊNH CHUNG',
+                        'Điều ', 'I.', 'II.', 'III.', 'IV.', 'V.',
+                        'Container', 'Cước', 'Dịch vụ'
                     ]
 
                     # Identify blocks to remove (header/footer)
@@ -128,10 +140,7 @@ class FileCleaner:
                             # Get block position
                             y0 = block["bbox"][1]
                             y1 = block["bbox"][3]
-
-                            # Check if block is in header or footer region
-                            is_header = y1 < header_threshold
-                            is_footer = y0 > footer_threshold
+                            block_height = y1 - y0
 
                             # Check for footer keywords
                             block_text = ""
@@ -139,10 +148,29 @@ class FileCleaner:
                                 for span in line.get("spans", []):
                                     block_text += span.get("text", "")
 
+                            # Check if content is important
+                            has_important_content = any(kw in block_text for kw in important_keywords)
+
+                            # Check if it's a watermark (very tall block with watermark keywords)
+                            is_watermark = (block_height > 200 and
+                                          any(kw in block_text for kw in watermark_keywords))
+
+                            # Check if block is in header or footer region (both edges must be in region)
+                            is_header = (y0 < header_threshold and y1 < header_threshold)
+                            is_footer = (y0 > footer_threshold and y1 > footer_threshold)
+
                             has_footer_keyword = any(keyword in block_text for keyword in footer_keywords)
 
-                            # Mark for removal if header, footer region, or has footer keyword
-                            if is_header or is_footer or has_footer_keyword:
+                            # Mark for removal if:
+                            # - In header/footer region AND not important content
+                            # - Has footer keyword AND not important content
+                            # - Is watermark
+                            should_remove = (
+                                (is_watermark) or
+                                ((is_header or is_footer or has_footer_keyword) and not has_important_content)
+                            )
+
+                            if should_remove:
                                 blocks_to_remove.append(block)
 
                     # Remove marked blocks by drawing over them with white rectangles
