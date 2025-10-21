@@ -39,9 +39,13 @@ logs/
 # Data
 data/
 temp/
+temp/cleaned/
+sample/
 *.pdf
 *.docx
 *.xlsx
+*.json
+*.txt
 
 # OS
 .DS_Store
