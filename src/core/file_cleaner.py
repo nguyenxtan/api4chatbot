@@ -350,36 +350,51 @@ class FileCleaner:
                 elif line_stripped.endswith('Td') or line_stripped.endswith('TD'):
                     pass  # Keep skip flag if already in header/footer text
 
-                # Check if this looks like page number/footer (before checking skip_next_text)
-                # Pattern: [<hex>], [(number)], etc - simple content only
+                # Check if this looks like page number/footer/line decoration
+                # Pattern: [<hex>], [(number)], [(_____)], etc
                 elif line_stripped.endswith(('Tj', 'TJ')):
                     content = line_stripped
-
-                    # Check if this is a page number like [(1)], [(2)], etc.
-                    # Page numbers are simple: parentheses with only digits/space
                     stripped_content = content.replace('Tj', '').replace('TJ', '').strip()
 
-                    # Pattern: [(digits)] or [( digits )], etc - page numbers
-                    # Very specifically: starts with [(, contains only digits/spaces, ends with )]
+                    # Check patterns:
+                    # 1. Page number: [(digits)] or [( digits )]
+                    # 2. Footer line: [(-----)], [(______)], etc - dashes/underscores
+                    # 3. Simple encoded: very short hex-only content
+
                     is_page_number = (
                         stripped_content.startswith('[') and
                         stripped_content.endswith(']') and
                         '(' in stripped_content and ')' in stripped_content and
-                        # Must contain at least one digit
                         any(c in '0123456789' for c in stripped_content) and
-                        # Only allowed: brackets, parens, digits, spaces, hyphens, plus
                         all(c in '[]()0123456789 \t-+' for c in stripped_content)
                     )
 
-                    is_simple_content = is_page_number
+                    # Footer line detection: content with only dashes/underscores/spaces in parens
+                    is_footer_line = (
+                        stripped_content.startswith('[') and
+                        stripped_content.endswith(']') and
+                        '(' in stripped_content and ')' in stripped_content and
+                        all(c in '[]() \t-_' for c in stripped_content) and
+                        any(c in '-_' for c in stripped_content)  # Must have dash or underscore
+                    )
 
-                    # Also check if in header/footer region
+                    # Very short hex-only (likely digit/symbol encoding)
+                    is_short_encoded = (
+                        len(stripped_content) < 40 and
+                        '[' in stripped_content and '<' in stripped_content and
+                        '>' in stripped_content and
+                        all(c in '[]<>0123456789ABCDEFabcdef \t-' for c in stripped_content)
+                    )
+
                     in_header_footer_region = skip_next_text
 
-                    # Skip if either: (1) looks like page number OR (2) in header/footer region
-                    if is_simple_content or in_header_footer_region:
-                        if is_simple_content:
-                            logger.debug(f"Skipping likely page number: {content[:50]}")
+                    # Skip if: (1) looks like footer/page number OR (2) in header/footer region
+                    # Note: is_short_encoded can trigger even outside header/footer region (page numbers can be anywhere)
+                    if is_page_number or is_footer_line or is_short_encoded or in_header_footer_region:
+                        if is_page_number:
+                            logger.debug(f"Skipping page number: {content[:50]}")
+                        elif is_footer_line:
+                            logger.debug(f"Skipping footer line: {content[:50]}")
                         removed_count += 1
                         continue
 
