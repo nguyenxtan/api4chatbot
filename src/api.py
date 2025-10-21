@@ -364,22 +364,31 @@ async def download_file(filename: str):
         File for download
     """
     # Security: only allow files from temp/cleaned directory
-    temp_dir = Path("temp/cleaned")
+    # Use absolute path from current working directory
+    base_dir = Path.cwd()
+    temp_dir = base_dir / "temp" / "cleaned"
     file_path = temp_dir / filename
+
+    logger.debug(f"Download request: filename={filename}, temp_dir={temp_dir}, file_path={file_path}")
 
     # Prevent directory traversal attacks
     try:
         file_path = file_path.resolve()
         temp_dir = temp_dir.resolve()
         if not str(file_path).startswith(str(temp_dir)):
+            logger.warning(f"Access denied: {file_path} not in {temp_dir}")
             raise HTTPException(status_code=403, detail="Access denied")
+    except HTTPException:
+        raise
     except Exception as e:
+        logger.error(f"Path validation error: {e}")
         raise HTTPException(status_code=403, detail="Invalid file path")
 
     if not file_path.exists():
+        logger.warning(f"File not found: {file_path}")
         raise HTTPException(status_code=404, detail=f"File not found: {filename}")
 
-    logger.info(f"Downloading file: {filename}")
+    logger.info(f"Downloading file: {filename} from {file_path}")
 
     return FileResponse(
         path=file_path,
@@ -394,10 +403,14 @@ async def list_cleaned_files():
     List all cleaned files available for download.
 
     Returns:
-        List of cleaned files
+        List of cleaned files with download URLs
     """
-    temp_dir = Path("temp/cleaned")
+    # Use absolute path from current working directory
+    base_dir = Path.cwd()
+    temp_dir = base_dir / "temp" / "cleaned"
     temp_dir.mkdir(parents=True, exist_ok=True)
+
+    logger.debug(f"Listing files from: {temp_dir}")
 
     files = []
     if temp_dir.exists():
@@ -409,6 +422,8 @@ async def list_cleaned_files():
                     "modified": file_path.stat().st_mtime,
                     "download_url": f"/documents/download/{file_path.name}"
                 })
+
+    logger.info(f"Listed {len(files)} cleaned files from {temp_dir}")
 
     return {
         "total": len(files),
