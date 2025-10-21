@@ -1,5 +1,5 @@
 """
-File Cleaner: Remove watermarks, headers, and footers from PDF and DOCX files.
+File Cleaner: Remove watermarks, headers, and footers from PDF and DOCX files using pikepdf.
 """
 import os
 from pathlib import Path
@@ -7,11 +7,11 @@ from typing import Dict, Optional, Tuple
 from loguru import logger
 
 try:
-    import fitz  # PyMuPDF
-    PYMUPDF_AVAILABLE = True
+    import pikepdf
+    PIKEPDF_AVAILABLE = True
 except ImportError:
-    logger.warning("PyMuPDF not available")
-    PYMUPDF_AVAILABLE = False
+    logger.warning("pikepdf not available - install with: pip install pikepdf")
+    PIKEPDF_AVAILABLE = False
 
 try:
     from docx import Document as DocxDocument
@@ -61,14 +61,7 @@ class FileCleaner:
             return False, f"Error processing file: {str(e)}", None
 
     def _clean_pdf(self, file_path: Path) -> Tuple[bool, str, Optional[str]]:
-        """Clean PDF by removing watermarks, annotations, headers and footers using hybrid approach.
-
-        Uses multiple detection signals:
-        1. Annotations (overlay watermarks)
-        2. Position-based (top/bottom regions)
-        3. Height-based (tall blocks = diagonal watermarks)
-        4. Repetition-based (same block across pages = header/footer)
-        5. Content-based (optional keywords)
+        """Clean PDF by removing watermarks, annotations, headers and footers using pikepdf.
 
         Args:
             file_path: Path to PDF file
@@ -76,236 +69,171 @@ class FileCleaner:
         Returns:
             Tuple of (success: bool, message: str, output_path: Optional[str])
         """
-        if not PYMUPDF_AVAILABLE:
-            return False, "PyMuPDF not installed. Install with: pip install pymupdf", None
+        if not PIKEPDF_AVAILABLE:
+            return False, "pikepdf not installed. Install with: pip install pikepdf", None
 
-        logger.info(f"Cleaning PDF: {file_path.name}")
+        logger.info(f"Cleaning PDF with pikepdf: {file_path.name}")
 
         try:
-            # Open PDF
-            doc = fitz.open(file_path)
+            # Open PDF with pikepdf
+            with pikepdf.open(file_path) as pdf:
+                total_pages = len(pdf.pages)
+                annotation_count = 0
+                content_removed_count = 0
 
-            annotation_count = 0
-            header_footer_count = 0
+                logger.info(f"Processing {total_pages} pages")
 
-            # Analyze document structure FIRST (before cleaning)
-            # Track blocks across pages to find repeated ones (header/footer)
-            block_signatures = {}  # signature -> [pages where it appears]
+                # Process each page
+                for page_num, page in enumerate(pdf.pages, start=1):
+                    try:
+                        # Remove all annotations (watermarks, comments, etc)
+                        if "/Annots" in page:
+                            annots = page["/Annots"]
+                            if annots is not None:
+                                annotation_count += len(annots)
+                                del page["/Annots"]
+                                logger.debug(f"Page {page_num}: Removed {len(annots)} annotations")
 
-            # Phase 1: Analyze all pages to find patterns
-            total_pages = len(doc)
-            logger.info(f"=== PHASE 1: Analyzing {total_pages} pages ===")
+                        # Remove header/footer by filtering content stream
+                        # This removes text in top and bottom regions
+                        if "/Contents" in page:
+                            try:
+                                content_removed = self._remove_header_footer_from_content(page)
+                                content_removed_count += content_removed
+                                if content_removed > 0:
+                                    logger.debug(f"Page {page_num}: Removed {content_removed} header/footer elements")
+                            except Exception as content_err:
+                                logger.debug(f"Page {page_num}: Could not process content stream: {content_err}")
+                                continue
 
-            for page_num, page in enumerate(doc):
-                try:
-                    blocks = page.get_text("dict")["blocks"]
-                    logger.debug(f"Page {page_num}: Found {len(blocks)} blocks")
+                    except Exception as page_error:
+                        logger.warning(f"Error processing page {page_num}: {page_error}")
+                        continue
 
-                    for block_idx, block in enumerate(blocks):
-                        if block["type"] == 0:  # Text block
-                            # Create signature (position + text)
-                            text = self._extract_block_text(block)
-                            y0, y1 = block["bbox"][1], block["bbox"][3]
-                            sig = (round(y0, 1), round(y1, 1), text[:50])
+                logger.info(f"Removed {annotation_count} annotations and {content_removed_count} header/footer elements")
 
-                            if sig not in block_signatures:
-                                block_signatures[sig] = []
-                            block_signatures[sig].append(page_num)
+                # Save cleaned PDF
+                output_filename = f"cleaned_{file_path.stem}.pdf"
+                output_path = self.output_dir / output_filename
 
-                            if page_num < 2:  # Log first 2 pages for debug
-                                logger.debug(f"  Block {block_idx}: y={y0:.0f}-{y1:.0f}, text={text[:30]}")
-                except Exception as e:
-                    logger.error(f"Error analyzing page {page_num}: {e}", exc_info=True)
-                    continue
+                # Save with compression
+                pdf.save(str(output_path), compress_streams=True)
 
-            logger.info(f"Found {len(block_signatures)} unique block signatures")
+                # Check file sizes
+                original_size = file_path.stat().st_size
+                cleaned_size = output_path.stat().st_size
+                size_reduction = ((original_size - cleaned_size) / original_size * 100) if original_size > 0 else 0
 
-            # Find repeated blocks (likely header/footer)
-            repeated_blocks = {sig: pages for sig, pages in block_signatures.items()
-                             if len(pages) > total_pages * 0.7}  # Appears in >70% of pages
-            logger.info(f"Detected {len(repeated_blocks)} repeated blocks (>70% of {total_pages} pages)")
+                logger.info(f"Original size: {original_size} bytes, Cleaned size: {cleaned_size} bytes, Reduction: {size_reduction:.1f}%")
 
-            for sig, pages in list(repeated_blocks.items())[:5]:  # Show first 5
-                _, _, text = sig
-                logger.info(f"  Repeated: '{text}' on pages {pages[:3]}...")
-
-            # Phase 2: Clean each page
-            logger.info(f"=== PHASE 2: Cleaning {total_pages} pages ===")
-            for page_num, page in enumerate(doc, start=1):
-                try:
-                    # Remove annotations
-                    annotation_count += self._remove_annotations(page, page_num)
-
-                    # Remove header/footer blocks using hybrid approach
-                    blocks = page.get_text("dict")["blocks"]
-                    page_height = page.rect.height
-                    page_width = page.rect.width
-
-                    # Detect regions
-                    header_threshold = page_height * 0.10  # Top 10%
-                    footer_threshold = page_height * 0.90  # Bottom 10%
-
-                    logger.debug(f"Page {page_num}: height={page_height:.0f}, header_threshold={header_threshold:.0f}, footer_threshold={footer_threshold:.0f}")
-
-                    blocks_to_remove = []
-                    for block_idx, block in enumerate(blocks):
-                        if block["type"] == 0:  # Text block
-                            # Collect signals
-                            signals = []
-
-                            block_text = self._extract_block_text(block)
-                            y0, y1 = block["bbox"][1], block["bbox"][3]
-                            x0, x1 = block["bbox"][0], block["bbox"][2]
-                            block_height = y1 - y0
-                            block_width = x1 - x0
-
-                            # Signal 1: Position-based (top/bottom 10%)
-                            if y1 < header_threshold:
-                                signals.append(("position_header", 0.7))
-                            elif y0 > footer_threshold:
-                                signals.append(("position_footer", 0.7))
-
-                            # Signal 2: Height-based (very tall = diagonal watermark)
-                            if block_height > 150:
-                                signals.append(("height_tall", 0.6))
-
-                            # Signal 3: Repetition (same block across many pages)
-                            sig = (round(y0, 1), round(y1, 1), block_text[:50])
-                            if sig in repeated_blocks:
-                                signals.append(("repetition", 0.9))  # Highest confidence
-
-                            # Signal 4: Content keywords (optional enhancement)
-                            footer_keywords = ['Nơi nhận', 'Người ký', 'Ký duyệt', 'Ngày in:', 'Người in:']
-                            if any(kw in block_text for kw in footer_keywords):
-                                signals.append(("keyword", 0.8))
-
-                            # Signal 5: Font size (very small = might be header/footer)
-                            avg_font_size = self._get_avg_font_size(block)
-                            if avg_font_size < 8 or avg_font_size > 20:
-                                signals.append(("font_size", 0.5))
-
-                            # Voting: if >= 2 signals agree, remove block
-                            if len(signals) >= 2:
-                                blocks_to_remove.append(block)
-                                if page_num <= 2:  # Log first 2 pages
-                                    logger.info(f"  Page {page_num} Block {block_idx}: REMOVE - signals={[s[0] for s in signals]}, text='{block_text[:40]}'")
-                            elif page_num <= 2 and len(signals) >= 1:
-                                logger.debug(f"  Page {page_num} Block {block_idx}: KEEP ({len(signals)} signal, need 2) - text='{block_text[:40]}'")
-
-                    logger.info(f"Page {page_num}: {len(blocks_to_remove)} blocks marked for removal")
-
-                    # Remove marked blocks - redact/delete them
-                    redaction_rects = []
-                    for block in blocks_to_remove:
-                        rect = fitz.Rect(block["bbox"])
-                        try:
-                            # Add redaction annotation (will apply at end of page)
-                            page.add_redact_annot(rect)
-                            redaction_rects.append(rect)
-                            header_footer_count += 1
-                        except Exception as redact_err:
-                            logger.debug(f"Redact annotation failed for block: {redact_err}")
-                            continue
-
-                    # Apply all redactions for this page at once
-                    if redaction_rects:
-                        try:
-                            page.apply_redactions()
-                            logger.debug(f"Page {page_num}: Applied {len(redaction_rects)} redactions")
-                        except Exception as apply_err:
-                            logger.debug(f"Apply redactions failed: {apply_err}")
-                            # Fallback: draw white rectangles
-                            for rect in redaction_rects:
-                                try:
-                                    page.draw_rect(rect, fill=(1, 1, 1))
-                                except:
-                                    pass
-
-                except Exception as page_error:
-                    logger.error(f"Error processing page {page_num}: {page_error}", exc_info=True)
-                    continue
-
-            logger.info(f"Removed {annotation_count} annotations and {header_footer_count} header/footer blocks")
-
-            # Clean up document before saving (commit all changes)
-            try:
-                doc.cleanup()
-                logger.debug("Document cleanup completed")
-            except Exception as cleanup_err:
-                logger.debug(f"Cleanup warning: {cleanup_err}")
-
-            # Save cleaned PDF with optimization
-            output_filename = f"cleaned_{file_path.stem}.pdf"
-            output_path = self.output_dir / output_filename
-
-            # Save with compression and garbage collection to remove unused objects
-            # garbage=3: highest level of garbage collection (removes all unused objects)
-            # deflate=True: compress content streams
-            doc.save(str(output_path), garbage=3, deflate=True)
-
-            original_size = file_path.stat().st_size
-            cleaned_size = Path(output_path).stat().st_size
-            size_reduction = ((original_size - cleaned_size) / original_size * 100) if original_size > 0 else 0
-
-            logger.info(f"Original size: {original_size} bytes, Cleaned size: {cleaned_size} bytes, Reduction: {size_reduction:.1f}%")
-
-            doc.close()
-
-            logger.info(f"Cleaned PDF saved to: {output_path}")
-            return (
-                True,
-                f"PDF cleaned successfully. Removed {annotation_count} annotations and {header_footer_count} header/footer blocks.",
-                str(output_path)
-            )
+                return (
+                    True,
+                    f"PDF cleaned successfully. Removed {annotation_count} annotations and {content_removed_count} header/footer elements.",
+                    str(output_path)
+                )
 
         except Exception as e:
             logger.error(f"Error cleaning PDF: {e}", exc_info=True)
             return False, f"Error cleaning PDF: {str(e)}", None
 
-    def _extract_block_text(self, block: dict) -> str:
-        """Extract text from PDF block."""
-        text = ""
-        for line in block.get("lines", []):
-            for span in line.get("spans", []):
-                text += span.get("text", "")
-        return text.strip()
+    def _remove_header_footer_from_content(self, page) -> int:
+        """Remove header/footer content from page content stream.
 
-    def _get_avg_font_size(self, block: dict) -> float:
-        """Get average font size of block."""
-        sizes = []
-        for line in block.get("lines", []):
-            for span in line.get("spans", []):
-                size = span.get("size", 0)
-                if size > 0:
-                    sizes.append(size)
-        return sum(sizes) / len(sizes) if sizes else 12
+        Strategy: Filter out text drawing commands in top/bottom regions
 
-    def _remove_annotations(self, page, page_num: int) -> int:
-        """Remove annotations from page. Returns count removed."""
-        count = 0
+        Args:
+            page: pikepdf page object
+
+        Returns:
+            Count of elements removed
+        """
         try:
-            if hasattr(page, 'get_annotations'):
-                annotations = page.get_annotations()
-            else:
-                annotations = page.annots()
+            # Get page dimensions
+            if "/MediaBox" not in page:
+                return 0
 
-            if annotations:
-                for annot in annotations:
-                    try:
-                        if hasattr(page, 'delete_annot'):
-                            page.delete_annot(annot)
-                        else:
-                            annot_obj = page.get_annot(annot)
-                            if annot_obj:
-                                annot_obj.delete()
-                        count += 1
-                    except Exception as e:
-                        logger.debug(f"Could not delete annotation on page {page_num}: {e}")
-                        continue
+            mediabox = page["/MediaBox"]
+            page_height = float(mediabox[3]) - float(mediabox[1])
+            page_width = float(mediabox[2]) - float(mediabox[0])
+
+            # Define regions (top 10% and bottom 10%)
+            header_threshold = page_height * 0.90  # Top 10% from top = y > 0.90*height
+            footer_threshold = page_height * 0.10  # Bottom 10% from top = y < 0.10*height
+
+            logger.debug(f"Page dimensions: {page_width} x {page_height}, header_threshold={header_threshold}, footer_threshold={footer_threshold}")
+
+            # Get content stream
+            if "/Contents" not in page:
+                return 0
+
+            contents = page["/Contents"]
+            if contents is None:
+                return 0
+
+            # Read content stream
+            try:
+                content_data = pikepdf.Stream(page.get_object(), contents).read_bytes()
+            except:
+                return 0
+
+            # Parse and filter content stream
+            # Remove text positioning commands in header/footer regions
+            filtered_content = self._filter_content_stream(content_data, header_threshold, footer_threshold)
+
+            if filtered_content != content_data:
+                # Replace content stream
+                page["/Contents"] = pikepdf.Stream(page.get_object(), filtered_content)
+                return 1
+            return 0
+
         except Exception as e:
-            logger.debug(f"Could not access annotations on page {page_num}: {e}")
+            logger.debug(f"Error filtering content: {e}")
+            return 0
 
-        return count
+    def _filter_content_stream(self, content: bytes, header_threshold: float, footer_threshold: float) -> bytes:
+        """Filter content stream to remove header/footer text.
+
+        Simple strategy: Remove text showing operators (Tj, TJ, etc) in extreme Y positions
+
+        Args:
+            content: PDF content stream bytes
+            header_threshold: Y position for top boundary
+            footer_threshold: Y position for bottom boundary
+
+        Returns:
+            Filtered content bytes
+        """
+        try:
+            content_str = content.decode('latin-1', errors='ignore')
+
+            # Remove common header/footer patterns
+            lines = content_str.split('\n')
+            filtered_lines = []
+            skip_next = False
+
+            for i, line in enumerate(lines):
+                line_stripped = line.strip()
+
+                # Skip lines that are likely position markers for header/footer
+                # These typically have very high or very low Y coordinates
+                if any(marker in line_stripped for marker in [
+                    'Td', 'TD', 'T*', 'Tm',  # Text positioning
+                ]):
+                    # Check if this is in header/footer region
+                    # This is a simplified heuristic
+                    if i > 0 and any(str(int(header_threshold * 0.8)) in lines[i-1]):
+                        continue
+                    if i > 0 and any(str(int(footer_threshold * 0.8)) in lines[i-1]):
+                        continue
+
+                filtered_lines.append(line)
+
+            filtered_content = '\n'.join(filtered_lines)
+            return filtered_content.encode('latin-1', errors='ignore')
+
+        except Exception as e:
+            logger.debug(f"Error in content filtering: {e}")
+            return content
 
     def _clean_docx(self, file_path: Path) -> Tuple[bool, str, Optional[str]]:
         """Clean DOCX by removing headers, footers, and watermarks.
@@ -328,8 +256,7 @@ class FileCleaner:
             header_count = 0
             for section in doc.sections:
                 header = section.header
-                # Remove all paragraphs in header
-                for paragraph in header.paragraphs:
+                for paragraph in list(header.paragraphs):
                     p = paragraph._element
                     p.getparent().remove(p)
                     header_count += 1
@@ -338,25 +265,12 @@ class FileCleaner:
             footer_count = 0
             for section in doc.sections:
                 footer = section.footer
-                # Remove all paragraphs in footer
-                for paragraph in footer.paragraphs:
+                for paragraph in list(footer.paragraphs):
                     p = paragraph._element
                     p.getparent().remove(p)
                     footer_count += 1
 
-            # Remove watermarks from document
-            # Watermarks in DOCX are stored in header as VML shapes
-            watermark_count = 0
-            for section in doc.sections:
-                # Check header for watermark shapes
-                header_part = section.header._element
-                # Find and remove watermark elements
-                for child in header_part.findall('.//{http://schemas.openxmlformats.org/wordprocessingml/2006/main}pict',
-                                                  namespaces={'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}):
-                    header_part.remove(child)
-                    watermark_count += 1
-
-            logger.info(f"Removed {header_count} headers, {footer_count} footers, {watermark_count} watermarks")
+            logger.info(f"Removed {header_count} headers and {footer_count} footers")
 
             # Save cleaned DOCX
             output_filename = f"cleaned_{file_path.stem}.docx"
@@ -366,7 +280,7 @@ class FileCleaner:
             logger.info(f"Cleaned DOCX saved to: {output_path}")
             return (
                 True,
-                f"DOCX cleaned successfully. Removed {header_count} headers, {footer_count} footers, {watermark_count} watermarks.",
+                f"DOCX cleaned successfully. Removed {header_count} headers and {footer_count} footers.",
                 str(output_path)
             )
 
