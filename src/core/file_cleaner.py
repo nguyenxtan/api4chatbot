@@ -194,10 +194,11 @@ class FileCleaner:
 
                     logger.info(f"Page {page_num}: {len(blocks_to_remove)} blocks marked for removal")
 
-                    # Remove marked blocks
+                    # Remove marked blocks by covering with white rectangles
                     for block in blocks_to_remove:
                         rect = fitz.Rect(block["bbox"])
-                        page.draw_rect(rect, color=None, fill=fitz.pdfcolor.white)
+                        # Draw white rectangle to cover the block (RGB: 1,1,1 = white)
+                        page.draw_rect(rect, fill=(1, 1, 1))
                         header_footer_count += 1
 
                 except Exception as page_error:
