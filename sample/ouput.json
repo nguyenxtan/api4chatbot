@@ -1,0 +1,1641 @@
+[
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Phương án làm hàng | Container khô |  |  | Container lạnh |  |\n| --- | --- | --- | --- | --- | --- |\n|  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| Tàu/Sà lan  Bãi | 461.160 | 677.160 | 1.015.200 | 664.200 | 972.000 |\n| TT | Phương án làm hàng | w"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- | --- |\n|  |  | 20’ | 40’ | o"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1 | Xe  Bãi | 497.000 | 882.000"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | Hạ container ở tần g"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  |  | B :3 1"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | Hạ container xuất từ xe"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| h"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- |\n|  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| ư"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Loại container | Phương án làm hàng |  |\n| --- | --- | --- | --- |\n|  |  | Tàu/ Sà lan  Bãi | Xe  Bãi |\n| 1 | IMDG | Tăng 50% đơn giá container"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "I. QUY ĐỊNH CHUNG",
+      "muc_cap_1": "5. Một số định nghĩa được đề cập trong Biểu giá này:",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | OOG nhóm 1 (*) | Tăng 50% đơn giá container"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Loại container | Phương án làm hàng |  |\n| --- | --- | --- | --- |\n|  |  | Tàu/ Sà lan  Bãi | Xe  Bãi |\n| 3 | OOG nhóm 2 (**) | Thỏa thuận | Thỏa thuận |\n| 4 | OOG + IMDG | Bằng tổng phụ thu của"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 5 | Container hàng"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Ngày nhập bãi | :2"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- | --- |\n|  |  | - 2"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1 | B"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | h i à"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | K i"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | V"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 5 | Từ ngày thứ 16 trở đi in :"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Ngày nhập bãi | Container khô |  |  | Container lạnh |  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  |  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 1 | Từ ngày thứ 1 - ngày thứ 2 | Miễn phụ thu |  |  |  |  |\n| 2 | Từ ngày thứ 3 - ngày thứ 4 | 627.000 | 1.118.000 | 1.329.000 | 702.000 | 1.223.000 |\n| 3 | Từ ngày thứ 5 - ngày thứ 6 | 1.056.000 | 1.875.000 | 2.223.000 | 1.161.000 | 2.056.000 |\n| 4 | Từ ngày thứ 7- ngày thứ 9 | 1.490.000 | 2.639.000 | 3.117.000 | 1.627.000 | 2.875.000 |\n| 5 | Từ ngày thứ 10 trở đi | 1.925.000 | 3.384.000 | 4.012.000 | 2.099.000 | 3.695.000 |"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Loại hàng đóng container | Container 20’ | Container 40’ | Container 45’ |\n| --- | --- | --- | --- | --- |\n| 1 | Hàng khô thông thường | 1.528.000 | 2.279.000 | 2.279.000 |\n| 2 | Hàng lạnh thông thường | 1.993.000 | 2.962.000 | 2.962.000 |\n| 3 | Hàng IMDG/OOG nhóm 1/hàng"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | Hàng OOG nhóm 2 | m ."
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Nội dung | k"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- |\n|  | 20’ | -"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Phụ phí giao container chuyển cảng | 286.000 ư"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | h à"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- |\n| 1 | h"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | in :"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | g"
+  },
+  {
+    "ten_bang": "Bảng 05 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.1. Đối với container hàng",
+      "muc_cap_3": "1.1.4. Các trường hợp phụ thu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | Hàng OOG nhóm 2 | Giá thỏa thuận |  |  |\n| TT | Phương án làm hàng | Container khô |  |  | Container lạnh |  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  |  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 1 | Tàu/Sà lan → Bãi | 235.440 | 357.480 | 537.840 | 351.000 | 534.600 |\n| 2 | Bãi → Tàu/Sà lan giao khách hàng |  |  |  |  |  |"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2.1 | Cấp rỗng thông thường | 235.440 | 357.480 | 538.840 | 351.000 | 535.600 |\n| --- | --- | --- | --- | --- | --- | --- |\n| 2.2 | Cấp rỗng chỉ định số | Có quy định riêng tại Phần II Mục 1.2.4. điểm c |  |  |  |  |\n| TT | Phương án làm hàng | Container khô |  |  | Container lạnh |  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  |  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 1 | Cấp container rỗng từ bãi Cảng lên xe giao khách hàng |  |  |  |  |  |\n| 1.1 | Cấp rỗng thông thường. | 478.000 | 745.000 | 969.000 | 627.000 | 963.000 |\n| 1.2 | Cấp rỗng chỉ định số. | n"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | Hạ container rỗng từ xe"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | Hạ container rỗng phục vụ"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | k"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4.1 | Đối với các container được"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4.2 | Đối với các container được"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| r"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- |\n|  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| N"
+  },
+  {
+    "ten_bang": "Bảng 09",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.1. Tác nghiệp tại cầu tàu",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Loại container | Phương án làm hàng |  |\n| --- | --- | --- |\n|  | Tàu/Sà lan  Bãi | Xe  Bãi |\n| Container rỗng chuyên"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.4. Các quy định khác đối với container rỗng",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | ư"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "1. Cước xếp dỡ container",
+      "muc_cap_2": "1.2. Đối với container rỗng",
+      "muc_cap_3": "1.2.4. Các quy định khác đối với container rỗng",
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- |\n| 1 | Đóng gạo từ sà lan/ghe vào container (≤ 25 tấn) |  |  |  |\n| 1.1 | + Loại bao trên 30kg (bao 50kg) | 2.246.400 | 2.889.000 | - |\n| 1.2 | + Loại bao từ 30kg/bao trở xuống (bao 25kg) | 2.327.400 | 2.980.800 | - |\n| 2 | Đóng/rút hàng bao từ container xuống sà lan/ghe |  |  |  |\n| 2.1 | + Hàng thông thường, không mùi, không độc hại | 2.246.400 | 2.889.000 | - |\n| 2.2 | + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG | 3.007.800 | 4.017.600 | - |\n| 3 | Xả hàng xá từ container xuống sà lan/ghe |  |  |  |\n| 3.1 | + Hàng thông thường, không mùi, không độc hại | 1.533.600 | - | - |"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | 20’DC | 40’DC | 45’DC |\n| --- | --- | --- | --- | --- |\n| 3.2 | + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG | 2.187.000 | - | - |\n| 4 | Xả hàng bao từ container xuống sà lan / ghe (theo đề nghị của khách hàng) |  |  |  |\n| 4.1 | + Hàng thông thường, không mùi, không độc hại | 2.246.400 | - | - |\n| 4.2 | + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG | 3.007.800 | - | - |\n| 5 | Đóng thủ công từ xe khách hàng vào container (chỉ áp dụng cho container đóng chung\n| 5.1 | + Hàng thông thường, không mùi, không độc hại | 1.225.800 | 1.733.400\n| 5.2 | + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG | 1.782.000 | .v"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 6 | t.c"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 6.1 | + Hàng thông thường, không mùi, không độc hại | o"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 6.2 | + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 7 | h"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | Container khô |  |  |\n| --- | --- | --- | --- | --- |\n|  |  | 20’DC | 40’DC | 45’DC |\n| 1 | Đóng thủ công hàng thông"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  |  | - Chuyển container rỗng đến bãi đóng hàng"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | n"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | Nhóm IMDG 03. 04. 08."
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | Nhóm IMDG 05 (trừ 5.1 –"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | Đóng/rút thủ công hàng"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | in"
+  },
+  {
+    "ten_bang": "Bảng 12",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 5 | Rút và đóng một phần khối lượng hàng trong container phục vụ kiểm hoá hoặc rút một\n|  | Hơn 50% | 1.085.400 | 1.517.400 | 1.873.800 |\n|  | Từ 10% tới 50% | 545.400 | 766.800 | 945.000 |\n|  | Dưới 10% | 226.800 | 313.200 | 378.000 |\n|  | Rút mẫu với số lượng ít để"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | Container khô |  |  |\n| --- | --- | --- | --- | --- |\n|  |  | 20’DC | 40’DC | 45’DC |\n| 6 | Đóng/rút sang container (rút"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 7 | Rút thủ công hàng thông"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  |  | - Chuyển container hàng đến bãi rút hàng"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 8 | Rút ruột thủ công phục vụ"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  |  | o"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | 5"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 9 | Rút ruột thủ công phục vụ"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 10 | V"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  |  | Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | Container lạnh |  |  |\n| --- | --- | --- | --- | --- |\n|  |  | 20’RF | 40’RF | 45’RF |\n| 1 | Đóng thủ công hàng thông thường"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  |  | - Chuyển container rỗng đến bãi đóng hàng"
+  },
+  {
+    "ten_bang": "Bảng 13a Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | Đóng thủ công hàng thủy/hải sản\n|  |  | - Trải bãi container rỗng phục vụ đóng hàng |  |  |"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | Container lạnh |  |  |\n| --- | --- | --- | --- | --- |\n|  |  | 20’RF | 40’RF | 45’RF |\n|  | film đóng container (container rỗng"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | t.c"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | - Đóng lần 1 | 1.801.000 | n"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | - Đóng từ lần 2 trở đi | @"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | Đóng cá ngừ nguyên con vào"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 5 | B :3"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | -"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | h i à"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 6 | ịn"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | ư"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | Từ 10% tới 50% | 845.000 | 1.161.000 | 1.161.000 |\n|  | Dưới 10% | 335.000 | 466.000 | 466.000 |\n|  | Rút mẫu với số lượng ít để kiểm hoá | Khách hàng tự thực hiện |  |  |\n| Cước đảo chuyển (nếu có chuyển vào nhà kiểm hóa thủ công) sẽ được thu bổ sung theo quy\n| 7 | Đóng/rút sang container (rút từ"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 8 | Rút thủ công hàng thông thường từ\n|  |  | - Chuyển container hàng đến bãi rút hàng |  |  |"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | Container lạnh |  |  |\n| --- | --- | --- | --- | --- |\n|  |  | 20’RF | 40’RF | 45’RF |\n|  |  | - Rút hàng từ container giao lên xe cuả khách"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 9 | Rút dưới 10% khối lượng hàng trong"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  |  | Cước đảo chuyển (nếu có) sẽ được thu bổ sung\n| 10 | Lấy hoặc trả container rỗng từ các Depot ngoài về phục vụ đóng rút hàng tại bãi, Cảng"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | r"
+  },
+  {
+    "ten_bang": "Bảng 13b",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- | --- |\n|  |  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 1 | g\n| 2 | Từ ngày thứ 4 - ngày thứ 6 | 230.000 | 416.000 | 491.000 | 348.000 | 627.000 |\n| 3 | Từ ngày thứ 7 - ngày thứ 9 | 348.000 | 627.000 | 745.000 | 522.000 | 938.000 |\n| 4 | Từ ngày thứ 10 - ngày thứ\n| 5 | Từ ngày thứ 16 trở đi | 789.000 | 1.416.000 | 1.683.000 | 1.180.000 | 2.130.000 |"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Ngày nhập bãi | Container khô |  |  | Container lạnh |  |\n| --- | --- | --- | --- | --- | --- | --- |\n|  |  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 1 | Từ ngày thứ 1 - ngày thứ 2 | Miễn phụ thu |  |  |  |  |\n| 2 | Từ ngày thứ 3 - ngày thứ 4 | 627.000 | 1.118.000 | 1.329.000 | 702.000 | 1.223.000 |\n| 3 | Từ ngày thứ 5 - ngày thứ 6 | 1.056.000 | 1.875.000 | 2.223.000 | 1.161.000 | 2.056.000 |\n| 4 | Từ ngày thứ 7- ngày thứ 9 | 1.490.000 | 2.639.000 | 3.117.000 | 1.627.000 | 2.875.000 |\n| 5 | Từ ngày thứ 10 trở đi | 1.925.000 | 3.384.000 | 4.012.000 | 2.099.000 | 3.695.000 |\n| TT | Loại container | p"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- |\n| 1 | Container 20’ | o"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | Container 40’ & 45’ | @"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | K 8"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- |\n| 1 | N"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | ũ"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | ịn"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | in"
+  },
+  {
+    "ten_bang": "Bảng 14",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Container khô |  |  | Container lạnh |  |\n| --- | --- | --- | --- | --- |\n| 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 88.560 | 135.000 | 183.600 | 211.000 | 286.000 |"
+  },
+  {
+    "ten_bang": "Bảng 18",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Container khô |  |  | Container lạnh |  |\n| --- | --- | --- | --- | --- |\n| 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 183.600 | 248.400 | 318.600 | 261.000 | 366.000 |\n| Container khô |  |  | n"
+  },
+  {
+    "ten_bang": "Bảng 18",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- |\n| 20’ | 40’ | 45’ | o"
+  },
+  {
+    "ten_bang": "Bảng 18",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 307.800 | 432.000 | 545.400 | o"
+  },
+  {
+    "ten_bang": "Bảng 18",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | ũ\n| --- | --- | --- |\n| 1 | h"
+  },
+  {
+    "ten_bang": "Bảng 18",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | in :"
+  },
+  {
+    "ten_bang": "Bảng 18",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Chu trình chuyển soi"
+  },
+  {
+    "ten_bang": "Bảng 18",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "2. Cước đóng/rút container",
+      "muc_cap_2": "2.3. Các trường hợp phụ thu đóng/rút/kiểm hóa hàng",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- |\n| Từ khu hàng"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | 20’DC | 40’DC | e"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- | --- | --- | --- |\n| 1 | Chuyển bãi nội bộ | @"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1.1 | Đối với container hàng | ở"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1.2 | Đối với container rỗng | - 2"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1.3 | Phục vụ kiểm hoá container"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1.4 | h à"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1.5 | h"
+  },
+  {
+    "ten_bang": "Bảng 22 Đơn vị tính: đồng/container",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "4. Các tác nghiệp phục vụ chuyển container qua máy soi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | Cước xếp chồng (bó) hoặc\n|  |  | Cước gập/dựng vách container Flatrack tính bằng 50%\n| 3 | Trải bãi container rỗng lạnh\n| 4 | Trải bãi phục vụ đóng hàng"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | 20’DC | 40’DC | 45’DC | 20’RF | 40’RF &\n| --- | --- | --- | --- | --- | --- | --- |\n| 5 | Cân container hàng hoặc"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 6 | Cân container hàng hoặc"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 6.1 | Đối với container hàng | 640.000 | 975.000 | 1.199.000 | 1.049.000\n| 6.2 | Đối với container rỗng | 540.000 | 838.000 | 1.037.000 | .v"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 7 | Cân xe (không chứa tải) của"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 8 | Trường hợp có phát sinh thời"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 9 | Đảo chuyển container hàng"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | ũ"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | in"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 10 | Đối với container phải đổi tàu xuất, đổi cảng chuyển tải phát sinh không do lỗi của\n|  | Đăng ký chuyển tàu do rớt tàu | 640.000 | 956.000 | 1.105.000 | 845.000 | 1.354.000 |\n|  | Đăng ký chuyển ngang tàu,\n|  | Đảo chuyển để lấy container"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Phương án làm hàng | 20’DC | 40’DC | 45’DC | 20’RF | 40’RF &\n| --- | --- | --- | --- | --- | --- | --- |\n|  | Đảo chuyển không sử dụng\n|  | Đảo chuyển có sử dụng xe\n| 11 | Vệ sinh bãi sau khi rút ruột"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | THỜI GIAN LƯU BÃI | ĐƠN GIÁ LƯU BÃI CONTAINER |  |  |\n| --- | --- | --- | --- | --- |\n|  |  | 20’H | 40’H | 45’H |\n| 1 | Container hàng khô thông thường |  |  |  |\n|  | Đến hết ngày thứ 5 | Miễn phí |  |  |\n|  | Từ ngày thứ 6 - ngày thứ 8 | 35.000 | 48.000 | 62.000 |\n|  | Từ ngày thứ 9 - ngày thứ 11 | 68.000 | 96.000 | 123.000 |\n|  | Từ ngày thứ 12 trở đi | 137.000 | 191.000 n\n| 2 | m"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | Đến hết ngày thứ 5 | r t"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | Từ ngày thứ 6 - ngày thứ 8 | 41.000"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | Từ ngày thứ 9 - ngày thứ 11 | ig"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | Từ ngày thứ 12 trở đi | @\n| 3 | h"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | n"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | r"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | /2"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "|  | K 8\n|  | - y i"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| ịn"
+  },
+  {
+    "ten_bang": "Bảng 23",
+    "tieu_de_muc": {
+      "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+      "muc_cap_1": "5. Các loại cước khác",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- |\n|  | 20’R | 40’R | 45’R |\n| ư\n| Từ ngày thứ 8 - ngày thứ 9 | 41.000 | 62.000 | 62.000 |\n| Từ ngày thứ 10 - ngày thứ 11 | 82.000 | 123.000 | 123.000 |\n| Từ ngày thứ 12 - ngày thứ 13 | 109.000 | 164.000 | 164.000 |\n| Từ ngày thứ 14 trở đi | 164.000 | 246.000 | 246.000 |"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Thời gian hạ bãi sớm hơn"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- |\n|  |  | 20’ | o"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1 | Trong vòng 5 ngày | p"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | Từ 6 ngày – 8 ngày | 118.000 ig"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | Từ 9 ngày – 11 ngày | s"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | Từ 12 ngày – 14 ngày | it"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 5 | Trên 14 ngày | n"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | Thời gian hạ bãi sớm hơn"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- | --- |\n|  |  | 8"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 1 | -"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | im\n| 3 | ũ"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | r ị"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "III. CƯỚC LƯU BÃI CONTAINER",
+      "muc_cap_1": "3. Quy định về cách tính lưu bãi",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 5 | i"
+  },
+  {
+    "ten_bang": "Bảng 27 Đơn vị tính : đồng/container/ngày",
+    "tieu_de_muc": {
+      "muc_chinh": "IV. PHỤ THU ĐỐI VỚI CONTAINER HÀNG HẠ BÃI CHỜ XUẤT TÀU",
+      "muc_cap_1": "3.  Đối với container hàng lạnh, container OOG, container hàng nguy hiểm",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| TT | :3"
+  },
+  {
+    "ten_bang": "Bảng 27 Đơn vị tính : đồng/container/ngày",
+    "tieu_de_muc": {
+      "muc_chinh": "IV. PHỤ THU ĐỐI VỚI CONTAINER HÀNG HẠ BÃI CHỜ XUẤT TÀU",
+      "muc_cap_1": "3.  Đối với container hàng lạnh, container OOG, container hàng nguy hiểm",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- |\n| 1 | D /2 0"
+  },
+  {
+    "ten_bang": "Bảng 27 Đơn vị tính : đồng/container/ngày",
+    "tieu_de_muc": {
+      "muc_chinh": "IV. PHỤ THU ĐỐI VỚI CONTAINER HÀNG HẠ BÃI CHỜ XUẤT TÀU",
+      "muc_cap_1": "3.  Đối với container hàng lạnh, container OOG, container hàng nguy hiểm",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 2 | K 8 /"
+  },
+  {
+    "ten_bang": "Bảng 27 Đơn vị tính : đồng/container/ngày",
+    "tieu_de_muc": {
+      "muc_chinh": "IV. PHỤ THU ĐỐI VỚI CONTAINER HÀNG HẠ BÃI CHỜ XUẤT TÀU",
+      "muc_cap_1": "3.  Đối với container hàng lạnh, container OOG, container hàng nguy hiểm",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 3 | - y i"
+  },
+  {
+    "ten_bang": "Bảng 27 Đơn vị tính : đồng/container/ngày",
+    "tieu_de_muc": {
+      "muc_chinh": "IV. PHỤ THU ĐỐI VỚI CONTAINER HÀNG HẠ BÃI CHỜ XUẤT TÀU",
+      "muc_cap_1": "3.  Đối với container hàng lạnh, container OOG, container hàng nguy hiểm",
+      "muc_cap_2": null,
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| 4 | N"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "V. CÁC LOẠI GIÁ DỊCH VỤ KHÁC",
+      "muc_cap_1": "2. Phí lưu trú quá thời gian định mức",
+      "muc_cap_2": "2.3. Cách tính thời gian lưu trú quá định mức của phương tiện",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Loại phương tiện | Đơn giá |\n| --- | --- |\n| Phương tiện vận chuyển container | 82.000 |\n| D /2"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "V. CÁC LOẠI GIÁ DỊCH VỤ KHÁC",
+      "muc_cap_1": "2. Phí lưu trú quá thời gian định mức",
+      "muc_cap_2": "2.3. Cách tính thời gian lưu trú quá định mức của phương tiện",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| --- | --- | --- |\n| K 8"
+  },
+  {
+    "ten_bang": null,
+    "tieu_de_muc": {
+      "muc_chinh": "V. CÁC LOẠI GIÁ DỊCH VỤ KHÁC",
+      "muc_cap_1": "2. Phí lưu trú quá thời gian định mức",
+      "muc_cap_2": "2.3. Cách tính thời gian lưu trú quá định mức của phương tiện",
+      "muc_cap_3": null,
+      "muc_cap_4": null
+    },
+    "noi_dung_bang": "| Container rỗng khô/ lạnh | 20’ | 40’ | 45’ |\n| --- | --- | --- | --- |\n| Đơn giá | 298.000 | 441.000 | 559.000 |"
+  }
+]

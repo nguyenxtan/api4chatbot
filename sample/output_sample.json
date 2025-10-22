@@ -1,0 +1,32 @@
+[
+    {
+        "ten_bang": "Bảng 01",
+        "tieu_de_muc": {
+            "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+            "muc_cap_1": "1. Cước xếp dỡ container",
+            "muc_cap_2": "1.1. Đối với container hàng",
+            "muc_cap_3": "1.1.1. Tác nghiệp tại cầu tàu đối với container hàng thông thường"
+        },
+        "noi_dung_bang": "| Phương án làm hàng | Container khô | | | Container lạnh | |\n| --- | --- | --- | --- | --- | --- |\n| | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| Tàu/Sà lan  Bãi | 461.160 | 677.160 | 1.015.200 | 664.200 | 972.000 |"
+    },
+    {
+        "ten_bang": "Bảng 02",
+        "tieu_de_muc": {
+            "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+            "muc_cap_1": "1. Cước xếp dỡ container",
+            "muc_cap_2": "1.1. Đối với container hàng",
+            "muc_cap_3": "1.1.2. Tác nghiệp tại bãi đối với container hàng thông thường"
+        },
+        "noi_dung_bang": "| TT | Phương án làm hàng | Container khô | | | Container lạnh | |\n| --- | --- | --- | --- | --- | --- | --- |\n| | | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| 1 | Xe  Bãi | 497.000 | 882.000 | 1.031.000 | 646.000 | 1.136.000 |\n| 2 | Hạ container ở tầng trên xuống đất phục vụ kiểm hoá. | 298.000 | 528.000 | 627.000 | 596.000 | 1.018.000 |\n| 3 | Hạ container xuất từ xe xuống đất phục vụ kiểm hoá. | 795.000 | 1.410.000 | 1.658.000 | 1.242.000 | 2.155.000 |"
+    },
+    {
+        "ten_bang": "Bảng 03",
+        "tieu_de_muc": {
+            "muc_chinh": "II. CƯỚC TÁC NGHIỆP CONTAINER",
+            "muc_cap_1": "1. Cước xếp dỡ container",
+            "muc_cap_2": "1.1. Đối với container hàng",
+            "muc_cap_3": "1.1.3. Tác nghiệp đối với container quá cảnh hàng thông thường"
+        },
+        "noi_dung_bang": "| Phương án làm hàng | Container khô | | | Container lạnh | |\n| --- | --- | --- | --- | --- | --- |\n| | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |\n| Giao/nhận container hàng quá cảnh. | 955.800 | 1.441.800 | 1.749.600 | 1.242.000 | 1.868.400 |"
+    }
+]

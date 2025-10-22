@@ -216,16 +216,20 @@ class FileCleaner:
                         for _ in [None]  # Dummy to allow parts to be defined
                     )
 
-                    # Heuristic: Stream is likely header/footer if:
-                    # 1. Has rotated text (skewed transformation)
-                    # 2. Small size (< 5% of total) with few text operators
-                    # 3. OR positioned at far right edge with few text ops
-                    is_small_isolated = stream_size < total_stream_size * 0.05 and text_ops < 25
-                    is_rotated_or_edge = (has_rotation or has_right_edge_text) and text_ops < 30
+                    # Heuristic: Stream is likely ONLY header/footer if:
+                    # 1. Is small (<5%) AND has no text, OR
+                    # 2. Is very small AND has only rotated content
+                    # BUT: Don't remove streams that mix legitimate content with watermarks!
+                    is_purely_small_empty = stream_size < total_stream_size * 0.05 and text_ops == 0
+                    is_purely_rotated = has_rotation and stream_size < total_stream_size * 0.03 and text_ops < 10
 
-                    if is_small_isolated or is_rotated_or_edge:
+                    if is_purely_small_empty or is_purely_rotated:
                         logger.debug(f"Stream {stream_idx}: Marked for removal (size={stream_size}, text_ops={text_ops}, rotation={has_rotation}, right_edge={has_right_edge_text})")
                         streams_to_remove.add(stream_idx)
+                    elif (has_rotation or has_right_edge_text) and text_ops < 30:
+                        # Stream has mixed content (watermark + legitimate text)
+                        # Don't remove entirely, but mark for filtering instead
+                        logger.debug(f"Stream {stream_idx}: Will be filtered (mixed content, size={stream_size}, text_ops={text_ops}, rotation={has_rotation})")
                 except Exception as e:
                     logger.debug(f"Error analyzing stream {stream_idx}: {e}")
 
