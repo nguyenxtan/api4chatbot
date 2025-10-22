@@ -40,12 +40,12 @@ logs/
 data/
 temp/
 temp/cleaned/
-sample/
-*.pdf
+# sample/  ← Allow sample files for testing
+# *.pdf    ← Allow PDF files
 *.docx
 *.xlsx
-*.json
-*.txt
+# *.json   ← Allow JSON files
+# *.txt    ← Allow text files
 
 # OS
 .DS_Store
