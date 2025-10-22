@@ -299,10 +299,12 @@ class FileCleaner:
             lines = content_str.split('\n')
             filtered_lines = []
             skip_next_text = False
+            skip_hex_footer = False  # ← Track footer-specific Y position separately!
             removed_count = 0
 
             # Page dimensions (approximate - typical A4 PDF)
             page_width = 595  # Approximate standard page width
+            footer_y_positions = [0, 10, 13.07, 28.3, 29.97, 30.97, 46.87]
 
             for i, line in enumerate(lines):
                 line_stripped = line.strip()
@@ -334,18 +336,22 @@ class FileCleaner:
                             is_unusual = y_pos < 0 or y_pos > page_height + 100
                             is_page_number_top = y_pos >= page_height * 0.95 and 200 < x_pos < 400
                             # Very specific footer Y positions for Vietnamese documents
-                            # Only use when we have strong pattern matches (hex-encoded text)
-                            is_footer_specific_y = any(abs(y_pos - fy) < 1.0 for fy in [0, 10, 13.07, 28.3, 29.97, 30.97, 46.87])
+                            # Only use for hex-footer detection, NOT for general header/footer region
+                            is_footer_specific_y = any(abs(y_pos - fy) < 1.0 for fy in footer_y_positions)
 
+                            # Set skip_next_text for NORMAL header/footer removal (page numbers, footer lines)
                             if is_header or is_footer or is_unusual or is_page_number_top:
                                 skip_next_text = True
+                                skip_hex_footer = False  # Don't skip hex at header!
                                 if is_page_number_top:
                                     logger.debug(f"Page number detected at top X={x_pos:.1f}, Y={y_pos:.1f}")
+                            # Set skip_hex_footer ONLY for footer-specific Y positions
                             elif is_footer_specific_y:
-                                # Mark as footer region for hex pattern matching
-                                skip_next_text = True
+                                skip_next_text = False  # Don't skip everything
+                                skip_hex_footer = True  # Only skip hex-encoded footer
                             else:
                                 skip_next_text = False
+                                skip_hex_footer = False
                         except (ValueError, IndexError):
                             pass
 
@@ -384,9 +390,9 @@ class FileCleaner:
                     )
 
                     # 3. Hex-encoded footer text at footer-specific positions
-                    # Pattern like [<0015002D002B0034>] only when we're in footer region
+                    # Pattern like [<0015002D002B0034>] ONLY at footer-specific Y positions
                     is_hex_footer = (
-                        skip_next_text and  # Only if we detected footer position
+                        skip_hex_footer and  # ← ONLY for footer-specific Y (not header!)
                         stripped_content.startswith('[<') and
                         stripped_content.endswith('>]') and
                         len(stripped_content) < 80 and  # Short
