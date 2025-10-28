@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"D:\\chatbot\" -type f ( -name \"*route*\" -o -name \"*endpoint*\" -o -name \"*controller*\" ))",
+      "Bash(git init)",
+      "Bash(git add .)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd simplified /documents/markdown endpoint\n\n- New endpoint only requires file input (no complex form fields)\n- Supports PDF, DOCX, PPTX, CSV only\n- Auto-rejects other file types\n- Simpler API for markdown conversion\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add origin https://github.com/nguyenxtan/api4chatbot.git)",
+      "Bash(git push -u origin main)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix schema error for /documents/markdown endpoint\n\n- Created document_schema.yaml for general document conversion\n- Changed document_type from \"report\" to \"document\"\n- Fixes \"Schema not found\" error\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd ''document'' type to Pydantic models\n\n- Added \"document\" to DocumentMetadata.document_type Literal\n- Added \"document\" to ProcessDocumentRequest.document_type Literal\n- Fixes validation error for /documents/markdown endpoint\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd more chunk types to Chunk model\n\n- Added \"article\", \"chapter\", \"heading\", \"paragraph\", \"list\", \"point\"\n- Fixes validation error when processing documents\n- Supports more document structures\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nReturn markdown content directly from /documents/markdown\n\n- Endpoint now returns full markdown content\n- Response includes: filename, markdown_content, metadata\n- No longer processes chunks, just converts to markdown\n- Watermark already removed by MarkdownConverter\n- Ready to save to database\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd /documents/chunk endpoint for markdown chunking\n\n- New endpoint accepts markdown_content in request body\n- Chunks by: headings (###), numbered items (Điều X, I., 1., 2.1.), tables\n- Returns: index, title, content, type for each chunk\n- Suitable for saving to database with indexing\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nImprove table chunking logic\n\n- 1 table = 1 chunk (complete table as single unit)\n- If table has >20 data rows: split into parts\n- Each part keeps: original header + table name + part number\n- Better handling of large tables for database storage\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nSimplify chunking - only extract tables\n\n- Endpoint now ONLY chunks tables, ignores all other content\n- Headings tracked for table naming only\n- 1 table = 1 chunk (or split if >20 rows)\n- Much simpler output for database storage\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd heading hierarchy tracking to table chunks\n\n- Track heading path (II. > 1. > 1.1.) for each table\n- New field: heading_path shows full context\n- Helps identify table location in document structure\n- Better for database indexing and search\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nSeparate heading hierarchy into individual fields\n\n- Changed from heading_path to separate fields\n- heading_level_1, heading_level_2, heading_level_3, heading_level_4\n- table_name field for table identifier\n- Easier to query and filter in database\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix heading tracking - only numbered headings and tables\n\n- Only track headings with numbers: II., 1., 1.1., 1.1.1.\n- Only track \"Bảng XX\" as table names\n- Ignore all other ### text content\n- Fixes incorrect heading assignment issue\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix table_name to only use ''Bảng XX'' entries\n\n- Separate numbered headings from table names\n- heading_level_X only contains numbered items (I., 1., 1.1.)\n- table_name only contains \"Bảng XX\" entries\n- Fixes incorrect table naming issue\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix table collection to skip garbage lines\n\n- Skip non-table lines within table blocks\n- Continue collecting if next line is table row\n- Fixes issue with watermark/overlay text breaking tables\n- Tables now collected completely even with embedded garbage\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nChange API response format to match sample structure\n\n- Changed response format to Vietnamese field names\n- ten_bang, tieu_de_muc (nested object), noi_dung_bang\n- Removed index field, return array directly\n- Matches sample structure provided by user\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit -m \"$(cat <<''EOF''\nClean up API - keep only 3 endpoints\n\n- Removed unused endpoints (/documents/process, /documents, /chunks, /schemas, etc.)\n- Kept only: /, /documents/markdown, /documents/chunk, /health\n- Removed unused imports (ProcessDocumentRequest, Chunk, ChunkSearchQuery, etc.)\n- Removed DocumentProcessor initialization (not needed)\n- Simplified health endpoint (removed schema count)\n- Deleted markdown_to_json.py file\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)",
+      "Bash(find:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(git clone:*)",
+      "Bash(git pull:*)",
+      "Bash(rm:*)",
+      "Bash(cat:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
