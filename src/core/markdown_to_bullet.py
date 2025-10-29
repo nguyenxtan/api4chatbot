@@ -1,0 +1,350 @@
+"""
+Markdown to Bullet List Converter
+
+Converts markdown content to bullet format with natural language arrow conversion.
+Handles tables, headings, and special cases for port pricing documents.
+
+Formats output to match Vietnamese document standards with proper boxing and alignment.
+"""
+
+import re
+from typing import List, Dict, Tuple, Optional
+from loguru import logger
+
+
+class MarkdownToBulletConverter:
+    """Convert markdown content to bullet list format"""
+
+    def __init__(self):
+        """Initialize converter with translation rules"""
+        self.arrow_patterns = {
+            '↔': '<->',
+            '→': '->',
+            '←': '<-',
+        }
+        # Box drawing characters
+        self.box_chars = {
+            'vertical': '┃',
+            'top_left': '┌',
+            'top_right': '┐',
+            'bottom_left': '└',
+            'bottom_right': '┘',
+            'horizontal': '━',
+            'cross': '┼',
+            't_right': '┣',
+            't_left': '┫',
+            'separator': '━'
+        }
+
+    def convert(self, markdown_content: str) -> str:
+        """
+        Convert markdown to bullet list format.
+
+        Args:
+            markdown_content: Raw markdown text
+
+        Returns:
+            Formatted bullet list text with proper Vietnamese document styling
+        """
+        logger.info("Starting markdown to bullet conversion")
+
+        lines = markdown_content.split('\n')
+        result = []
+        in_table = False
+        current_table_rows = []
+        skip_next = False
+        last_heading = None
+
+        for i, line in enumerate(lines):
+            # Skip watermark and page markers
+            if '[Image on page' in line or '<!-- Page' in line:
+                continue
+
+            # Skip empty lines unless they're meaningful
+            if not line.strip():
+                if result and result[-1]:  # Only add if previous line wasn't empty
+                    result.append('')
+                continue
+
+            # Handle table rows
+            if line.strip().startswith('|'):
+                if not in_table:
+                    in_table = True
+                    current_table_rows = []
+
+                current_table_rows.append(line)
+                skip_next = True
+                continue
+
+            # End of table
+            if in_table and not line.strip().startswith('|'):
+                if current_table_rows:
+                    table_bullets = self._parse_table(current_table_rows, last_heading)
+                    result.extend(table_bullets)
+                    current_table_rows = []
+                in_table = False
+
+            if skip_next:
+                skip_next = False
+                continue
+
+            # Handle headings
+            if line.strip().startswith('#'):
+                heading_result = self._convert_heading(line)
+                result.extend(heading_result)
+                # Extract heading for table context
+                last_heading = line.strip().lstrip('#').strip()
+                continue
+
+            # Handle notes/remarks (Ghi chú)
+            if line.strip().lower().startswith('ghi chú'):
+                result.append(f"┃ ⓘ {line.strip()}")
+                continue
+
+            # Handle existing bullets
+            if line.strip().startswith(('-', '*', '+')):
+                formatted = self._format_bullet_line(line)
+                result.append(formatted)
+                continue
+            elif line.strip().startswith('•'):
+                # Already a bullet, keep as-is
+                result.append(line.strip())
+                continue
+
+            # Handle normal text - add as bullet if not empty
+            if line.strip():
+                # Check if this looks like a note/remark
+                text = line.strip()
+                if any(keyword in text.lower() for keyword in ['ghi chú', 'chú ý', 'lưu ý', 'cụ thể']):
+                    result.append(f"┃ ⓘ {text}")
+                else:
+                    result.append(f"• {text}")
+
+        # Handle last table if exists
+        if in_table and current_table_rows:
+            table_bullets = self._parse_table(current_table_rows, last_heading)
+            result.extend(table_bullets)
+
+        output = '\n'.join(result)
+        logger.info("Markdown to bullet conversion completed")
+        return output
+
+    def _convert_heading(self, heading_line: str) -> List[str]:
+        """Convert markdown heading to bullet format with Vietnamese styling"""
+        stripped = heading_line.strip()
+        level = len(stripped) - len(stripped.lstrip('#'))
+
+        title = stripped.lstrip('#').strip()
+
+        # Convert arrows in heading
+        title = self._convert_arrow(title)
+
+        result = []
+
+        # Level 1 headings: Main document title with full underline
+        if level == 1:
+            result.append(title)
+            result.append('━' * 80)
+            result.append('')  # Add spacing after header
+        # Level 2 headings: Table/section title
+        elif level == 2:
+            result.append('')
+            result.append(title)
+            result.append('━' * min(len(title) + 2, 80))
+            result.append('')
+        # Level 3 headings: Main section/table title with underline
+        elif level == 3:
+            result.append(title)
+            result.append('━' * min(len(title), 80))
+        # Level 4+ headings: Sub-bullets
+        else:
+            indent = "  " * (level - 3) if level > 3 else ""
+            result.append(f"{indent}• {title}")
+
+        return result
+
+    def _format_bullet_line(self, line: str) -> str:
+        """Format existing bullet line"""
+        stripped = line.strip()
+        # Convert to standard bullet if it's another style
+        if stripped.startswith('*'):
+            return '•' + stripped[1:]
+        elif stripped.startswith('+'):
+            return '•' + stripped[1:]
+        return line
+
+    def _convert_arrow(self, text: str) -> str:
+        """
+        Convert arrows to natural Vietnamese sentences.
+
+        Examples:
+        - "Xe ↔ Bãi" → "Xe xuống bãi hoặc từ bãi lên xe"
+        - "Tàu/Sà lan → Bãi" → "Tàu hoặc sà lan đến bãi"
+        - "Bãi ← Tàu/Sà lan" → "Từ bãi lên tàu hoặc sà lan"
+        """
+
+        # Two-way: Xe ↔ Bãi
+        if '↔' in text or '<->' in text:
+            # Normalize the arrow
+            text = text.replace('↔', '<->').replace('<->', '<->')
+
+            parts = [p.strip() for p in text.split('<->')]
+            if len(parts) == 2:
+                obj1 = parts[0]
+                obj2 = parts[1]
+
+                if 'Xe' in obj1:
+                    return f"Xe xuống bãi hoặc từ bãi lên xe"
+                elif 'Tàu' in obj1 or 'Sà lan' in obj1:
+                    return f"Tàu hoặc sà lan đến bãi hoặc từ bãi lên tàu hoặc sà lan"
+
+        # One-way down: → Bãi
+        if '→' in text or '->' in text:
+            text = text.replace('→', '->')
+            parts = [p.strip() for p in text.split('->')]
+
+            if len(parts) == 2:
+                obj1 = parts[0]
+                obj2 = parts[1]
+
+                if 'Xe' in obj1 and 'Bãi' in obj2:
+                    return "Xe xuống bãi"
+                elif ('Tàu' in obj1 or 'Sà lan' in obj1) and 'Bãi' in obj2:
+                    return "Tàu hoặc sà lan đến bãi"
+
+        # One-way up: ← Xe
+        if '←' in text or '<-' in text:
+            text = text.replace('←', '<-')
+            parts = [p.strip() for p in text.split('<-')]
+
+            if len(parts) == 2:
+                obj1 = parts[0]
+                obj2 = parts[1]
+
+                if 'Xe' in obj2 and 'Bãi' in obj1:
+                    return "Từ bãi lên xe"
+                elif ('Tàu' in obj2 or 'Sà lan' in obj2) and 'Bãi' in obj1:
+                    return "Từ bãi lên tàu hoặc sà lan"
+
+        return text
+
+    def _parse_table(self, table_rows: List[str], context_heading: Optional[str] = None) -> List[str]:
+        """
+        Parse markdown table to bullet format with Vietnamese document styling.
+
+        Supports:
+        - Bảng with phương án (solutions/options)
+        - Container pricing tables
+        - Hierarchical bullet structures with box drawing
+
+        Example:
+        | TT | Phương án | 20' | 40' | ...
+        | 1  | Xe ↔ Bãi | 497.000 | 882.000 | ...
+        """
+
+        if not table_rows or len(table_rows) < 2:
+            return []
+
+        result = []
+
+        # Parse header and rows
+        header_row = table_rows[0]
+        separator_row = table_rows[1] if len(table_rows) > 1 else None
+        data_rows = table_rows[2:] if len(table_rows) > 2 else []
+
+        # Parse headers - clean up headers
+        headers = [h.strip() for h in header_row.split('|')[1:-1]]
+        headers = [self._clean_header(h) for h in headers]
+
+        # Determine table type and structure
+        has_tt = 'TT' in (headers[0] if headers else '')
+        has_phuong_an = any('phương' in h.lower() or 'phương án' in h.lower() for h in headers)
+
+        # Parse data rows
+        for row_idx, row in enumerate(data_rows):
+            cells = [c.strip() for c in row.split('|')[1:-1]]
+
+            if len(cells) < 2 or not any(cells):  # Skip empty rows
+                continue
+
+            # Get action/description from appropriate column
+            if has_tt and has_phuong_an:
+                # Format: TT | Phương án | Prices...
+                action_idx = 1
+            elif has_phuong_an:
+                action_idx = 0
+            else:
+                action_idx = 0
+
+            action = cells[action_idx] if action_idx < len(cells) else ''
+
+            # Clean up action text (remove watermark artifacts)
+            action = self._clean_cell_content(action)
+
+            if action:
+                # Convert arrows in action
+                action = self._convert_arrow(action)
+
+                # Get actual row number from TT column if exists
+                if has_tt and len(cells) > 0:
+                    try:
+                        row_num = cells[0].strip()
+                    except:
+                        row_num = row_idx + 1
+                else:
+                    row_num = row_idx + 1
+
+                # Format as boxed phương án (option/solution)
+                result.append(f"┃ PHƯƠNG ÁN {row_num}: {action}")
+                result.append('┣' + '━' * 70)
+
+                # Add prices as sub-bullets with proper alignment
+                prices_added = False
+                for i in range(action_idx + 1, len(cells)):
+                    if i < len(headers) and cells[i] and cells[i].strip():
+                        header = headers[i]
+                        price = cells[i].strip()
+
+                        # Clean price
+                        price = self._clean_cell_content(price)
+
+                        # Format: "20' khô" → "497.000"
+                        # Use ┃ prefix to match sample format
+                        result.append(f"┃ • {header:20} → {price}")
+                        prices_added = True
+
+                # Add spacing between options
+                if prices_added:
+                    result.append('')
+
+        return result
+
+    def _clean_header(self, header: str) -> str:
+        """Clean header text from markdown artifacts"""
+        # Remove watermark artifacts
+        header = re.sub(r'[a-z]\n[a-z]|[A-Z]\s+[a-z]', '', header)
+        header = re.sub(r'[\n\r]+', ' ', header)
+        header = ' '.join(header.split())  # Normalize whitespace
+        return header.strip()
+
+    def _clean_cell_content(self, cell: str) -> str:
+        """Clean cell content from PDF extraction artifacts"""
+        # Remove watermark text artifacts (Vietnamese char patterns)
+        # Pattern: single letters with newlines, PDF garbage
+        cell = re.sub(r'[a-z]\n[a-z]', '', cell)
+        cell = re.sub(r'[A-Z]\s+[a-z]\s+[A-Z]', '', cell)
+        cell = re.sub(r'[\n\r]+', ' ', cell)
+        cell = ' '.join(cell.split())  # Normalize whitespace
+
+        # Remove common watermark patterns
+        patterns = [
+            r'in\s*:\s*$',
+            r'ờ\s*i\s*$',
+            r'ừ.*ng\s*$',
+            r'ịn\s*r\s*T\s*$',
+            r'@\s*k\s*',
+        ]
+        for pattern in patterns:
+            cell = re.sub(pattern, '', cell, flags=re.IGNORECASE)
+
+        return cell.strip()
