@@ -102,6 +102,29 @@ class MarkdownConverter:
         # Flag to start processing from section II (pricing data section)
         started_processing = False
 
+        # Pre-process: Extract all tables from all pages with their positions
+        # This helps match tables to headings by proximity rather than just sequential order
+        all_tables = []  # List of (table_object, page_num, y_position)
+        for page_num, page in enumerate(doc, start=1):
+            tables = page.find_tables()
+            if tables.tables:
+                for table in tables.tables:
+                    # Store table with its page number and y-position (top-left of bbox)
+                    all_tables.append((table, page_num, table.bbox[1]))
+
+        logger.info(f"Found {len(all_tables)} tables across {len(doc)} pages")
+
+        # Convert all tables to markdown once
+        extracted_tables = []  # List of (markdown_string, page_num, y_position)
+        for table, page_num, y_pos in all_tables:
+            markdown_table = self._extract_table_from_pdf(table)
+            if markdown_table:
+                extracted_tables.append((markdown_table, page_num, y_pos))
+                logger.debug(f"Extracted table on page {page_num} at y={y_pos:.1f}")
+
+        # Track which tables have been matched to headings
+        matched_table_indices = set()
+
         for page_num, page in enumerate(doc, start=1):
             # Extract text blocks
             blocks = page.get_text("dict")["blocks"]
@@ -111,24 +134,12 @@ class MarkdownConverter:
                 started_processing = True
                 logger.info(f"Started processing from page {page_num}")
 
-            # Extract table bounding boxes and tables
+            # Extract table bounding boxes for this page only (for checking if text is in table)
             table_bboxes = []
-            tables_to_extract = []
-            tables = page.find_tables()
-            if tables.tables:
-                for table in tables:
+            tables_on_page = page.find_tables()
+            if tables_on_page.tables:
+                for table in tables_on_page.tables:
                     table_bboxes.append(table.bbox)
-                    tables_to_extract.append(table)
-
-            # Convert tables to markdown for later insertion
-            extracted_tables = []
-            for table in tables_to_extract:
-                markdown_table = self._extract_table_from_pdf(table)
-                if markdown_table:
-                    extracted_tables.append(markdown_table)
-
-            # Track which tables have been used
-            table_index = 0
 
             for block in blocks:
                 if block["type"] == 0:  # Text block
@@ -187,10 +198,36 @@ class MarkdownConverter:
                                 markdown_parts.append(f"\n## {line_text}\n")
                             elif avg_font_size > 12:
                                 markdown_parts.append(f"\n### {line_text}\n")
-                                # After adding "### Bảng XX" heading, insert corresponding table
-                                if "Bảng" in line_text and table_index < len(extracted_tables):
-                                    markdown_parts.append(extracted_tables[table_index])
-                                    table_index += 1
+                                # After adding "### Bảng XX" heading, find and insert the closest matching table
+                                if "Bảng" in line_text:
+                                    # Get the y-position of this heading
+                                    line_y = line_bbox[1] if line_bbox else 0
+
+                                    # Find the closest unmatched table on this page or nearby pages
+                                    best_match_idx = None
+                                    best_distance = float('inf')
+
+                                    for idx, (table_md, table_page, table_y) in enumerate(extracted_tables):
+                                        if idx in matched_table_indices:
+                                            continue  # Skip already matched tables
+
+                                        # Prefer tables on the same page or next page
+                                        page_distance = abs(table_page - page_num)
+                                        if page_distance > 1:
+                                            continue  # Skip tables too far away
+
+                                        # Calculate total distance (page distance + y-distance)
+                                        y_distance = abs(table_y - line_y)
+                                        total_distance = page_distance * 10000 + y_distance
+
+                                        if total_distance < best_distance:
+                                            best_distance = total_distance
+                                            best_match_idx = idx
+
+                                    if best_match_idx is not None:
+                                        markdown_parts.append(extracted_tables[best_match_idx][0])
+                                        matched_table_indices.add(best_match_idx)
+                                        logger.debug(f"Matched '{line_text}' with table at page {extracted_tables[best_match_idx][1]}")
                             else:
                                 markdown_parts.append(line_text)
 
@@ -199,14 +236,15 @@ class MarkdownConverter:
                     if started_processing:
                         markdown_parts.append(f"\n[Image on page {page_num}]\n")
 
-            # Add any remaining tables that weren't matched to headings
-            while table_index < len(extracted_tables):
-                markdown_parts.append(extracted_tables[table_index])
-                table_index += 1
-
             # Add page break marker
             if started_processing:
                 markdown_parts.append(f"\n<!-- Page {page_num} -->\n")
+
+        # Add any remaining unmatched tables at the end
+        for idx, (table_md, page_num, y_pos) in enumerate(extracted_tables):
+            if idx not in matched_table_indices:
+                markdown_parts.append(table_md)
+                logger.warning(f"Unmatched table from page {page_num} added at end")
 
         doc.close()
 
@@ -331,8 +369,27 @@ class MarkdownConverter:
             markdown_rows = []
 
             for i, row in enumerate(table_data):
-                # Clean cells
-                cells = [str(cell).strip() if cell else "" for cell in row]
+                # Clean cells - handle embedded newlines and extra spaces from PDF extraction
+                cells = []
+                for cell in row:
+                    if cell:
+                        cell_text = str(cell).strip()
+                        # Remove newlines and extra spaces created by character-level extraction
+                        # Replace multiple spaces with single space, clean up line breaks
+                        cell_text = ' '.join(cell_text.split())
+                        # Handle cases where characters are separated by backslash-n artifacts
+                        cell_text = cell_text.replace('\\n', '')
+                        # Remove spaces between individual characters (common in corrupted PDF extraction)
+                        # Pattern: letter space letter space letter -> merge them
+                        import re
+                        # Fix spaced-out text like "T r ư ở 1 4 :2" -> "Trư ở 14:2" or similar
+                        # First, try to identify and fix spaced-out words
+                        cell_text = re.sub(r'([^\s])\s+([^\s])', r'\1\2', cell_text)
+                        # Clean up again after removing spaces
+                        cell_text = ' '.join(cell_text.split())
+                        cells.append(cell_text)
+                    else:
+                        cells.append("")
 
                 # Skip empty rows
                 if not any(cells):
