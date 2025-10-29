@@ -13,7 +13,7 @@ from loguru import logger
 
 
 class MarkdownToBulletConverter:
-    """Convert markdown content to bullet list format"""
+    """Convert markdown content to bullet list format with Vietnamese document styling"""
 
     def __init__(self):
         """Initialize converter with translation rules"""
