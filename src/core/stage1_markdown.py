@@ -103,17 +103,34 @@ class MarkdownConverter:
             # Extract text blocks
             blocks = page.get_text("dict")["blocks"]
 
-            # Extract tables first
+            # Extract tables first and collect their bounding boxes
+            table_bboxes = []
             tables = page.find_tables()
             if tables.tables:
                 for table in tables:
                     markdown_table = self._extract_table_from_pdf(table)
                     if markdown_table:
                         markdown_parts.append(markdown_table)
+                        # Store table bounding box to avoid converting table content to headings
+                        table_bboxes.append(table.bbox)
 
             for block in blocks:
                 if block["type"] == 0:  # Text block
                     for line in block["lines"]:
+                        # Check if this line is inside a table bounding box
+                        line_bbox = line.get("bbox", None)
+                        in_table_area = False
+                        if line_bbox:
+                            # Check if line overlaps with any table bbox
+                            for table_bbox in table_bboxes:
+                                # Check overlap: line is inside table if its position is within table bounds
+                                if (line_bbox[0] >= table_bbox[0] - 5 and
+                                    line_bbox[2] <= table_bbox[2] + 5 and
+                                    line_bbox[1] >= table_bbox[1] - 5 and
+                                    line_bbox[3] <= table_bbox[3] + 5):
+                                    in_table_area = True
+                                    break
+
                         # Combine spans into line text
                         line_text = ""
                         font_sizes = []
@@ -131,17 +148,21 @@ class MarkdownConverter:
                         line_text = line_text.strip()
 
                         if line_text:
-                            # Determine heading level based on font size
-                            avg_font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 0
-
-                            if avg_font_size > 16:
-                                markdown_parts.append(f"\n# {line_text}\n")
-                            elif avg_font_size > 14:
-                                markdown_parts.append(f"\n## {line_text}\n")
-                            elif avg_font_size > 12:
-                                markdown_parts.append(f"\n### {line_text}\n")
-                            else:
+                            # Skip heading conversion for text inside table areas
+                            if in_table_area:
                                 markdown_parts.append(line_text)
+                            else:
+                                # Determine heading level based on font size
+                                avg_font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 0
+
+                                if avg_font_size > 16:
+                                    markdown_parts.append(f"\n# {line_text}\n")
+                                elif avg_font_size > 14:
+                                    markdown_parts.append(f"\n## {line_text}\n")
+                                elif avg_font_size > 12:
+                                    markdown_parts.append(f"\n### {line_text}\n")
+                                else:
+                                    markdown_parts.append(line_text)
 
                 elif block["type"] == 1:  # Image block
                     # Note image presence
@@ -156,6 +177,9 @@ class MarkdownConverter:
 
         # Clean up excessive newlines (formatting only, no content removal)
         markdown_content = self._clean_markdown(markdown_content)
+
+        # Note: Orphaned table content lines are now handled by skipping heading conversion
+        # for text inside table bounding boxes. No need to remove them separately.
 
         # Note: Watermark, header, footer removal should be handled by /documents/cleanfile API
         # This markdown converter is responsible ONLY for text extraction and formatting
@@ -329,6 +353,97 @@ class MarkdownConverter:
             "markdown": result.text_content,
             "metadata": metadata,
         }
+
+    def _remove_orphaned_table_lines(self, markdown: str) -> str:
+        """
+        Remove orphaned table content lines that appear after table headings.
+
+        These are often duplicates or broken extractions from PDF tables that weren't
+        properly detected as table structures. They appear as separate text lines
+        instead of being part of the markdown table.
+        """
+        import re
+
+        lines = markdown.split('\n')
+        result = []
+        i = 0
+
+        # Common table content patterns that shouldn't appear as isolated lines
+        table_content_words = {
+            "container khô", "container lạnh", "tàu/sà lan", "phương án",
+            "20'", "40'", "45'", "tt", "tàu/", "bãi", "xe  bãi",
+            "giao/nhận", "loại container", "imdg", "oog"
+        }
+
+        # Also add variants with Unicode smart quotes (file might have U+2019 instead of U+0027)
+        smart_quote_variants = []
+        for word in list(table_content_words):
+            if "'" in word:  # If word contains ASCII apostrophe (U+0027)
+                # Add variant with Unicode right single quotation mark (U+2019)
+                smart_word = word.replace("'", "\u2019")
+                if smart_word not in table_content_words:
+                    smart_quote_variants.append(smart_word)
+        table_content_words.update(smart_quote_variants)
+
+        while i < len(lines):
+            line = lines[i]
+            line_lower = line.lower().strip()
+
+            # Check if we're after table unit headings (đơn vị tính) and before content
+            # Look back up to 5 lines to find a table unit heading
+            found_table_unit = False
+            for j in range(max(0, i-5), i):
+                if 'đơn vị tính' in lines[j].lower() and lines[j].strip().startswith('###'):
+                    found_table_unit = True
+                    break
+
+            # If we found a table unit heading and this is a non-heading, non-table line
+            if (found_table_unit and
+                line_lower and
+                not line.strip().startswith('#') and
+                not line.strip().startswith('|') and
+                len(line_lower) < 50):  # Short lines are typical of orphaned content
+
+                # Look ahead to count similar lines (table content pattern)
+                orphaned_count = 0
+                temp_i = i
+                while (temp_i < len(lines) and
+                       not lines[temp_i].strip().startswith('#') and
+                       not lines[temp_i].strip().startswith('|')):
+                    if lines[temp_i].strip():
+                        line_text = lines[temp_i].strip().lower()
+                        # Normalize spaces for matching
+                        normalized_text = ' '.join(line_text.split())
+                        if (any(keyword in normalized_text for keyword in table_content_words) or
+                            line_text.replace('.', '').replace(',', '').replace(' ', '').replace('000', '').isdigit()):
+                            orphaned_count += 1
+                        else:
+                            break
+                    temp_i += 1
+
+                # If we found many orphaned table lines, skip them (they're likely duplicates)
+                if orphaned_count >= 5:
+                    # Skip all these orphaned lines
+                    while (i < len(lines) and
+                           not lines[i].strip().startswith('#') and
+                           not lines[i].strip().startswith('|')):
+                        if lines[i].strip():
+                            line_text = lines[i].strip().lower()
+                            # Normalize spaces for matching
+                            normalized_text = ' '.join(line_text.split())
+                            # Skip if it looks like table content
+                            if (any(keyword in normalized_text for keyword in table_content_words) or
+                                line_text.replace('.', '').replace(',', '').replace(' ', '').replace('000', '').isdigit()):
+                                i += 1
+                                continue
+                        # Stop skipping if we hit something that's not table content
+                        break
+                    continue
+
+            result.append(line)
+            i += 1
+
+        return '\n'.join(result)
 
     def _clean_markdown(self, markdown: str) -> str:
         """Clean up markdown formatting."""
