@@ -61,7 +61,7 @@ class FileCleaner:
             return False, f"Error processing file: {str(e)}", None
 
     def _clean_pdf(self, file_path: Path) -> Tuple[bool, str, Optional[str]]:
-        """Clean PDF by removing watermarks, annotations, headers and footers using pikepdf.
+        """Clean PDF by removing watermarks and annotations using pikepdf.
 
         Args:
             file_path: Path to PDF file
@@ -79,7 +79,6 @@ class FileCleaner:
             with pikepdf.open(file_path) as pdf:
                 total_pages = len(pdf.pages)
                 annotation_count = 0
-                content_removed_count = 0
 
                 logger.info(f"Processing {total_pages} pages")
 
@@ -94,23 +93,11 @@ class FileCleaner:
                                 del page["/Annots"]
                                 logger.debug(f"Page {page_num}: Removed {len(annots)} annotations")
 
-                        # Remove header/footer by filtering content stream
-                        # This removes text in top and bottom regions
-                        if "/Contents" in page:
-                            try:
-                                content_removed = self._remove_header_footer_from_content(page, pdf)
-                                content_removed_count += content_removed
-                                if content_removed > 0:
-                                    logger.debug(f"Page {page_num}: Removed {content_removed} header/footer elements")
-                            except Exception as content_err:
-                                logger.debug(f"Page {page_num}: Could not process content stream: {content_err}")
-                                continue
-
                     except Exception as page_error:
                         logger.warning(f"Error processing page {page_num}: {page_error}")
                         continue
 
-                logger.info(f"Removed {annotation_count} annotations and {content_removed_count} header/footer elements")
+                logger.info(f"Removed {annotation_count} annotations (watermarks)")
 
                 # Save cleaned PDF
                 output_filename = f"cleaned_{file_path.stem}.pdf"
@@ -128,7 +115,7 @@ class FileCleaner:
 
                 return (
                     True,
-                    f"PDF cleaned successfully. Removed {annotation_count} annotations and {content_removed_count} header/footer elements.",
+                    f"PDF cleaned successfully. Removed {annotation_count} watermarks/annotations.",
                     str(output_path)
                 )
 
