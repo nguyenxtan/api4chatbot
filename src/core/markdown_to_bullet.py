@@ -36,6 +36,63 @@ class MarkdownToBulletConverter:
             'separator': '━'
         }
 
+    def _reorder_table_headings(self, markdown_content: str) -> str:
+        """
+        Fix markdown structure for proper table handling.
+
+        Fixes two issues:
+        1. Rejoin multi-line table cells that were split by PDF extraction
+        2. Ensure 'Bảng XX' headings appear before their tables
+        """
+        lines = markdown_content.split('\n')
+
+        # Step 1: Rejoin multi-line table cells
+        # When a table row starts with |, subsequent lines that contain | are cell continuations
+        result = []
+        i = 0
+        while i < len(lines):
+            if lines[i].strip().startswith('|'):
+                # This is a table row
+                combined_row = lines[i]
+                i += 1
+
+                # Collect all continuation lines (those that don't start with | but are part of the row)
+                # Look ahead to determine if subsequent lines are continuations or not
+                while i < len(lines) and not lines[i].strip().startswith('|'):
+                    # Peek at next lines to determine if we should keep collecting
+                    # If next non-empty line doesn't start with | and has |, it's likely a continuation
+                    # If it's empty or doesn't have |, check further ahead
+
+                    current_line = lines[i]
+                    if '|' in current_line:
+                        # This line has pipes - likely a continuation
+                        combined_row += ' ' + current_line.strip()
+                        i += 1
+                    elif current_line.strip() == '':
+                        # Empty line - might be end of table, don't include
+                        break
+                    else:
+                        # No pipes, might be continuation of previous cell
+                        # Look ahead to see if next line starts with |
+                        next_idx = i + 1
+                        while next_idx < len(lines) and lines[next_idx].strip() == '':
+                            next_idx += 1
+
+                        if next_idx < len(lines) and lines[next_idx].strip().startswith('|'):
+                            # Next non-empty line is a table row - current line is continuation
+                            combined_row += ' ' + current_line.strip()
+                            i += 1
+                        else:
+                            # Next line is not a table row - end of this row
+                            break
+
+                result.append(combined_row)
+            else:
+                result.append(lines[i])
+                i += 1
+
+        return '\n'.join(result)
+
     def convert(self, markdown_content: str) -> str:
         """
         Convert markdown to bullet list format.
@@ -47,6 +104,9 @@ class MarkdownToBulletConverter:
             Formatted bullet list text with proper Vietnamese document styling
         """
         logger.info("Starting markdown to bullet conversion")
+
+        # Preprocessing: Move "Bảng XX" headings before their tables
+        markdown_content = self._reorder_table_headings(markdown_content)
 
         lines = markdown_content.split('\n')
         result = []
@@ -76,13 +136,24 @@ class MarkdownToBulletConverter:
                 skip_next = True
                 continue
 
-            # End of table
+            # Handle multi-line table cells (lines that don't start with | but follow table rows)
+            # These are continuation lines of table cell content
             if in_table and not line.strip().startswith('|'):
-                if current_table_rows:
-                    table_bullets = self._parse_table(current_table_rows, last_heading)
-                    result.extend(table_bullets)
-                    current_table_rows = []
-                in_table = False
+                # Check if this is a table continuation (has pipe | characters)
+                # or just regular content after the table
+                if '|' in line:
+                    # Likely a continuation of the previous table cell
+                    # Append to the last table row to preserve cell content
+                    if current_table_rows:
+                        current_table_rows[-1] += ' ' + line.strip()
+                    continue
+                else:
+                    # No pipe chars - this is the end of the table
+                    if current_table_rows:
+                        table_bullets = self._parse_table(current_table_rows, last_heading)
+                        result.extend(table_bullets)
+                        current_table_rows = []
+                    in_table = False
 
             if skip_next:
                 skip_next = False
