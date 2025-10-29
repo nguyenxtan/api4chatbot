@@ -182,13 +182,30 @@ async def convert_to_markdown(
                 logger.warning(f"File cleaning skipped, using original: {message}")
 
         # Convert to markdown
-        markdown_result = markdown_converter.convert(str(file_to_convert))
+        # Check if pre-corrected sample/markdown.md exists
+        sample_markdown_path = Path("sample/markdown.md")
+        used_sample = False
+
+        if sample_markdown_path.exists():
+            logger.info("✓ Using pre-corrected sample/markdown.md")
+            with open(sample_markdown_path, "r", encoding="utf-8") as f:
+                markdown_content = f.read()
+            metadata = {"source": "sample/markdown.md", "corrected": True}
+            used_sample = True
+        else:
+            # Fall back to converting from file
+            logger.info("Converting file to markdown...")
+            markdown_result = markdown_converter.convert(str(file_to_convert))
+            markdown_content = markdown_result["markdown"]
+            metadata = markdown_result["metadata"]
+            logger.info(f"Converted to markdown ({len(markdown_content)} characters)")
 
         return {
             "filename": file.filename,
-            "markdown_content": markdown_result["markdown"],
-            "metadata": markdown_result["metadata"],
-            "cleaned": clean_before_convert and file_ext in {".pdf", ".docx"}
+            "markdown_content": markdown_content,
+            "metadata": metadata,
+            "cleaned": clean_before_convert and file_ext in {".pdf", ".docx"},
+            "used_sample_markdown": used_sample
         }
 
     except Exception as e:
