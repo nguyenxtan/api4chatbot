@@ -182,30 +182,29 @@ async def convert_to_markdown(
                 logger.warning(f"File cleaning skipped, using original: {message}")
 
         # Convert to markdown
-        # Check if pre-corrected sample/markdown.md exists
-        sample_markdown_path = Path("sample/markdown.md")
-        used_sample = False
+        logger.info("Converting file to markdown...")
+        markdown_result = markdown_converter.convert(str(file_to_convert))
+        markdown_content = markdown_result["markdown"]
+        metadata = markdown_result["metadata"]
+        logger.info(f"✓ Converted to markdown ({len(markdown_content)} characters)")
 
-        if sample_markdown_path.exists():
-            logger.info("✓ Using pre-corrected sample/markdown.md")
-            with open(sample_markdown_path, "r", encoding="utf-8") as f:
-                markdown_content = f.read()
-            metadata = {"source": "sample/markdown.md", "corrected": True}
-            used_sample = True
-        else:
-            # Fall back to converting from file
-            logger.info("Converting file to markdown...")
-            markdown_result = markdown_converter.convert(str(file_to_convert))
-            markdown_content = markdown_result["markdown"]
-            metadata = markdown_result["metadata"]
-            logger.info(f"Converted to markdown ({len(markdown_content)} characters)")
+        # Save to sample/markdown_v1.md for review
+        sample_dir = Path("sample")
+        sample_dir.mkdir(exist_ok=True)
+        markdown_output_path = sample_dir / "markdown_v1.md"
+
+        with open(markdown_output_path, "w", encoding="utf-8") as f:
+            f.write(markdown_content)
+
+        logger.info(f"✓ Saved to: {markdown_output_path}")
 
         return {
             "filename": file.filename,
             "markdown_content": markdown_content,
             "metadata": metadata,
             "cleaned": clean_before_convert and file_ext in {".pdf", ".docx"},
-            "used_sample_markdown": used_sample
+            "output_file": str(markdown_output_path),
+            "message": f"Markdown saved to {markdown_output_path} for review"
         }
 
     except Exception as e:
@@ -334,31 +333,33 @@ async def convert_pdf_to_bullet(file: UploadFile = File(...)):
         logger.info(f"File cleaned: {cleaned_path}")
 
         # Step 2: Convert to markdown
-        # Check if sample/markdown.md exists (pre-corrected version)
-        sample_markdown_path = Path("sample/markdown.md")
-        if sample_markdown_path.exists():
-            logger.info("✓ Using pre-corrected sample/markdown.md")
-            with open(sample_markdown_path, "r", encoding="utf-8") as f:
-                markdown_content = f.read()
-            logger.info(f"Loaded markdown ({len(markdown_content)} characters)")
-        else:
-            # Fall back to converting from PDF
-            logger.info("Converting PDF to markdown...")
-            markdown_result = markdown_converter.convert(cleaned_path)
-            markdown_content = markdown_result["markdown"]
-            logger.info(f"Converted to markdown ({len(markdown_content)} characters)")
+        logger.info("Converting PDF to markdown...")
+        markdown_result = markdown_converter.convert(cleaned_path)
+        markdown_content = markdown_result["markdown"]
+        logger.info(f"✓ Converted to markdown ({len(markdown_content)} characters)")
 
         # Step 3: Convert to bullet format
         logger.info("Converting markdown to bullet format...")
         bullet_content = bullet_converter.convert(markdown_content)
-        logger.info("Successfully converted to bullet format")
+        logger.info("✓ Converted to bullet format")
+
+        # Save to sample/bullet_v1.md for review
+        sample_dir = Path("sample")
+        sample_dir.mkdir(exist_ok=True)
+        bullet_output_path = sample_dir / "bullet_v1.md"
+
+        with open(bullet_output_path, "w", encoding="utf-8") as f:
+            f.write(bullet_content)
+
+        logger.info(f"✓ Saved to: {bullet_output_path}")
 
         return {
             "status": "success",
             "filename": file.filename,
             "bullet_content": bullet_content,
             "content_length": len(bullet_content),
-            "used_sample_markdown": sample_markdown_path.exists()
+            "output_file": str(bullet_output_path),
+            "message": f"Bullet content saved to {bullet_output_path} for review"
         }
 
     except HTTPException:
