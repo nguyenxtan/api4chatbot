@@ -242,14 +242,13 @@ class MarkdownToBulletConverter:
         """
         Parse markdown table to bullet format with Vietnamese document styling.
 
-        Supports:
-        - Bảng with phương án (solutions/options)
-        - Container pricing tables
-        - Hierarchical bullet structures with box drawing
+        Handles multi-row headers with container sizes (20', 40', 45', etc.)
 
-        Example:
-        | TT | Phương án | 20' | 40' | ...
-        | 1  | Xe ↔ Bãi | 497.000 | 882.000 | ...
+        Structure:
+        Row 0: | Phương án | Container khô |  |  | Container lạnh |  |
+        Row 1: | --- | --- | --- | --- | --- | --- | (separator)
+        Row 2: |  | 20' | 40' | 45' | 20' | 40' & 45' | (sub-headers)
+        Row 3+: | data | data | data | ... |
         """
 
         if not table_rows or len(table_rows) < 2:
@@ -257,21 +256,79 @@ class MarkdownToBulletConverter:
 
         result = []
 
-        # Parse header and rows
+        # Detect if this is a multi-row header table
         header_row = table_rows[0]
-        separator_row = table_rows[1] if len(table_rows) > 1 else None
-        data_rows = table_rows[2:] if len(table_rows) > 2 else []
+        separator_idx = None
+        for idx in range(1, min(4, len(table_rows))):  # Look for separator in first 4 rows
+            if '---' in table_rows[idx]:
+                separator_idx = idx
+                logger.debug(f"Found separator at index {separator_idx}")
+                break
 
-        # Parse headers - clean up headers
+        # Check if row after separator has container sizes
+        has_multi_row_header = False
+        sub_headers = None
+        data_start_idx = 2
+
+        if separator_idx is not None and len(table_rows) > separator_idx + 1:
+            potential_sub_header = table_rows[separator_idx + 1]
+
+            # Check for container sizes using regex (handles both ' and ' quotes)
+            # Match patterns like: 20', 40', 45', 20', 40', 45' (with Unicode smart quote U+2019)
+            has_container_size = bool(re.search(r"\d+[''ʼ\u2019]", potential_sub_header))
+
+            if has_container_size:
+                has_multi_row_header = True
+                sub_headers_raw = [h.strip() for h in potential_sub_header.split('|')[1:-1]]
+                sub_headers = [self._clean_header(h) if h.strip() else '' for h in sub_headers_raw]
+                data_start_idx = separator_idx + 2
+
+        # Parse main headers
         headers = [h.strip() for h in header_row.split('|')[1:-1]]
         headers = [self._clean_header(h) for h in headers]
 
-        # Determine table type and structure
+        # Determine table type
         has_tt = 'TT' in (headers[0] if headers else '')
         has_phuong_an = any('phương' in h.lower() or 'phương án' in h.lower() for h in headers)
 
+        # Build combined headers if multi-row
+        if has_multi_row_header and sub_headers:
+            combined_headers = []
+            current_main_header = ""
+
+            for i, main_header in enumerate(headers):
+                sub_header = sub_headers[i] if i < len(sub_headers) else ""
+
+                # Track the current main category (Container khô, Container lạnh, etc.)
+                if main_header and main_header.strip():
+                    current_main_header = main_header
+
+                # Build combined header
+                if sub_header and sub_header.strip():
+                    # Has sub-header (like 20', 40', 45')
+                    if current_main_header:
+                        combined = f"{current_main_header} {sub_header}"
+                    else:
+                        combined = sub_header
+                    combined_headers.append(combined)
+                elif main_header and main_header.strip():
+                    # Main header only
+                    combined_headers.append(main_header)
+                else:
+                    # Empty - skip
+                    combined_headers.append("")
+
+            headers = combined_headers
+
+        # Get data rows
+        data_rows = table_rows[data_start_idx:] if data_start_idx < len(table_rows) else []
+
         # Parse data rows
         for row_idx, row in enumerate(data_rows):
+            # Skip separator rows
+            if '---' in row:
+                continue
+
             cells = [c.strip() for c in row.split('|')[1:-1]]
 
             if len(cells) < 2 or not any(cells):  # Skip empty rows
@@ -320,7 +377,7 @@ class MarkdownToBulletConverter:
 
                         # Format: "20' khô" → "497.000"
                         # Use ┃ prefix to match sample format
-                        result.append(f"┃ • {header:20} → {price}")
+                        result.append(f"┃ • {header:25} → {price}")
                         prices_added = True
 
                 # Add spacing between options
