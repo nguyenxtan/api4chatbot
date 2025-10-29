@@ -120,6 +120,10 @@ class MarkdownToBulletConverter:
             if '[Image on page' in line or '<!-- Page' in line:
                 continue
 
+            # Skip page footer/separator lines (extracted as text from PDF)
+            if 'Biểu giá dịch vụ tại cảng Tân Cảng' in line and 'từ ngày' in line:
+                continue
+
             # Skip empty lines unless they're meaningful
             if not line.strip():
                 if result and result[-1]:  # Only add if previous line wasn't empty
