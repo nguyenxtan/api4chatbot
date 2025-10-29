@@ -1,315 +1,3 @@
-### QUÂN CHỦNG HẢI QUÂN
-
-
-### CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
-
-
-### TỔNG CÔNG TY                                        Độc lập – Tự do – Hạnh phúc
-
-
-### TÂN CẢNG SÀI GÒN
-
-
-### Số:                  /QĐ-TCg Bình Thạnh,
-
-
-### QUYẾT ĐỊNH
-
-
-### Về việc ban hành Biểu giá dịch vụ cảng biển tại cảng Tân Cảng  Cát Lái
-
-
-### TỔNG GIÁM ĐỐC TỔNG CÔNG TY TÂN CẢNG SÀI GÒN
-
-
-### Căn cứ Bộ luật Hàng hải Việt Nam 2015;
-
-
-### Căn cứ Luật Giá 2023 số 16/2023/QH15;
-
-
-### Căn cứ Nghị định số 85/2024/NĐ-CP ngày 10/7/2024 của Chính phủ quy định
-
-
-### chi tiết một số điều của Luật giá;
-
-
-### Căn cứ Thông tư số 12/2024/TT-BGTVT ngày 15/05/2024 của Bộ Giao thông vận
-
-
-### tải ban hành Quy định cơ chế, chính sách quản lý giá dịch vụ tại cảng biển Việt Nam;
-
-
-### Căn cứ Quyết định số 810/QĐ-BGTVT ngày 01/7/2024 của Bộ Giao thông vận
-
-
-### tải ban hành khung giá dịch vụ bốc dỡ container tại cảng biển Việt Nam;
-
-
-### Căn cứ tình hình thực tế tại Tổng công ty Tân cảng Sài Gòn;
-
-
-### Theo đề nghị của Trưởng phòng Phòng Kế hoạch Kinh doanh.
-
-
-### QUYẾT ĐỊNH:
-
-
-### Điều 1: Ban hành kèm theo Quyết định này là Biểu giá dịch vụ cảng biển tại cảng
-
-
-### Tân Cảng  Cát Lái do Tổng công ty Tân cảng Sài Gòn quản lý.
-
-
-### Điều 2: Đối tượng áp dụng của biểu giá:
-
-
-### 2.1. Các container được bốc dỡ, giao nhận, bảo quản tại khu nước, khu đất thuộc
-
-
-### cảng Tân Cảng  Cát Lái do Tổng công ty Tân cảng Sài Gòn quản lý.
-
-
-### 2.2. Các Hãng tàu, chủ hàng, chủ phương tiện thuộc các thành phần kinh tế trong
-
-
-### nước có tàu, hàng hóa, phương tiện thông qua cảng Tân Cảng  Cát Lái.
-
-
-### Điều 3: Giá ban hành kèm theo Quyết định này đã bao gồm thuế Giá trị gia tăng với
-
-
-### mức thuế suất 08%. Trong quá trình thực hiện, nếu Chính phủ có sự điều chỉnh thuế suất
-
-
-### Thuế Giá trị gia tăng thì thuế suất mới sẽ được áp dụng.
-
-
-### Điều 4: Quyết định này có hiệu lực thi hành kể từ ngày 10/3/2025 đến khi có
-
-
-### thông báo mới. Các quyết định, chính sách giá trước đây trùng hoặc trái với quyết định
-
-
-### này đều bị bãi bỏ./.
-
-
-Nơi nhận:
-
-### TỔNG GIÁM ĐỐC
-
-
-- Cục Hàng hải Việt Nam;
-- Cảng vụ Hàng hải Tp.HCM;
-- Ban Tổng Giám đốc;
-- Các Đại lý Hàng hải, Hãng tàu và Khách hàng;
-- Lưu: VT, KHKD. T03.
-
-### Ngô Minh Thuấn
-
-
-<!-- Page 1 -->
-
-### 2
-
-
-Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-
-### BIỂU GIÁ DỊCH VỤ CẢNG BIỂN TẠI CẢNG TÂN CẢNG  CÁT LÁI
-
-
-### (Ban hành kèm theo Quyết định số                     /QĐ-TCg )
-
-
-### I. QUY ĐỊNH CHUNG
-
-
-### 1. Đối tượng áp dụng:
-
-
-### - Container được bốc dỡ, giao nhận, bảo quản tại khu nước, khu đất thuộc cảng Tân
-
-
-### Cảng  Cát Lái do Tổng công ty Tân cảng Sài Gòn quản lý (gọi tắt là Cảng Cát Lái).
-
-
-### - Đơn vị chịu trách nhiệm thanh toán: các hãng tàu, chủ hàng, chủ phương tiện thuộc
-
-
-### các thành phần kinh tế trong nước có tàu, hàng hoá, phương tiện thông qua Cảng Cát Lái.
-
-
-### 2. Nguyên tắc tính giá:
-
-
-### - Thực hiện công đoạn nào thì tính giá công đoạn đó.
-
-
-### - Các giá dịch vụ trong Biểu giá này đã bao gồm thuế Giá trị gia tăng.
-
-
-### - Đồng tiền thanh toán là đồng Việt Nam (đồng).
-
-
-### 3. Thời gian làm việc:
-
-
-### - Ngày làm việc hành chính: các ngày trong tuần trừ ngày thứ bảy, chủ nhật, ngày lễ,
-
-
-### tết và các ngày nghỉ theo quy định.
-
-
-### - Giờ làm việc hành chính: từ 07h30 - 17h00 các ngày làm việc hành chính.
-
-
-### - Khi có nhu cầu làm hàng và đăng ký trước: phục vụ làm hàng 24/24h.
-
-
-### 4. Đơn vị tính cước:
-
-
-### a. Đơn vị trọng lượng hoặc khối lượng:
-
-
-### - Tấn (T), tấn quy đổi (R.T) hoặc m3: phần lẻ tới 0,5T (R.T hoặc m3) tính tròn là 0,5T
-
-
-### (R.T hoặc m3), trên 0,5T (R.T hoặc m3) tính tròn là 1T (R.T hoặc m3).
-
-
-### - Trường hợp trong một vận đơn lẻ có trọng lượng hoặc khối lượng hàng hóa nhỏ hơn
-
-
-### 1T (R.T hoặc m3): tính tròn 1T (R.T hoặc m3) để tính cước.
-
-
-### - Container 20 feet
-
-
-### - Container 40 feet
-
-
-### - Container 45 feet
-
-
-### b. Đơn vị thời gian:
-
-
-### - Ngày: tính 24 giờ, phần lẻ tới 12 giờ được tính bằng ½ ngày, phần lẻ trên 12 giờ được
-
-
-### tính bằng 1 ngày.
-
-
-### - Giờ: tính 60 phút, phần lẻ tới 30 phút được tính bằng ½ giờ, phần lẻ trên 30 phút được
-
-
-### tính bằng 1 giờ.
-
-
-### 5. Một số định nghĩa được đề cập trong Biểu giá này:
-
-
-### - “Các cảng thuộc hệ thống của Tổng công ty Tân cảng Sài Gòn” bao gồm: cảng Tân
-
-
-### Cảng  Cát Lái (TCCL), cảng Tân Cảng  Hiệp Phước (TCHP), cảng Quốc tế Tân Cảng 
-
-
-### Cái Mép (TCIT), cảng Tân Cảng  Cái Mép Thị Vải (TCTT), cảng Tân Cảng  Cái Mép
-
-
-### (TCCT), cảng Tân Cảng – Cái Cui (TCCC), Miền Trung (TCMT), cảng Container quốc tế
-
-
-### Tân Cảng Hải Phòng (TC-HICT), cảng Tân Cảng 128, cảng Tân Cảng 189.
-
-
-<!-- Page 2 -->
-
-### 3
-
-
-Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-
-### - “Cảng”: Cảng Tân Cảng  Cát Lái.
-
-
-### - Container IMDG:  là container chứa hàng nguy hiểm.
-
-
-### - Container OOG: là các container chuyên dụng (flatrack, platform, open-top) có chứa
-
-
-### hàng hóa vượt kích thước của container tiêu chuẩn hoặc trọng lượng vượt quá 40 tấn.
-
-
-### +   Container “OOG nhóm 1”: là container OOG có khối lượng toàn bộ (VGM) không
-
-
-### vượt quá 40 tấn, không thực hiện tác nghiệp đặc biệt khi xếp dỡ.
-
-
-### +  Container “OOG nhóm 2”: là container OOG có khối lượng toàn bộ vượt quá 40 tấn
-
-
-### hoặc khi xếp dỡ phải sử dụng các thiết bị hỗ trợ xếp dỡ hoặc thực hiện các tác nghiệp đặc
-
-
-### biệt.
-
-
-### Container hàng chuyên dụng: là các container chuyên dụng (tank, flatrack, platform,
-
-
-### open-top) có chứa hàng hóa không vượt kích thước của container tiêu chuẩn và trọng lượng
-
-
-### không vượt quá 40 tấn.
-
-
-<!-- Page 3 -->
-
-| Phương án làm hàng | Container khô |  |  | Container lạnh |  |
-| --- | --- | --- | --- | --- | --- |
-|  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |
-| Tàu/Sà lan  Bãi | 461.160 | 677.160 | 1.015.200 | 664.200 | 972.000 |
-
-| TT | Phương án làm hàng | Container khô |  |  | Container lạnh |  |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |
-| 1 | Xe  Bãi | 497.000 | 882.000 | 1.031.000 | 646.000 | 1.136.000 |
-| 2 | Hạ container ở tầng
-trên xuống đất phục vụ
-kiểm hoá. | 298.000 | 528.000 | 627.000 | 596.000 | 1.018.000 |
-|  |  | Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định
-dưới đây tại Bảng 23 –TT.9 |  |  |  |  |
-| 3 | Hạ container xuất từ xe
-xuống đất phục vụ
-kiểm hoá. | 795.000 | 1.410.000 | 1.658.000 | 1.242.000 | 2.155.000 |
-
-| Phương án làm hàng | Container khô |  |  | Container lạnh |  |
-| --- | --- | --- | --- | --- | --- |
-|  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |
-| Giao/nhận container hàng
-quá cảnh. | 955.800 | 1.441.800 | 1.749.600 | 1.242.000 | 1.868.400 |
-
-| TT | Loại container | Phương án làm hàng |  |
-| --- | --- | --- | --- |
-|  |  | Tàu/ Sà lan  Bãi | Xe  Bãi |
-| 1 | IMDG | Tăng 50% đơn giá container
-hàng thông thường | Tăng 100% đơn giá container
-hàng thông thường |
-| 2 | OOG nhóm 1 (*) | Tăng 50% đơn giá container
-hàng thông thường | Tăng 200% đơn giá container
-hàng thông thường |
-
-### 4
-
-
-Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-
 ### II. CƯỚC TÁC NGHIỆP CONTAINER
 
 
@@ -328,21 +16,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Đơn vị tính : đồng/container
 
 
-Container  khô
-Container  lạnh
-Phương án làm hàng
-20’
-40’
-45’
-20’
-40’ & 45’
-Tàu/Sà lan  Bãi
-461.160
-677.160
-1.015.200
-664.200
-972.000
-
 ### Ghi chú: Bảng 01 chỉ áp dụng cho tàu/sà lan nội địa.
 
 
@@ -355,35 +28,6 @@ Tàu/Sà lan  Bãi
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-TT
-Phương án làm hàng
-20’
-40’
-45’
-20’
-40’ & 45’
-1
-Xe  Bãi
-497.000      882.000     1.031.000      646.000    1.136.000
-298.000      528.000        627.000      596.000    1.018.000
-2
-Hạ container ở tầng
-trên xuống đất phục vụ
-kiểm hoá.
-Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định
-dưới đây tại Bảng 23 –TT.9
-3
-Hạ container xuất từ xe
-xuống đất phục vụ
-kiểm hoá.
-795.000
-1.410.000
-1.658.000
-1.242.000
-2.155.000
-
 ### 1.1.3. Tác nghiệp đối với container quá cảnh hàng thông thường
 
 
@@ -393,22 +37,6 @@ kiểm hoá.
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-Phương án làm hàng
-20’
-40’
-45’
-20’
-40’ & 45’
-Giao/nhận container hàng
-quá cảnh.
-955.800
-1.441.800
-1.749.600
-1.242.000
-1.868.400
-
 ### 1.1.4. Các trường hợp phụ thu
 
 
@@ -417,24 +45,6 @@ quá cảnh.
 
 ### dỡ được tính bằng đơn giá xếp dỡ container hàng thông thường cộng với phụ thu như sau:
 
-
-Phương án làm hàng
-TT
-Loại container
-Tàu/ Sà lan  Bãi
-Xe  Bãi
-1
-IMDG
-Tăng 50% đơn giá container
-hàng thông thường
-Tăng 100% đơn giá container
-hàng thông thường
-2
-OOG nhóm 1 (*)
-Tăng 50% đơn giá container
-hàng thông thường
-Tăng 200% đơn giá container
-hàng thông thường
 
 <!-- Page 4 -->
 
@@ -471,26 +81,6 @@ chuyên dụng | Tăng 50% đơn giá container hàng thông thường |  |
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-Phương án làm hàng
-TT
-Loại container
-Tàu/ Sà lan  Bãi
-Xe  Bãi
-3
-OOG nhóm 2 (**)
-Thỏa thuận
-Thỏa thuận
-4
-OOG + IMDG
-Bằng tổng phụ thu của
-container OOG và IMDG
-Bằng tổng phụ thu của container
-OOG và IMDG
-5
-Container
-hàng
-chuyên dụng
-Tăng 50% đơn giá container hàng thông thường
 
 ### b. Đối với container lạnh chứa hàng khô thông thường và không cắm điện: phí xếp dỡ
 
@@ -528,88 +118,11 @@ Tăng 50% đơn giá container hàng thông thường
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-TT
-Ngày nhập bãi
-20’
-40’
-45’
-20’
-40’ &
-45’
-1
-Từ ngày thứ 1 - ngày thứ 3
-Miễn phụ thu
-2
-Từ ngày thứ 4 - ngày thứ 6
-230.000
-416.000
-491.000
-348.000
-627.000
-3
-Từ ngày thứ 7 - ngày thứ 9
-348.000
-627.000
-745.000
-522.000
-938.000
-4
-Từ ngày thứ 10 - ngày thứ 15
-522.000
-938.000
-1.118.000
-789.000 1.416.000
-5
-Từ ngày thứ 16 trở đi
-789.000 1.416.000
-1.683.000 1.180.000 2.130.000
-
 ###  Đối với container IMDG, container OOG tính từ ngày có vị trí trên bãi Cảng:
 
 
 ### Bảng 05 Đơn vị tính: đồng/container
 
-
-Container khô
-Container lạnh
-TT
-Ngày nhập bãi
-20’
-40’
-45’
-20’
-40’ & 45’
-1
-Từ ngày thứ 1 - ngày thứ 2
-Miễn phụ thu
-2
-Từ ngày thứ 3 - ngày thứ 4
-627.000
-1.118.000
-1.329.000
-702.000
-1.223.000
-3
-Từ ngày thứ 5 - ngày thứ 6 1.056.000
-1.875.000
-2.223.000
-1.161.000
-2.056.000
-4
-Từ ngày thứ 7- ngày thứ 9 1.490.000
-2.639.000
-3.117.000
-1.627.000
-2.875.000
-5
-Từ ngày thứ 10 trở đi
-1.925.000
-3.384.000
-4.012.000
-2.099.000
-3.695.000
 
 ### e. Phụ thu đối với trường hợp hạ bãi container hàng nhập (kể cả container khô và
 
@@ -668,31 +181,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Đơn vị tính: đồng/container
 
 
-TT
-Loại hàng đóng container
-Container 20’
-Container  40’
-Container 45’
-1
-Hàng khô thông thường
-1.528.000
-2.279.000
-2.279.000
-2
-Hàng lạnh thông thường
-1.993.000
-2.962.000
-2.962.000
-3
-Hàng IMDG/OOG nhóm 1/hàng
-chuyên dụng
-2.298.000
-3.428.000
-3.428.000
-4
-Hàng OOG nhóm 2
-Giá thỏa thuận
-
 ### f. Phụ thu phí giao container hàng nhập được dỡ từ tàu tại các cảng khác (ngoại trừ cảng
 
 
@@ -705,21 +193,6 @@ Giá thỏa thuận
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-Nội dung
-20’
-40’
-45’
-20’
-40’ & 45’
-Phụ phí giao container chuyển cảng
-286.000
-428.000
-497.000
-286.000
-428.000
-
 ### g. Phụ thu phí hàng qua bến đối với container hạ bãi chờ xuất hoặc đóng hàng ở Cảng
 
 
@@ -731,33 +204,6 @@ Phụ phí giao container chuyển cảng
 
 ### Đơn vị tính: đồng/container
 
-
-TT
-Loại hàng đóng container
-Container
-20’
-Container
-40’
-Container
-45’
-1
-Hàng khô thông thường
-1.528.000
-2.279.000
-2.279.000
-2
-Hàng lạnh thông thường
-1.993.000
-2.962.000
-2.962.000
-3
-Hàng IMDG/OOG nhóm 1/hàng chuyên dụng
-2.298.000
-3.428.000
-3.428.000
-4
-Hàng OOG nhóm 2
-Giá thỏa thuận
 
 ### Ghi chú: nếu phát sinh đảo chuyển, phí đảo chuyển thu theo đơn giá tại Bảng 23-TT.9
 
@@ -773,25 +219,6 @@ Giá thỏa thuận
 
 ### Đơn vị tính: đồng/container
 
-
-Container  khô
-Container  lạnh
-TT
-Phương án làm hàng
-20’
-40’
-45’
-20’
-40’ & 45’
-1
-Tàu/Sà lan → Bãi
-235.440
-357.480
-537.840
-351.000
-534.600
-2
-Bãi → Tàu/Sà lan giao khách hàng
 
 <!-- Page 6 -->
 
@@ -835,16 +262,6 @@ rỗng thông thường |
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-2.1
-Cấp rỗng thông thường
-235.440
-357.480
-538.840
-351.000
-535.600
-2.2
-Cấp rỗng chỉ định số
-Có quy định riêng tại Phần II Mục 1.2.4. điểm c
 
 ### Ghi chú: đơn giá tại Bảng 09 chỉ áp dụng cho tàu/sà lan nội địa.
 
@@ -858,65 +275,6 @@ Có quy định riêng tại Phần II Mục 1.2.4. điểm c
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-TT
-Phương án làm hàng
-20’
-40’
-45’
-20’
-40’ & 45’
-1
-Cấp container rỗng từ bãi Cảng lên xe giao khách hàng
-1.1
-Cấp rỗng thông thường.
-478.000
-745.000
-969.000
-627.000
-963.000
-1.2
-Cấp rỗng chỉ định số.
-Có quy định riêng tại Phần II mục 1.2.4. điểm c
-2
-Hạ container rỗng từ xe
-khách hàng xuống bãi Cảng.
-478.000
-745.000
-969.000
-627.000
-963.000
-3
-Hạ container rỗng phục vụ
-sửa chữa, ráp thiết bị.
-342.000
-491.000
-683.000
-441.000
-640.000
-4
-Hạ container rỗng phục vụ kiểm tra độ ẩm
-4.1
-Đối với các container được
-hạ để phục vụ kiểm tra
-nhưng không được chọn do
-không đủ tiêu chuẩn.
-242.000
-366.000
-491.000
-311.000
-472.000
-4.2
-Đối với các container được
-hạ để kiểm tra và được chọn
-để cấp đóng hàng.
-478.000
-745.000
-969.000
-627.000
-963.000
-
 ### 1.2.3. Tác nghiệp đối với container rỗng quá cảnh
 
 
@@ -926,21 +284,6 @@ hạ để kiểm tra và được chọn
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-Phương án làm hàng
-20’
-40’
-45’
-20’
-40’ & 45’
-Giao/nhận container rỗng quá cảnh
-534.600
-799.200
-1.171.800
-696.600
-1.047.600
-
 ### 1.2.4. Các quy định khác đối với container rỗng
 
 
@@ -949,17 +292,6 @@ Giao/nhận container rỗng quá cảnh
 
 ### được tính bằng đơn giá xếp dỡ container rỗng thông thường cộng với phụ thu như sau:
 
-
-Phương án làm hàng
-Loại container
-Tàu/Sà lan  Bãi
-Xe  Bãi
-Container rỗng chuyên
-dụng
-Tăng 50% đơn giá container
-rỗng thông thường
-Tăng 100% đơn giá container
-rỗng thông thường
 
 <!-- Page 7 -->
 
@@ -1063,43 +395,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Đơn vị tính: đồng/container
 
 
-TT
-Phương án làm hàng
-20’DC
-40’DC
-45’DC
-1
-Đóng gạo từ sà lan/ghe vào container (≤ 25 tấn)
-1.1
-+ Loại bao trên 30kg (bao 50kg)
-2.246.400
-2.889.000
--
-1.2
-+ Loại bao từ 30kg/bao trở xuống (bao 25kg)
-2.327.400
-2.980.800
--
-2
-Đóng/rút hàng bao từ container xuống sà lan/ghe
-2.1
-+ Hàng thông thường, không mùi, không độc hại
-2.246.400
-2.889.000
--
-2.2
-+ Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
-3.007.800
-4.017.600
--
-3
-Xả hàng xá từ container xuống sà lan/ghe
-3.1
-+ Hàng thông thường, không mùi, không độc hại
-1.533.600
--
--
-
 <!-- Page 8 -->
 
 | TT | Phương án làm hàng | 20’DC | 40’DC | 45’DC |
@@ -1124,60 +419,6 @@ container đã thực hiện tại STT 01 & 02 | 1.841.400 | 2.635.200 | 3.088.8
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-TT
-Phương án làm hàng
-20’DC
-40’DC
-45’DC
-3.2
-+ Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
-2.187.000
--
--
-4
-Xả hàng bao từ container xuống sà lan / ghe ( theo đề nghị của khách hàng)
-4.1
-+ Hàng thông thường, không mùi, không độc hại
-2.246.400
--
--
-4.2
-+ Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
-3.007.800
--
--
-5
-Đóng thủ công từ xe khách hàng vào container (chỉ áp dụng cho container đóng chung
-Booking với mục STT 01 & 02)
-5.1
-+ Hàng thông thường, không mùi, không độc hại
-1.225.800
-1.733.400
-2.138.400
-5.2
-+ Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
-1.782.000
-2.592.000
-3.186.000
-6
-Rút thủ công từ container xếp lên xe khách hàng (chỉ áp dụng cho container đóng
-chung Booking với mục STT 01 & 02)
-6.1
-+ Hàng thông thường, không mùi, không độc hại
-1.436.400
-1.998.000
-2.435.400
-6.2 + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
-2.057.400
-2.932.200
-3.591.000
-7
-Đóng/rút sang container (rút từ container này
-đóng sang container khác) – chỉ áp dụng cho các
-container đã thực hiện tại STT 01 & 02
-1.841.400
-2.635.200
-3.088.800
 
 ### - Đơn giá trên đã bao gồm phí lấy và trả rỗng trong Cảng, phí đóng/rút hàng và phí
 
@@ -1291,78 +532,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Bảng 13a Đơn vị tính: đồng/container
 
 
-Container khô
-TT
-Phương án làm hàng
-20’DC
-40’DC
-45’DC
-1.177.200
-1.663.200
-2.106.000
-1
-Đóng thủ công hàng thông
-thường từ xe vào container
-(container rỗng có sẵn tại
-Cát Lái)
-- Chuyển container rỗng đến bãi đóng hàng
-- Đóng hàng từ xe của khách hàng vào container
-- Chuyển container hàng về hạ bãi chờ xuất
-Đóng/rút thủ công hàng IMDG từ xe vào container hoặc ngược lại (container rỗng có
-sẵn tại Cát Lái)
-Nhóm IMDG 03. 04. 08.
-09 và máy móc thiết bị có
-bình gas thuộc nhóm
-IMDG 02
-2.057.400
-2.840.400
-3.553.200
-2
-Nhóm IMDG 05 (trừ 5.1 –
-UN1942) , nhóm 06 (trừ
-6.2) và hoá chất thuộc
-nhóm IMDG 02
-4.098.600
-5.680.800
-7.095.600
-3
-Đóng/rút thủ công hàng
-máy móc thiết bị cũ, hàng
-không đồng nhất về kích
-thước từ xe vào container
-hoặc ngược lại.(container
-rỗng có sẵn tại Cát Lái)
-2.057.400
-2.840.400
-3.553.200
-4
-Đóng/rút thủ công hàng sắt
-vụn, phế liệu để rời từ xe
-vào container hoặc ngược
-lại. (container rỗng có sẵn
-tại Cát Lái)
-4.098.600
-5.680.800
-7.095.600
-Rút và đóng một phần khối lượng hàng trong container phục vụ kiểm hoá hoặc rút một
-phần hàng hóa hoặc đóng một phần hàng hóa (có xác nhận của Trung tâm Điều độ cảng)
-Hơn 50%
-1.085.400
-1.517.400
-1.873.800
-Từ 10% tới 50%
-545.400
-766.800
-945.000
-Dưới 10%
-226.800
-313.200
-378.000
-5
-Rút mẫu với số lượng ít để
-kiểm hoá
-Khách hàng tự thực hiện
-
 <!-- Page 10 -->
 
 | TT | Phương án làm hàng | Container khô |  |  |
@@ -1416,62 +585,6 @@ có sẵn tại Cát Lái) | 1.801.000 | 2.552.000 | 2.552.000 |
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-Container khô
-TT
-Phương án làm hàng
-20’DC
-40’DC
-45’DC
-6
-Đóng/rút sang container (rút
-từ container này đóng sang
-container khác, container
-rỗng có sẵn tại Cát Lái)
-2.554.200
-3.574.800
-4.492.800
-1.377.000
-1.911.600
-2.386.800
-- Chuyển container hàng đến bãi rút hàng
-- Rút hàng từ container giao lên xe của khách hàng
-7
-Rút thủ công hàng thông
-thường từ container xếp
-lên xe khách hàng
-- Chuyển container rỗng về bãi rỗng tại Cảng
-1.852.200
-2.581.200
-3.207.600
-Rút ruột thủ công phục vụ
-dán tem hàng hoá nhập
-khẩu và giao lên xe khách
-hàng
-- Nâng container từ bãi lên xe trung chuyển
-- Chuyển bãi nội bộ
-- Rút ruột thủ công phục vụ dán tem
-- Xếp hàng đã dán tem lên xe của khách hàng và chuyển
-rỗng về bãi.
-8
-* Ngoài các công đoạn kể trên, nếu làm thêm công đoạn nào Cảng thu bổ sung công
-đoạn đó theo quy định
-9
-Rút ruột thủ công phục vụ
-dán tem và đóng lại vào
-container
-1.663.200
-2.305.800
-2.948.400
-291.600
-410.400
-507.600
-10
-Rút dưới 10% khối lượng
-hàng trong container để
-đảm bảo trọng lượng xuất
-tàu
-Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo
-quy định tại Bảng 23 –TT.9
 
 ### 2.2.2 Đối với container lạnh
 
@@ -1481,29 +594,6 @@ quy định tại Bảng 23 –TT.9
 
 ### Đơn vị tính: đồng/container
 
-
-Container lạnh
-TT
-Phương án làm hàng
-20’RF
-40’RF
-45’RF
-1.801.000
-2.552.000
-2.552.000
-- Chuyển container rỗng đến bãi đóng hàng
-- Đóng hàng từ xe của khách hàng vào container
-1
-Đóng thủ công hàng thông thường
-từ xe vào container (container rỗng
-có sẵn tại Cát Lái)
-- Chuyển container hàng về hạ bãi chờ xuất
-3.130.000
-4.533.000
-4.533.000
-2
-Đóng thủ công hàng thủy/hải sản
-đông lạnh xếp trên pallet quấn nylon - Trải bãi container rỗng phục vụ đóng hàng
 
 <!-- Page 11 -->
 
@@ -1554,89 +644,6 @@ container xếp lên xe khách hàng | 2.211.000 | 3.105.000 | 3.105.000 |
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-Container lạnh
-TT
-Phương án làm hàng
-20’RF
-40’RF
-45’RF
-- Xếp hàng thủy hải sản đóng thùng từ xe khách
-hàng vào pallet
-- Sử dụng công nhân hỗ trợ đóng gói bằng việc
-dùng thiết bị quấn nylon film cho hàng sau khi
-đã xếp vào pallet theo quy cách do chủ hàng chịu
-trách nhiệm hướng dẫn
-- Đóng pallet đã được quấn nylon film vào
-container
-film đóng container (container rỗng
-có sẵn tại Cát Lái)
-- Chuyển container hàng về bãi chờ xuất
-Đóng ghép hàng vào cùng một container thực hiện tại bãi (container rỗng có sẵn tại
-Cảng Cát Lái)
-- Đóng lần 1
-1.801.000
-2.552.000
-2.552.000
-3
-- Đóng từ lần 2 trở đi
-609.000
-981.000
-981.000
-4
-Đóng cá ngừ nguyên con vào
-container (rỗng có sẵn tại Cảng)
-3.614.000
-5.105.000
-5.105.000
-Đóng/rút thủ công hàng nguy hiểm (IMDG) từ xe vào container hoặc ngược lại
-(container rỗng có sẵn tại Cảng)
-Nhóm IMDG 03, 04, 08, 09 và máy
-móc thiết bị có bình gas thuộc nhóm
-IMDG 02
-3.192.000
-4.353.000
-4.353.000
-5
-Nhóm IMDG 05 (trừ 5.1 - UN1942.
-nhóm 06 (trừ 6.2) và hoá chất thuộc
-nhóm IMDG 02
-6.285.000
-8.706.000
-8.706.000
-Rút và đóng một phần khối lượng hàng trong container phục vụ kiểm hoá (có xác nhận
-của Trung tâm Điều độ Cảng)
-Hơn 50%
-1.695.000
-2.329.000
-2.329.000
-Từ 10% tới 50%
-845.000
-1.161.000
-1.161.000
-Dưới 10%
-335.000
-466.000
-466.000
-6
-Rút mẫu với số lượng ít để kiểm hoá
-Khách hàng tự thực hiện
-Cước đảo chuyển (nếu có chuyển vào nhà kiểm hóa thủ công) sẽ được thu bổ sung theo quy
-định tại Bảng 23 –TT.9
-7
-Đóng/rút sang container (rút từ
-container này đóng sang container
-khác, container rỗng có sẵn tại Cảng
-Cát Lái)
-4.012.000
-5.657.000
-5.657.000
-2.211.000
-3.105.000
-3.105.000
-8
-Rút thủ công hàng thông thường từ
-container xếp lên xe khách hàng
-- Chuyển container hàng đến bãi rút hàng
 
 <!-- Page 12 -->
 
@@ -1669,28 +676,6 @@ hiện hành |  |  |  |
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-Container lạnh
-TT
-Phương án làm hàng
-20’RF
-40’RF
-45’RF
-- Rút hàng từ container giao lên xe cuả khách
-hàng
-- Chuyển container rỗng về bãi rỗng tại cảng Cát Lái
-565.000
-789.000
-789.000
-9
-Rút dưới 10% khối lượng hàng trong
-container để đảm bảo trọng lượng
-xuất tàu
-Cước đảo chuyển (nếu có) sẽ được thu bổ sung
-theo quy định tại Bảng 23 –TT.9
-10
-Lấy hoặc trả container rỗng từ các Depot ngoài về phục vụ đóng rút hàng tại bãi, Cảng
-thu thêm phí vận chuyển (đã bao gồm nâng hạ hai đầu) => Theo biểu giá vận chuyển
-hiện hành
 
 ### Ghi chú: Đối với các phương án không có trong bảng này, khách hàng tự thỏa thuận
 
@@ -1733,48 +718,6 @@ hiện hành
 
 ### Đơn vị tính: đồng/container
 
-
-Container khô
-Container lạnh
-TT
-Ngày nhập bãi
-20’
-40’
-45’
-20’
-40’ & 45’
-1
-Từ ngày thứ 1 - ngày thứ 3
-Miễn phụ thu
-2
-Từ ngày thứ 4 - ngày thứ 6
-230.000
-416.000
-491.000
-348.000
-627.000
-3
-Từ ngày thứ 7 - ngày thứ 9
-348.000
-627.000
-745.000
-522.000
-938.000
-4
-Từ ngày thứ 10 - ngày thứ
-15
-522.000
-938.000
-1.118.000
-789.000
-1.416.000
-5
-Từ ngày thứ 16 trở đi
-789.000
-1.416.000
-1.683.000
-1.180.000
-2.130.000
 
 ### d. Phụ thu lũy tiến cước rút hàng nguy hiểm/OOG (đối với cả container khô và lạnh, đối
 
@@ -1828,47 +771,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-TT
-Ngày nhập bãi
-20’
-40’
-45’
-20’
-40’ & 45’
-1
-Từ ngày thứ 1 - ngày thứ 2
-Miễn phụ thu
-2
-Từ ngày thứ 3 - ngày thứ 4
-627.000
-1.118.000
-1.329.000
-702.000
-1.223.000
-3
-Từ ngày thứ 5 - ngày thứ 6
-1.056.000
-1.875.000
-2.223.000
-1.161.000
-2.056.000
-4
-Từ ngày thứ 7- ngày thứ 9
-1.490.000
-2.639.000
-3.117.000
-1.627.000
-2.875.000
-5
-Từ ngày thứ 10 trở đi
-1.925.000
-3.384.000
-4.012.000
-2.099.000
-3.695.000
-
 ### e. Phụ thu phí quá hạn trải bãi container (áp dụng cho container khô và lạnh đóng ruột,
 
 
@@ -1880,16 +782,6 @@ Từ ngày thứ 10 trở đi
 
 ### Bảng 16 Đơn vị tính: đồng/container/ngày
 
-
-TT
-Loại container
-Đơn giá
-1
-Container 20’
-143.000
-2
-Container 40’ & 45’
-211.000
 
 ### + Thời gian tính phí quá hạn trải bãi container: được tính từ ngày hết thời hạn cho phép
 
@@ -1924,41 +816,11 @@ Container 40’ & 45’
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-20’
-40’
-45’
-20’
-40’ & 45’
-88.560
-135.000
-183.600
-211.000
-286.000
-
 ### g. Trường hợp đóng/rút các loại hàng có kích thước vượt quá quy định của container
 
 
 ### tiêu chuẩn, phải sử dụng xe nâng hàng (loại xe nâng từ 05 tấn đến 20 tấn): cước đóng/rút do
 
-
-TT
-Lô hàng
-Thời gian cho phép lưu tại bãi rút
-ruột/kiểm hóa/đóng hàng
-1
-Lô từ 01 - 05 container
-01 ngày
-2
-Lô từ 06 - 10 container
-02 ngày
-3
-Lô từ 11 - 20 container
-03 ngày
-4
-Lô trên 20 container
-04 ngày
 
 <!-- Page 14 -->
 
@@ -2008,19 +870,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Đơn vị tính: đồng/container
 
 
-Container khô
-Container lạnh
-20’
-40’
-45’
-20’
-40’ & 45’
-183.600
-248.400
-318.600
-261.000
-366.000
-
 ### i. Trường hợp chủ hàng tự rút hàng: Cảng giảm cước với mức như sau:
 
 
@@ -2029,19 +878,6 @@ Container lạnh
 
 ### Đơn vị tính: đồng/container
 
-
-Container khô
-Container lạnh
-20’
-40’
-45’
-20’
-40’ & 45’
-307.800
-432.000
-545.400
-484.000
-683.000
 
 ### 2.4. Trường hợp rút hàng xá tại bãi: (bao gồm các công đoạn chuyển container hàng,
 
@@ -2085,16 +921,6 @@ Container lạnh
 ### Đơn vị tính : đồng/container/giờ
 
 
-TT
-Loại container
-Đơn giá
-1
-Container 20’
-68.000
-2
-Container 40’ & 45’
-96.000
-
 ### Đơn giá trên bao gồm phí điện và phí vận hành container lạnh
 
 
@@ -2106,31 +932,6 @@ Container 40’ & 45’
 
 ### Bảng 22 Đơn vị tính: đồng/container
 
-
-Chu trình chuyển soi
-container
-20’DC
-40’DC
-45’DC
-20’RF
-40’RF &
-45’RF
-Từ
-khu
-hàng
-nhập/xuất/khu hàng lạnh
-=> Chuyển container đến
-máy soi => Trả xuống bãi
-kiểm
-hóa
-/nhà
-kiểm
-hóa/khu hàng lạnh
-845.000
-1.261.000
-1.577.000
-1.105.000
-1.615.000
 
 <!-- Page 15 -->
 
@@ -2215,86 +1016,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Đơn vị tính: đồng/container
 
 
-TT
-Phương án làm hàng
-20’DC
-40’DC
-45’DC
-20’RF
-40’RF &
-45’RF
-1
-Chuyển bãi nội bộ
-- Nâng container từ bãi lên xe trung chuyển.
-- Trung chuyển.
-- Hạ container từ xe trung chuyển xuống bãi.
-1.1
-Đối với container hàng
-397.000
-559.000
-708.000
-764.000
-1.105.000
-1.2
-Đối với container rỗng
-298.000
-422.000
-546.000
-515.000
-764.000
-1.3
-Phục vụ kiểm hoá container
-hàng (không qua máy soi)
-397.000
-559.000
-708.000
-764.000
-1.105.000
-1.4
-Chuyển bãi rút ruột/kiểm
-hoá kết hợp qua cân.
-640.000
-975.000
-1.199.000
-1.049.000
-1.596.000
-1.5
-Khách hàng yêu cầu chuyển
-container từ khu tập kết/hạ
-container để lấy mẫu
-397.000
-559.000
-708.000
-764.000
-1.105.000
-435.000
-764.000
--
--
--
-2
-Cước xếp chồng (bó) hoặc
-xả bó container Flatrack
-Cước gập/dựng vách container Flatrack tính bằng 50%
-cước bó hoặc xả bó.
-3
-Trải bãi container rỗng lạnh
-để phục vụ PTI
--
--
--
-286.000
-466.000
-4
-Trải bãi phục vụ đóng hàng
-nhưng không đóng hàng
-theo lệnh đã đăng ký
-571.000
-845.000
-1.093.000
-1.037.000
-1.503.000
-
 <!-- Page 16 -->
 
 | TT | Phương án làm hàng | 20’DC | 40’DC | 45’DC | 20’RF | 40’RF &
@@ -2346,103 +1067,6 @@ nhận của Trung tâm Điều độ cảng) |  |  |  |  |
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-TT
-Phương án làm hàng
-20’DC
-40’DC
-45’DC
-20’RF
-40’RF &
-45’RF
-5
-Cân container hàng hoặc
-rỗng (container được trung
-chuyển bằng xe của khách
-hàng)
-242.000
-416.000
-491.000
-286.000
-491.000
-6
-Cân container hàng hoặc
-rỗng (container được trung
-chuyển bằng xe của Cảng)
-Đơn giá tính cho một lượt cân, không kết hợp chuyển bãi
-nội bộ
-6.1
-Đối với container hàng
-640.000
-975.000
-1.199.000
-1.049.000
-1.596.000
-6.2
-Đối với container rỗng
-540.000
-838.000
-1.037.000
-801.000
-1.254.000
-7
-Cân xe (không chứa tải) của
-khách hàng tính cho mỗi
-lượt cân
-89.000
-8
-Trường hợp có phát sinh thời
-gian chờ đợi của phương tiện
-trung chuyển ở khu vực máy soi
-theo yêu cầu của Hải quan hoặc
-chủ hàng
-Áp dụng theo đơn giá tại Bảng 29 của Biểu giá này
-Đảo chuyển container hàng
-theo yêu cầu của khách hàng
-(đảo chuyển lấy container
-hàng xuất, đảo chuyển phục
-vụ cân container, đổi Cate,…)
-Tính theo số lượng container thực tế được đảo chuyển.
-dời dịch trong bãi cảng để lấy container của khách hàng
-(có xác nhận của Trung tâm Điều độ cảng)
-Đảo chuyển không sử dụng
-xe đầu kéo của Cảng
-155.000
-224.000
-286.000
-273.000
-435.000
-9
-Đảo chuyển có sử dụng xe
-đầu kéo của Cảng
-397.000
-559.000
-708.000
-764.000
-1.105.000
-Đối với container phải đổi tàu xuất, đổi cảng chuyển tải phát sinh không do lỗi của
-Cảng, container có yêu cầu chất xếp đặc biệt, Cảng thu:
-Đăng ký chuyển tàu do rớt tàu
-640.000
-956.000
-1.105.000
-845.000
-1.354.000
-Đăng ký chuyển ngang tàu,
-đổi cảng chuyển tải
-397.000
-559.000
-708.000
-764.000
-1.105.000
-10
-Đảo chuyển để lấy container
-đăng ký phục vụ chuyển
-ngang tàu, đổi cảng chuyển
-tải hoặc yêu cầu chất xếp
-đặc biệt
-Tính theo số lượng container thực tế được đảo chuyển,
-dời dịch trong bãi cảng để lấy container đăng ký (có xác
-nhận của Trung tâm Điều độ cảng)
 
 <!-- Page 17 -->
 
@@ -2463,39 +1087,6 @@ bị cũ… | 205.000 | 298.000 | 397.000 | 366.000 | 559.000 |
 
 
 Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-TT
-Phương án làm hàng
-20’DC
-40’DC
-45’DC
-20’RF
-40’RF &
-45’RF
-Đảo chuyển không sử dụng
-xe đầu kéo của Cảng
-155.000
-224.000
-286.000
-273.000
-435.000
-Đảo chuyển có sử dụng xe
-đầu kéo của Cảng
-397.000
-559.000
-708.000
-764.000
-1.105.000
-11
-Vệ sinh bãi sau khi rút ruột
-các loại hàng gây bẩn hoặc ô
-nhiễm môi trường bãi như
-sắt phế liệu, máy móc thiết
-bị cũ…
-205.000
-298.000
-397.000
-366.000
-559.000
 
 ###  Các quy định khác
 
@@ -2667,95 +1258,11 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Bảng 24 Đơn vị tính: đồng/container/ngày
 
 
-ĐƠN GIÁ LƯU BÃI CONTAINER
-TT
-THỜI GIAN LƯU BÃI
-20’H
-40’H
-45’H
-Container hàng khô thông thường
-Đến hết ngày thứ 5
-Miễn phí
-Từ ngày thứ 6 - ngày thứ 8
-35.000
-48.000
-62.000
-Từ ngày thứ 9 - ngày thứ 11
-68.000
-96.000
-123.000
-1
-Từ ngày thứ 12 trở đi
-137.000
-191.000
-246.000
-Container hàng lạnh
-Đến hết ngày thứ 5
-Miễn phí
-Từ ngày thứ 6 - ngày thứ 8
-41.000
-62.000
-82.000
-Từ ngày thứ 9 - ngày thứ 11
-82.000
-123.000
-164.000
-2
-Từ ngày thứ 12 trở đi
-164.000
-240.000
-322.000
-Container hàng nguy hiểm (IMDG), container đặc biệt (open top, flatrack,
-platform, tank), container quá khổ + nguy hiểm
-Đến hết ngày thứ 3
-Miễn phí
-Từ ngày thứ 4 - ngày thứ 6
-82.000
-123.000
-164.000
-Từ ngày thứ 7 - ngày thứ 8
-123.000
-185.000
-246.000
-Từ ngày thứ 9 - ngày thứ 11
-185.000
-273.000
-363.000
-3
-Từ ngày thứ 12 trở đi
-273.000
-410.000
-540.000
-
 ### 2. Đối với container rỗng
 
 
 ### Bảng 25 Đơn vị tính: đồng/container/ngày
 
-
-ĐƠN GIÁ LƯU BÃI CONTAINER
-THỜI GIAN LƯU BÃI
-20’R
-40’R
-45’R
-Đến hết ngày thứ 7
-Miễn phí
-Từ ngày thứ 8 - ngày thứ 9
-41.000
-62.000
-62.000
-Từ ngày thứ 10 - ngày thứ 11
-82.000
-123.000
-123.000
-Từ ngày thứ 12 - ngày thứ 13
-109.000
-164.000
-164.000
-Từ ngày thứ 14 trở đi
-164.000
-246.000
-246.000
 
 ### 3. Quy định về cách tính lưu bãi
 
@@ -2860,61 +1367,11 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Bảng 26 Đơn vị tính : đồng/container/ngày
 
 
-Loại container
-TT
-Thời gian hạ bãi sớm hơn
-so với ETA
-20’
-40’ & 45’
-1
-Trong vòng 5 ngày
-Miễn phụ thu
-2
-Từ 6 ngày – 8 ngày
-118.000
-236.000
-3
-Từ 9 ngày –  11 ngày
-236.000
-348.000
-4
-Từ 12 ngày – 14 ngày
-348.000
-466.000
-5
-Trên 14 ngày
-Không tiếp nhận
-
 ### 3.  Đối với container hàng lạnh, container OOG, container hàng nguy hiểm
 
 
 ### Bảng 27 Đơn vị tính : đồng/container/ngày
 
-
-Loại container
-TT
-Thời gian hạ bãi sớm hơn
-so với ETA
-20’
-40’ & 45’
-1
-Trong vòng 2 ngày
-Miễn phụ thu
-2
-Từ 3 ngày – 4 ngày
-236.000
-348.000
-3
-Từ 5 ngày –  6 ngày
-348.000
-528.000
-4
-Từ 7 ngày – 8 ngày
-528.000
-795.000
-5
-Trên 8 ngày
-Không tiếp nhận
 
 <!-- Page 22 -->
 
@@ -2997,23 +1454,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Bảng 28
 
 
-TT
-Phương án
-Thời gian định mức phương tiện
-lưu trong cảng (phút/ phương tiện)
-1
-Giao/Nhận container hàng
-100
-2
-Giao/Nhận container rỗng
-100
-3
-Giao/Nhận container hàng nguy hiểm
-100
-4
-Giao/Nhận container hàng quá khổ. quá tải
-150
-
 ### Ghi chú: Đối với phương tiện vào cảng thực hiện cả hai phương án tác nghiệp (giao và
 
 
@@ -3084,11 +1524,6 @@ Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2
 ### Đơn vị tính: đồng/ phương tiện/ giờ
 
 
-Loại phương tiện
-Đơn giá
-Phương tiện vận chuyển container
-82.000
-
 ### Phương tiện lưu trong cảng quá thời gian định mức do lỗi của cảng thì các Terminal
 
 
@@ -3130,13 +1565,6 @@ Phương tiện vận chuyển container
 
 ### Bảng 30 Đơn vị tính : đồng/container
 
-
-Container hàng/rỗng
-20’ Khô
-20’ Lạnh
-Đơn giá
-155.000
-273.000
 
 ### 4.  Phụ thu phí chuyển đổi mục đích sử dụng container rỗng
 
@@ -3182,15 +1610,6 @@ Container hàng/rỗng
 
 ### Đơn vị tính: đồng/container
 
-
-Container rỗng khô/ lạnh
-20’
-40’
-45’
-Đơn giá
-298.000
-441.000
-559.000
 
 <!-- Page 24 -->
 

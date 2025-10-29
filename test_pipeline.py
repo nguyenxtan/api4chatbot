@@ -56,6 +56,12 @@ def test_pipeline():
         markdown_result = markdown_converter.convert(cleaned_path)
         markdown_content = markdown_result["markdown"]
         logger.info(f"✓ Converted to markdown ({len(markdown_content)} characters)")
+
+        # Save markdown for inspection
+        temp_markdown = PROJECT_ROOT / "temp" / "debug_markdown.md"
+        temp_markdown.parent.mkdir(parents=True, exist_ok=True)
+        with open(temp_markdown, "w", encoding="utf-8") as f:
+            f.write(markdown_content)
     except Exception as e:
         logger.error(f"Markdown conversion failed: {e}")
         return False

@@ -99,20 +99,26 @@ class MarkdownConverter:
             r"_Approved",
         ]
 
+        # Flag to start processing from section II (pricing data section)
+        started_processing = False
+
         for page_num, page in enumerate(doc, start=1):
             # Extract text blocks
             blocks = page.get_text("dict")["blocks"]
 
-            # Extract tables first and collect their bounding boxes
+            # Start processing from page 4 onwards (Section II begins on page 4)
+            if page_num >= 4 and not started_processing:
+                started_processing = True
+                logger.info(f"Started processing from page {page_num}")
+
+            # Extract table bounding boxes first (for skipping text that's inside tables)
             table_bboxes = []
+            tables_to_extract = []
             tables = page.find_tables()
             if tables.tables:
                 for table in tables:
-                    markdown_table = self._extract_table_from_pdf(table)
-                    if markdown_table:
-                        markdown_parts.append(markdown_table)
-                        # Store table bounding box to avoid converting table content to headings
-                        table_bboxes.append(table.bbox)
+                    table_bboxes.append(table.bbox)
+                    tables_to_extract.append(table)
 
             for block in blocks:
                 if block["type"] == 0:  # Text block
@@ -148,28 +154,47 @@ class MarkdownConverter:
                         line_text = line_text.strip()
 
                         if line_text:
-                            # Skip heading conversion for text inside table areas
-                            if in_table_area:
-                                markdown_parts.append(line_text)
-                            else:
-                                # Determine heading level based on font size
-                                avg_font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 0
+                            # Check if we've reached the pricing data section (section II)
+                            if not started_processing and "II." in line_text and "CƯỚC" in line_text:
+                                started_processing = True
+                                logger.info(f"Started processing from: {line_text}")
 
-                                if avg_font_size > 16:
-                                    markdown_parts.append(f"\n# {line_text}\n")
-                                elif avg_font_size > 14:
-                                    markdown_parts.append(f"\n## {line_text}\n")
-                                elif avg_font_size > 12:
-                                    markdown_parts.append(f"\n### {line_text}\n")
-                                else:
-                                    markdown_parts.append(line_text)
+                            # Skip processing until we reach the pricing section
+                            if not started_processing:
+                                continue
+
+                            # Skip text that's inside table areas (it will be rendered by table extraction)
+                            if in_table_area:
+                                # Don't append orphan table text - let the table markdown handle it
+                                continue
+
+                            # Determine heading level based on font size
+                            avg_font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 0
+
+                            if avg_font_size > 16:
+                                markdown_parts.append(f"\n# {line_text}\n")
+                            elif avg_font_size > 14:
+                                markdown_parts.append(f"\n## {line_text}\n")
+                            elif avg_font_size > 12:
+                                markdown_parts.append(f"\n### {line_text}\n")
+                            else:
+                                markdown_parts.append(line_text)
 
                 elif block["type"] == 1:  # Image block
-                    # Note image presence
-                    markdown_parts.append(f"\n[Image on page {page_num}]\n")
+                    # Note image presence (only if we've started processing)
+                    if started_processing:
+                        markdown_parts.append(f"\n[Image on page {page_num}]\n")
 
-            # Add page break marker
-            markdown_parts.append(f"\n<!-- Page {page_num} -->\n")
+            # Add page break marker BEFORE tables (so page markers stay between pages)
+            if started_processing:
+                markdown_parts.append(f"\n<!-- Page {page_num} -->\n")
+
+            # Extract tables AFTER page marker but still within same page's content
+            if tables_to_extract and started_processing:
+                for table in tables_to_extract:
+                    markdown_table = self._extract_table_from_pdf(table)
+                    if markdown_table:
+                        markdown_parts.append(markdown_table)
 
         doc.close()
 
@@ -177,6 +202,13 @@ class MarkdownConverter:
 
         # Clean up excessive newlines (formatting only, no content removal)
         markdown_content = self._clean_markdown(markdown_content)
+
+        # TEMP DEBUG: Save raw markdown before reordering
+        # with open("/tmp/raw_markdown.md", "w", encoding="utf-8") as f:
+        #     f.write(markdown_content)
+
+        # Clean and reorder: remove non-table content before section II, keep tables, reorder them
+        markdown_content = self._clean_and_reorder_content(markdown_content)
 
         # Note: Orphaned table content lines are now handled by skipping heading conversion
         # for text inside table bounding boxes. No need to remove them separately.
@@ -188,6 +220,73 @@ class MarkdownConverter:
             "markdown": markdown_content,
             "metadata": metadata,
         }
+
+    def _clean_and_reorder_content(self, content: str) -> str:
+        """Reorder tables to appear after their headings.
+
+        Problem: Tables are extracted at page level and added after all text content.
+        This method moves tables to appear right after their corresponding "### Bảng XX" headings.
+        """
+        lines = content.split('\n')
+
+        # Step 1: Find section II index
+        section_ii_index = -1
+        for i, line in enumerate(lines):
+            if '### II.' in line or ('### II' in line and 'CƯỚC' in line):
+                section_ii_index = i
+                break
+
+        if section_ii_index == -1:
+            logger.warning("Section II not found, returning full content")
+            return content
+
+        # Step 2: Extract all tables (continuous lines starting with |)
+        # Build a set of line indices that are part of tables
+        table_lines_set = set()
+        table_blocks = []
+
+        i = section_ii_index
+        while i < len(lines):
+            if lines[i].startswith('|'):
+                # Found start of a table
+                table_start = i
+                table_content = []
+                # Collect all consecutive table/empty lines
+                while i < len(lines) and (lines[i].startswith('|') or lines[i].strip() == ''):
+                    table_lines_set.add(i)
+                    table_content.append(lines[i])
+                    i += 1
+                table_blocks.append(table_content)
+            else:
+                i += 1
+
+        if not table_blocks:
+            # No tables found, just keep content from section II onwards
+            return '\n'.join(lines[section_ii_index:])
+
+        # Step 3: Build new content by inserting tables after their headings
+        new_lines = []
+        table_queue = list(table_blocks)  # Queue of tables to insert
+
+        for i in range(section_ii_index, len(lines)):
+            # Skip lines that are part of orphan tables (we'll reinsert them after headings)
+            if i in table_lines_set:
+                continue
+
+            # Add line to output
+            new_lines.append(lines[i])
+
+            # After a "### Bảng XX" heading, insert the next available table
+            if '### Bảng' in lines[i] and lines[i].startswith('###') and table_queue:
+                new_lines.append('')
+                new_lines.extend(table_queue.pop(0))
+
+        # Add any remaining tables at the end
+        for table_lines in table_queue:
+            new_lines.append('')
+            new_lines.extend(table_lines)
+
+        return '\n'.join(new_lines)
 
     def _is_watermark(self, text: str, patterns: list) -> bool:
         """Check if text is likely a watermark."""
