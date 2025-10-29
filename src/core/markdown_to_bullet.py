@@ -72,18 +72,38 @@ class MarkdownToBulletConverter:
                         # Empty line - might be end of table, don't include
                         break
                     else:
-                        # No pipes, might be continuation of previous cell
-                        # Look ahead to see if next line starts with |
+                        # No pipes at start, might be continuation of previous cell
+                        # Look ahead to find next line that either:
+                        # 1. Starts with | (definitely a table row)
+                        # 2. Has pipes (likely cell content continuation)
+                        # 3. Is empty (gap in table)
                         next_idx = i + 1
-                        while next_idx < len(lines) and lines[next_idx].strip() == '':
-                            next_idx += 1
+                        found_table_or_continuation = False
 
-                        if next_idx < len(lines) and lines[next_idx].strip().startswith('|'):
-                            # Next non-empty line is a table row - current line is continuation
+                        while next_idx < len(lines):
+                            next_line = lines[next_idx]
+                            if next_line.strip().startswith('|'):
+                                # Found another table row - current line is continuation
+                                found_table_or_continuation = True
+                                break
+                            elif '|' in next_line:
+                                # Found a line with pipes - likely cell continuation chain
+                                found_table_or_continuation = True
+                                break
+                            elif next_line.strip() == '':
+                                # Empty line - check further
+                                next_idx += 1
+                                continue
+                            else:
+                                # Non-table content - end of table row
+                                break
+
+                        if found_table_or_continuation:
+                            # Current line is part of the table row
                             combined_row += ' ' + current_line.strip()
                             i += 1
                         else:
-                            # Next line is not a table row - end of this row
+                            # Current line is not part of table - end of this row
                             break
 
                 result.append(combined_row)
