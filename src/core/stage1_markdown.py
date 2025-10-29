@@ -111,7 +111,7 @@ class MarkdownConverter:
                 started_processing = True
                 logger.info(f"Started processing from page {page_num}")
 
-            # Extract table bounding boxes first (for skipping text that's inside tables)
+            # Extract table bounding boxes and tables
             table_bboxes = []
             tables_to_extract = []
             tables = page.find_tables()
@@ -119,6 +119,16 @@ class MarkdownConverter:
                 for table in tables:
                     table_bboxes.append(table.bbox)
                     tables_to_extract.append(table)
+
+            # Convert tables to markdown for later insertion
+            extracted_tables = []
+            for table in tables_to_extract:
+                markdown_table = self._extract_table_from_pdf(table)
+                if markdown_table:
+                    extracted_tables.append(markdown_table)
+
+            # Track which tables have been used
+            table_index = 0
 
             for block in blocks:
                 if block["type"] == 0:  # Text block
@@ -163,9 +173,10 @@ class MarkdownConverter:
                             if not started_processing:
                                 continue
 
-                            # NOTE: We used to skip text inside table areas, but this was causing
-                            # table content and headings to be lost. Now we include all text and let
-                            # the post-processing (table reordering) handle duplicates.
+                            # Skip heading conversion for text inside table bounding boxes
+                            # These are table cell contents, not actual headings
+                            if in_table_area:
+                                continue
 
                             # Determine heading level based on font size
                             avg_font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 0
@@ -176,6 +187,10 @@ class MarkdownConverter:
                                 markdown_parts.append(f"\n## {line_text}\n")
                             elif avg_font_size > 12:
                                 markdown_parts.append(f"\n### {line_text}\n")
+                                # After adding "### Bảng XX" heading, insert corresponding table
+                                if "Bảng" in line_text and table_index < len(extracted_tables):
+                                    markdown_parts.append(extracted_tables[table_index])
+                                    table_index += 1
                             else:
                                 markdown_parts.append(line_text)
 
@@ -184,14 +199,12 @@ class MarkdownConverter:
                     if started_processing:
                         markdown_parts.append(f"\n[Image on page {page_num}]\n")
 
-            # Extract tables BEFORE page marker (so they appear with their headings)
-            if tables_to_extract and started_processing:
-                for table in tables_to_extract:
-                    markdown_table = self._extract_table_from_pdf(table)
-                    if markdown_table:
-                        markdown_parts.append(markdown_table)
+            # Add any remaining tables that weren't matched to headings
+            while table_index < len(extracted_tables):
+                markdown_parts.append(extracted_tables[table_index])
+                table_index += 1
 
-            # Add page break marker AFTER tables
+            # Add page break marker
             if started_processing:
                 markdown_parts.append(f"\n<!-- Page {page_num} -->\n")
 
