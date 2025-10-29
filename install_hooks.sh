@@ -18,7 +18,7 @@ cat > "$HOOKS_DIR/pre-commit" << 'HOOK_EOF'
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 TEST_SCRIPT="$PROJECT_ROOT/test_pipeline.py"
-BULLET_OUTPUT="$PROJECT_ROOT/bullet.md"
+BULLET_OUTPUT="$PROJECT_ROOT/sample/bullet.md"
 
 # Colors for output
 RED='\033[0;31m'

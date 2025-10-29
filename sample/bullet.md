@@ -5925,12 +5925,6 @@ TỔNG GIÁM ĐỐC
 Ngô Minh Thuấn
 ━━━━━━━━━━━━━━
 
-• TỔNG CÔNG TY TÂN CẢNG SÀI GÒN
-• Địa chỉ: 722 Điện Biên Phủ, P. 22, Q. Bình Thạnh, TP. HCM
-• Điện thoại: (028) 38990694; Fax: (028) 38993950
-• Người ký: Ngô Minh Thuấn - TGĐ
-• Thời gian ký: 18/02/2025 13:40:25
-
 Người in: Trịnh Vũ Kim Chi - TB KHKD - Trưởng Ban - chitvk@saigonnewport.com.vn
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -5938,7 +5932,6 @@ Ngày in: 18/02/2025 14:29:31
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 • 1
-• Thủ trưởng ĐV
 • Nguyễn Đức Anh -
 • TP KHKD
 • anhnd@saigonnewport.com.v
@@ -5946,7 +5939,6 @@ Ngày in: 18/02/2025 14:29:31
 • 17/02/2025
 • 17:56:19
 • 2
-• Ban chỉ huy VP
 • Nguyễn Thu Bình -
 • PCVP
 • binhnt@saigonnewport.com.v
@@ -5954,18 +5946,11 @@ Ngày in: 18/02/2025 14:29:31
 • 18/02/2025
 • 11:35:53
 • 3
-• CT/TGĐ/PTGĐ
 • Ngô Minh Thuấn -
 • TGĐ
 • thuannm@saigonnewport.co
-• m.vn
 • 18/02/2025
 • 13:40:25
-• TỔNG CÔNG TY TÂN CẢNG SÀI GÒN
-• Địa chỉ: 722 Điện Biên Phủ, P. 22, Q. Bình Thạnh, TP. HCM
-• Điện thoại: (028) 38990694; Fax: (028) 38993950
-• Người ký: Ngô Minh Thuấn - TGĐ
-• Thời gian ký: 18/02/2025 13:40:25
 
 Người in: Trịnh Vũ Kim Chi - TB KHKD - Trưởng Ban - chitvk@saigonnewport.com.vn
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

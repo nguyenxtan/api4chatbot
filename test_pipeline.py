@@ -75,10 +75,11 @@ def test_pipeline():
 
     # Stage 4: Save output as bullet.md
     logger.info("=" * 80)
-    logger.info("Stage 4: Saving output to bullet.md...")
+    logger.info("Stage 4: Saving output to sample/bullet.md...")
     logger.info("=" * 80)
 
-    output_file = PROJECT_ROOT / "bullet.md"
+    output_file = PROJECT_ROOT / "sample" / "bullet.md"
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     try:
         with open(output_file, "w", encoding="utf-8") as f:
             f.write(bullet_content)

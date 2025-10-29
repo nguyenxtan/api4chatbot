@@ -113,10 +113,20 @@ class MarkdownToBulletConverter:
 
             # Handle normal text - add as bullet if not empty
             if line.strip():
+                # Skip metadata/signature lines
+                skip_keywords = [
+                    'người in:', 'người ký:', 'thời gian', 'thủ trưởng',
+                    'ban chỉ huy', 'ct/tgđ', 'email', '.vn', 'điện thoại',
+                    'ngày in:', 'fax:', 'địa chỉ:', 'tổng công ty'
+                ]
+                text_lower = line.strip().lower()
+                if any(keyword in text_lower for keyword in skip_keywords):
+                    continue
+
                 # Check if this looks like a note/remark
                 text = line.strip()
                 if any(keyword in text.lower() for keyword in ['ghi chú', 'chú ý', 'lưu ý', 'cụ thể']):
-                    result.append(f"┃ ⓘ {text}")
+                    result.append(f"ⓘ {text}")
                 else:
                     result.append(f"• {text}")
 
