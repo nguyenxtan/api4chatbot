@@ -185,10 +185,20 @@ class MarkdownToBulletConverter:
 
             # Handle headings
             if line.strip().startswith('#'):
-                heading_result = self._convert_heading(line)
-                result.extend(heading_result)
-                # Extract heading for table context
-                last_heading = line.strip().lstrip('#').strip()
+                heading_text = line.strip().lstrip('#').strip()
+
+                # "Bảng XX" headings should be converted to plain text, not styled headings
+                # This ensures table labels appear inline with content, not as separate sections
+                if heading_text.startswith('Bảng'):
+                    # Add as plain text with underline
+                    result.append(heading_text)
+                    result.append('━' * min(len(heading_text) + 2, 80))
+                    result.append('')
+                else:
+                    heading_result = self._convert_heading(line)
+                    result.extend(heading_result)
+                    # Extract heading for table context
+                    last_heading = heading_text
                 continue
 
             # Handle notes/remarks (Ghi chú)
