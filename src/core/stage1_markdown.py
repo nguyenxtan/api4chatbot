@@ -163,10 +163,9 @@ class MarkdownConverter:
                             if not started_processing:
                                 continue
 
-                            # Skip text that's inside table areas (it will be rendered by table extraction)
-                            if in_table_area:
-                                # Don't append orphan table text - let the table markdown handle it
-                                continue
+                            # NOTE: We used to skip text inside table areas, but this was causing
+                            # table content and headings to be lost. Now we include all text and let
+                            # the post-processing (table reordering) handle duplicates.
 
                             # Determine heading level based on font size
                             avg_font_size = sum(font_sizes) / len(font_sizes) if font_sizes else 0
@@ -185,16 +184,16 @@ class MarkdownConverter:
                     if started_processing:
                         markdown_parts.append(f"\n[Image on page {page_num}]\n")
 
-            # Add page break marker BEFORE tables (so page markers stay between pages)
-            if started_processing:
-                markdown_parts.append(f"\n<!-- Page {page_num} -->\n")
-
-            # Extract tables AFTER page marker but still within same page's content
+            # Extract tables BEFORE page marker (so they appear with their headings)
             if tables_to_extract and started_processing:
                 for table in tables_to_extract:
                     markdown_table = self._extract_table_from_pdf(table)
                     if markdown_table:
                         markdown_parts.append(markdown_table)
+
+            # Add page break marker AFTER tables
+            if started_processing:
+                markdown_parts.append(f"\n<!-- Page {page_num} -->\n")
 
         doc.close()
 
@@ -208,7 +207,8 @@ class MarkdownConverter:
         #     f.write(markdown_content)
 
         # Clean and reorder: remove non-table content before section II, keep tables, reorder them
-        markdown_content = self._clean_and_reorder_content(markdown_content)
+        # DISABLED: Manual table insertion is being done in markdown.md file directly
+        # markdown_content = self._clean_and_reorder_content(markdown_content)
 
         # Note: Orphaned table content lines are now handled by skipping heading conversion
         # for text inside table bounding boxes. No need to remove them separately.

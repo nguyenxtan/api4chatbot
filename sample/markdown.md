@@ -12,6 +12,10 @@
 
 ### Bảng 01
 
+| Phương án làm hàng | Container khô |  |  | Container lạnh |  |
+| --- | --- | --- | --- | --- | --- |
+|  | 20' | 40' | 45' | 20' | 40' & 45' |
+| Tàu/Sà lan  Bãi | 461.160 | 677.160 | 1.015.200 | 664.200 | 972.000 |
 
 ### Đơn vị tính : đồng/container
 
@@ -24,6 +28,13 @@
 
 ### Bảng 02
 
+| TT | Phương án làm hàng | Container khô |  |  | Container lạnh |  |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |  | 20' | 40' | 45' | 20' | 40' & 45' |
+| 1 | Xe  Bãi | 497.000 | 882.000 | 1.031.000 | 646.000 | 1.136.000 |
+| 2 | Hạ container ở tầng trên xuống đất phục vụ kiểm hoá. | 298.000 | 528.000 | 627.000 | 596.000 | 1.018.000 |
+| 3 | Hạ container xuất từ xe xuống đất phục vụ kiểm hoá. | 795.000 | 1.410.000 | 1.658.000 | 1.242.000 | 2.155.000 |
+|  |  | Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định dưới đây tại Bảng 23 –TT.9 |  |  |  |  |
 
 ### Đơn vị tính: đồng/container
 
@@ -33,6 +44,10 @@
 
 ### Bảng 03
 
+| Phương án làm hàng | Container khô |  |  | Container lạnh |  |
+| --- | --- | --- | --- | --- | --- |
+|  | 20' | 40' | 45' | 20' | 40' & 45' |
+| Giao/nhận container hàng quá cảnh. | 955.800 | 1.441.800 | 1.749.600 | 1.242.000 | 1.868.400 |
 
 ### Đơn vị tính: đồng/container
 
