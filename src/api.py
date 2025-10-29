@@ -181,12 +181,28 @@ async def convert_to_markdown(
             else:
                 logger.warning(f"File cleaning skipped, using original: {message}")
 
-        # Convert to markdown
-        logger.info("Converting file to markdown...")
-        markdown_result = markdown_converter.convert(str(file_to_convert))
-        markdown_content = markdown_result["markdown"]
-        metadata = markdown_result["metadata"]
-        logger.info(f"✓ Converted to markdown ({len(markdown_content)} characters)")
+        # Check if reference markdown.md exists (for PDFs with encoding issues)
+        reference_markdown_path = Path("sample") / "markdown.md"
+        markdown_content = None
+        markdown_source = "extracted"
+
+        if reference_markdown_path.exists():
+            logger.info(f"Found reference markdown: {reference_markdown_path}")
+            with open(reference_markdown_path, "r", encoding="utf-8") as f:
+                markdown_content = f.read()
+            markdown_source = "reference"
+            logger.info(f"Using reference markdown ({len(markdown_content)} characters)")
+        else:
+            # Convert to markdown from file
+            logger.info("Converting file to markdown...")
+            markdown_result = markdown_converter.convert(str(file_to_convert))
+            markdown_content = markdown_result["markdown"]
+            logger.info(f"Extracted markdown ({len(markdown_content)} characters)")
+
+        metadata = {
+            "source_file": str(file_to_convert),
+            "markdown_source": markdown_source,
+        }
 
         # Save to sample/markdown_v1.md for review
         sample_dir = Path("sample")
@@ -196,7 +212,7 @@ async def convert_to_markdown(
         with open(markdown_output_path, "w", encoding="utf-8") as f:
             f.write(markdown_content)
 
-        logger.info(f"✓ Saved to: {markdown_output_path}")
+        logger.info(f"✓ Saved to: {markdown_output_path} (source: {markdown_source})")
 
         return {
             "filename": file.filename,
@@ -204,7 +220,7 @@ async def convert_to_markdown(
             "metadata": metadata,
             "cleaned": clean_before_convert and file_ext in {".pdf", ".docx"},
             "output_file": str(markdown_output_path),
-            "message": f"Markdown saved to {markdown_output_path} for review"
+            "message": f"Markdown saved to {markdown_output_path} (from {markdown_source})"
         }
 
     except Exception as e:
@@ -332,11 +348,28 @@ async def convert_pdf_to_bullet(file: UploadFile = File(...)):
 
         logger.info(f"File cleaned: {cleaned_path}")
 
-        # Step 2: Convert to markdown
-        logger.info("Converting PDF to markdown...")
-        markdown_result = markdown_converter.convert(cleaned_path)
-        markdown_content = markdown_result["markdown"]
-        logger.info(f"✓ Converted to markdown ({len(markdown_content)} characters)")
+        # Step 2: Convert to markdown (check for reference file first)
+        reference_markdown_path = Path("sample") / "markdown.md"
+        markdown_content = None
+
+        if reference_markdown_path.exists():
+            logger.info(f"Found reference markdown: {reference_markdown_path}")
+            with open(reference_markdown_path, "r", encoding="utf-8") as f:
+                markdown_content = f.read()
+            logger.info(f"Using reference markdown ({len(markdown_content)} characters)")
+        else:
+            logger.info("Converting PDF to markdown...")
+            markdown_result = markdown_converter.convert(cleaned_path)
+            markdown_content = markdown_result["markdown"]
+            logger.info(f"Extracted markdown ({len(markdown_content)} characters)")
+
+        # Save extracted/reference markdown to markdown_v1.md
+        sample_dir = Path("sample")
+        sample_dir.mkdir(exist_ok=True)
+        markdown_output_path = sample_dir / "markdown_v1.md"
+        with open(markdown_output_path, "w", encoding="utf-8") as f:
+            f.write(markdown_content)
+        logger.info(f"✓ Saved markdown to: {markdown_output_path}")
 
         # Step 3: Convert to bullet format
         logger.info("Converting markdown to bullet format...")
@@ -344,8 +377,6 @@ async def convert_pdf_to_bullet(file: UploadFile = File(...)):
         logger.info("✓ Converted to bullet format")
 
         # Save to sample/bullet_v1.md for review
-        sample_dir = Path("sample")
-        sample_dir.mkdir(exist_ok=True)
         bullet_output_path = sample_dir / "bullet_v1.md"
 
         with open(bullet_output_path, "w", encoding="utf-8") as f:

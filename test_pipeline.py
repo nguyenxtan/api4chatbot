@@ -69,11 +69,17 @@ def test_pipeline():
             logger.error(f"Markdown conversion failed: {e}")
             return False
 
-    # Save markdown for inspection
+    # Save markdown for inspection (both to temp and sample as v1)
     temp_markdown = PROJECT_ROOT / "temp" / "debug_markdown.md"
     temp_markdown.parent.mkdir(parents=True, exist_ok=True)
     with open(temp_markdown, "w", encoding="utf-8") as f:
         f.write(markdown_content)
+
+    # Also save to sample/markdown_v1.md (as the API does)
+    markdown_v1_path = PROJECT_ROOT / "sample" / "markdown_v1.md"
+    with open(markdown_v1_path, "w", encoding="utf-8") as f:
+        f.write(markdown_content)
+    logger.info(f"✓ Saved markdown_v1.md for review")
 
     # Stage 3: Convert to bullet format
     logger.info("=" * 80)
