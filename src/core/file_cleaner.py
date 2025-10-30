@@ -79,6 +79,7 @@ class FileCleaner:
             with pikepdf.open(file_path) as pdf:
                 total_pages = len(pdf.pages)
                 annotation_count = 0
+                content_removed_count = 0
 
                 logger.info(f"Processing {total_pages} pages")
 
@@ -93,11 +94,22 @@ class FileCleaner:
                                 del page["/Annots"]
                                 logger.debug(f"Page {page_num}: Removed {len(annots)} annotations")
 
+                        # Remove watermark/header/footer from content streams
+                        if "/Contents" in page:
+                            try:
+                                content_removed = self._remove_header_footer_from_content(page, pdf)
+                                content_removed_count += content_removed
+                                if content_removed > 0:
+                                    logger.debug(f"Page {page_num}: Removed {content_removed} header/footer elements")
+                            except Exception as content_err:
+                                logger.debug(f"Page {page_num}: Could not process content stream: {content_err}")
+                                continue
+
                     except Exception as page_error:
                         logger.warning(f"Error processing page {page_num}: {page_error}")
                         continue
 
-                logger.info(f"Removed {annotation_count} annotations (watermarks)")
+                logger.info(f"Removed {annotation_count} annotations and {content_removed_count} header/footer elements")
 
                 # Save cleaned PDF
                 output_filename = f"cleaned_{file_path.stem}.pdf"
@@ -115,7 +127,7 @@ class FileCleaner:
 
                 return (
                     True,
-                    f"PDF cleaned successfully. Removed {annotation_count} watermarks/annotations.",
+                    f"PDF cleaned successfully. Removed {annotation_count} annotations and {content_removed_count} header/footer elements.",
                     str(output_path)
                 )
 
