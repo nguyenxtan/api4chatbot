@@ -287,10 +287,11 @@ class FileCleaner:
             return 0
 
     def _filter_content_stream(self, content: bytes, header_threshold: float, footer_threshold: float, page_height: float) -> Tuple[bytes, int]:
-        """Filter content stream to remove header/footer text.
+        """Filter content stream to remove header/footer text and signature blocks.
 
         Strategy: Parse PDF content operators, track text matrix (Tm), and skip
         text drawing commands (Tj, TJ) when text positioning indicates header/footer.
+        Also removes signature/approval blocks like "Người in: ..."
 
         Note: Y coordinates can be negative or outside normal page range due to
         coordinate transformations (cm commands). We detect these as header/footer.
@@ -318,6 +319,13 @@ class FileCleaner:
             page_width = 595  # Approximate standard page width
             footer_y_positions = [0, 10, 13.07, 28.3, 29.97, 30.97, 46.87]
 
+            # Patterns to match and remove (signature blocks, watermarks, etc)
+            remove_patterns = [
+                "Người in",  # Vietnamese signature block
+                "ký duyệt",  # Approval
+                "xác nhận",  # Confirmation
+            ]
+
             for i, line in enumerate(lines):
                 line_stripped = line.strip()
 
@@ -343,16 +351,18 @@ class FileCleaner:
                             # 5. Page numbers/footers: Very bottom (0 < Y < 50) - usually contains page numbers
                             # 6. Footer specific Y positions: 0, 13.07, 28.3, 29.97, 30.97 (Vietnamese doc pattern)
                             # 7. Center top: Very top (y > 95% height) AND center X (200-400)
+                            # 8. Signature block: Y around 230-250 (specific Vietnamese doc pattern)
                             is_header = y_pos >= header_threshold
                             is_footer = y_pos <= footer_threshold
                             is_unusual = y_pos < 0 or y_pos > page_height + 100
                             is_page_number_top = y_pos >= page_height * 0.95 and 200 < x_pos < 400
+                            is_signature_block = 220 < y_pos < 260  # Signature block at Y=239
                             # Very specific footer Y positions for Vietnamese documents
                             # Only use for hex-footer detection, NOT for general header/footer region
                             is_footer_specific_y = any(abs(y_pos - fy) < 1.0 for fy in footer_y_positions)
 
                             # Set skip_next_text for NORMAL header/footer removal (page numbers, footer lines)
-                            if is_header or is_footer or is_unusual or is_page_number_top:
+                            if is_header or is_footer or is_unusual or is_page_number_top or is_signature_block:
                                 skip_next_text = True
                                 skip_hex_footer = False  # Don't skip hex at header!
                                 if is_page_number_top:
