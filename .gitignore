@@ -41,6 +41,7 @@ data/
 temp/
 temp/cleaned/
 sample/
+api4chatbot/
 # *.pdf    ← Allow PDF files
 *.docx
 *.xlsx
