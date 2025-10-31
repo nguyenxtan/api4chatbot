@@ -77,75 +77,80 @@ a. Đối với container IMDG, container OOG, container hàng chuyên dụng đ
 dỡ được tính bằng đơn giá xếp dỡ container hàng thông thường cộng với phụ thu như sau:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 3: OOG nhóm 2 (**)
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → Thỏa thuận
-┃ •                           → Thỏa thuận
+• Từ xe xuống bãi hoặc từ bãi lên xe
 
-┃ PHƯƠNG ÁN 4: OOG + IMDG
+┃ PHƯƠNG ÁN 1: 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → Bằng tổng phụ thu của container OOG và IMDG
-┃ •                           → Bằng tổng phụ thu của container OOG và IMDG
+┃ • OOhóm 2 (**)              → Container hàng chuyên dụng
+┃ • Thỏa thuận                → Tăng 50% đơn giá container hàng thông thường
 
-┃ PHƯƠNG ÁN 5: Container hàng chuyên dụng
+┃ PHƯƠNG ÁN 2: TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → Tăng 50% đơn giá container hàng thông thường
+┃ • OOhóm 2 (**)              → Ngày nhập bãi
+┃ • Thỏa thuận                → Container khô
 
-┃ PHƯƠNG ÁN TT: Ngày nhập bãi
+┃ PHƯƠNG ÁN 5: 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → Container khô
+┃ • OOhóm 2 (**)              → Từ ngày thứ 1 - ngày thứ 3
+┃ • Thỏa thuận                → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 1: Từ ngày thứ 1 - ngày thứ 3
+┃ PHƯƠNG ÁN 6: 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → Miễn phụ thu
+┃ • OOhóm 2 (**)              → Từ ngày thứ 4 - ngày thứ 6
+┃ • Thỏa thuận                → 230.000
+┃ • Thỏa thuận                → 416.000
 
-┃ PHƯƠNG ÁN 2: Từ ngày thứ 4 - ngày thứ 6
+┃ PHƯƠNG ÁN 7: 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 230.000
-┃ •                           → 416.000
+┃ • OOhóm 2 (**)              → Từ ngày thứ 7 - ngày thứ 9
+┃ • Thỏa thuận                → 348.000
+┃ • Thỏa thuận                → 627.000
 
-┃ PHƯƠNG ÁN 3: Từ ngày thứ 7 - ngày thứ 9
+┃ PHƯƠNG ÁN 8: 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 348.000
-┃ •                           → 627.000
+┃ • OOhóm 2 (**)              → Từ ngày thứ 10 - ngày thứ 15
+┃ • Thỏa thuận                → 522.000
+┃ • Thỏa thuận                → 938.000
 
-┃ PHƯƠNG ÁN 4: Từ ngày thứ 10 - ngày thứ 15
+┃ PHƯƠNG ÁN 9: 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 522.000
-┃ •                           → 938.000
+┃ • OOhóm 2 (**)              → Từ ngày thứ 16 trở đi
+┃ • Thỏa thuận                → 789.000
+┃ • Thỏa thuận                → 1.416.000
 
-┃ PHƯƠNG ÁN 5: Từ ngày thứ 16 trở đi
+┃ PHƯƠNG ÁN 10: TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 789.000
-┃ •                           → 1.416.000
+┃ • OOhóm 2 (**)              → Ngày nhập bãi
+┃ • Thỏa thuận                → Container khô
 
-┃ PHƯƠNG ÁN TT: Ngày nhập bãi
+┃ PHƯƠNG ÁN 13: 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → Container khô
+┃ • OOhóm 2 (**)              → Từ ngày thứ 1 - ngày thứ 2
+┃ • Thỏa thuận                → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 1: Từ ngày thứ 1 - ngày thứ 2
+┃ PHƯƠNG ÁN 14: 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → Miễn phụ thu
+┃ • OOhóm 2 (**)              → Từ ngày thứ 3 - ngày thứ 4
+┃ • Thỏa thuận                → 627.000
+┃ • Thỏa thuận                → 1.118.000
 
-┃ PHƯƠNG ÁN 2: Từ ngày thứ 3 - ngày thứ 4
+┃ PHƯƠNG ÁN 15: 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 627.000
-┃ •                           → 1.118.000
+┃ • OOhóm 2 (**)              → Từ ngày thứ 5 - ngày thứ 6
+┃ • Thỏa thuận                → 1.056.000
+┃ • Thỏa thuận                → 1.875.000
 
-┃ PHƯƠNG ÁN 3: Từ ngày thứ 5 - ngày thứ 6
+┃ PHƯƠNG ÁN 16: 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 1.056.000
-┃ •                           → 1.875.000
+┃ • OOhóm 2 (**)              → Từ ngày thứ 7- ngày thứ 9
+┃ • Thỏa thuận                → 1.490.000
+┃ • Thỏa thuận                → 2.639.000
 
-┃ PHƯƠNG ÁN 4: Từ ngày thứ 7- ngày thứ 9
+┃ PHƯƠNG ÁN 17: 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 1.490.000
-┃ •                           → 2.639.000
-
-┃ PHƯƠNG ÁN 5: Từ ngày thứ 10 trở đi
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng        → 1.925.000
-┃ •                           → 3.384.000
+┃ • OOhóm 2 (**)              → Từ ngày thứ 10 trở đi
+┃ • Thỏa thuận                → 1.925.000
+┃ • Thỏa thuận                → 3.384.000
 
 b. Đối với container lạnh chứa hàng khô thông thường và không cắm điện: phí xếp dỡ
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -271,16 +276,12 @@ container lạnh) chuyển từ các cảng nội địa khác về (ngoài các
 ┃ • Loại hàng đóng container  → Phương án làm hàng
 ┃ • Container 20’             → Container khô
 
-┃ PHƯƠNG ÁN 1: 1
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Tàu/Sà lan → Bãi
-┃ • Container 20’             → 235.440
-┃ • Container 40’             → 357.480
-┃ • Container 45’             → 537.840
+• Từ xe xuống bãi hoặc từ bãi lên xe
+• Từ tàu hoặc sà lan đến bãi hoặc từ bãi xuống tàu hoặc sà lan
+• Từ xe xuống bãi hoặc từ bãi lên xe
 
-┃ PHƯƠNG ÁN 2: 2
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Bãi → Tàu/Sà lan giao khách hàng
+6
+━
 
 ty Tân cảng Sài Gòn) mà Cảng có thể tiếp nhận được theo chính sách tiếp nhận hiện hành và
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -402,10 +403,7 @@ Bảng 09
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Đối với các container được hạ để kiểm tra và được chọn để cấp đóng hàng. 20’ → Phương án làm hàng
 
-┃ PHƯƠNG ÁN 5: Container rỗng chuyên dụng
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Đối với các container được hạ để kiểm tra và được chọn để cấp đóng hàng. 20’ → Tăng 50% đơn giá container rỗng thông thường
-┃ • 478.000 40’               → Tăng 100% đơn giá container rỗng thông thường
+• Từ xe xuống bãi hoặc từ bãi lên xe
 
 Ghi chú: đơn giá tại Bảng 09 chỉ áp dụng cho tàu/sà lan nội địa.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

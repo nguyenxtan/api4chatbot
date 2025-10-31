@@ -34,7 +34,16 @@
       "Bash(python:*)",
       "Bash(git revert:*)",
       "Bash(pip install:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(sample/bullet_v1.md )",
+      "Bash(sample/bullet_v1.json )",
+      "Bash(sample/markdown_v1.md )",
+      "Bash(sample/test_original_markdown.md )",
+      "Bash(sample/test_cleaned_markdown.md )",
+      "Bash(sample/test_cleaned31_markdown.md )",
+      "Bash(\"sample/cleaned_508_QĐ_TCg_Quyết_định_về_việc_ban_hành_Biểu_giá_dịch (29).pdf\" )",
+      "Bash(\"sample/cleaned_508_QĐ_TCg_Quyết_định_về_việc_ban_hành_Biểu_giá_dịch (31).pdf\" )",
+      "Bash(sample/extract_from_n8n.json)"
     ],
     "deny": [],
     "ask": []
