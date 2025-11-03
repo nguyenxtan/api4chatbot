@@ -1536,6 +1536,21 @@ class MarkdownToBulletConverter:
             if len(cells) < 2 or not any(cells):  # Skip empty rows
                 continue
 
+            # Detect ghi chú (note) rows - typically have empty first cells but content in later columns
+            # Example: |  |  | Cước đảo chuyển ... |  |  |
+            empty_cell_count = sum(1 for i in range(min(2, len(cells))) if not cells[i])
+            has_content = any(cells[i] for i in range(2, len(cells))) if len(cells) > 2 else False
+            is_note_row = (empty_cell_count == 2 and has_content and
+                          any(keyword in ''.join(cells).lower() for keyword in
+                              ['cước', 'ghi chú', 'chú ý', 'lưu ý', 'quy định', 'được']))
+
+            if is_note_row:
+                # Handle as note row - find the text content and format as note
+                note_text = ' '.join(c for c in cells if c.strip())
+                result.append(f"ⓘ {note_text}")
+                result.append('')
+                continue
+
             # Get action/description from appropriate column
             if has_tt and has_loai_container and has_phuong_an:
                 # Format: TT | Loại container | Phương án | Prices...

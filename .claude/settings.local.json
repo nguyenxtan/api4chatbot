@@ -46,7 +46,8 @@
       "Bash(sample/extract_from_n8n.json)",
       "Bash(git ls-tree:*)",
       "Bash(git merge:*)",
-      "Bash(sed:*)"
+      "Bash(sed:*)",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": []
