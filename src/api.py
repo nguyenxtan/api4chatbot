@@ -44,6 +44,11 @@ async def root():
     }
 
 
+class BulletRequest(BaseModel):
+    """Request model for converting text to bullet format."""
+    text: str
+
+
 class MarkdownChunkRequest(BaseModel):
     """Request model for chunking markdown content."""
     markdown_content: str
@@ -264,15 +269,15 @@ async def split_by_table(request: MarkdownChunkRequest):
 
 
 @app.post("/documents/bullet")
-async def convert_markdown_to_bullet(request: MarkdownChunkRequest):
+async def convert_text_to_bullet(request: BulletRequest):
     """
-    Convert markdown content to bullet list format.
+    Convert text/markdown content to bullet list format.
 
     Converts markdown tables and headings to bullet format with natural language
     arrow conversion (e.g., "Xe ↔ Bãi" → "Xe xuống bãi hoặc từ bãi lên xe")
 
     Args:
-        request: Markdown content to convert
+        request: Text content to convert (accepts markdown or N8N extraction format)
 
     Returns:
         JSON with converted bullet format
@@ -280,13 +285,13 @@ async def convert_markdown_to_bullet(request: MarkdownChunkRequest):
     try:
         logger.info("Processing bullet conversion request")
 
-        if not request.markdown_content or not request.markdown_content.strip():
-            raise HTTPException(status_code=400, detail="Markdown content cannot be empty")
+        if not request.text or not request.text.strip():
+            raise HTTPException(status_code=400, detail="Text content cannot be empty")
 
         # Convert to bullet format
-        bullet_content = bullet_converter.convert(request.markdown_content)
+        bullet_content = bullet_converter.convert(request.text)
 
-        logger.info("Successfully converted markdown to bullet format")
+        logger.info("Successfully converted text to bullet format")
 
         return {
             "status": "success",
@@ -299,110 +304,6 @@ async def convert_markdown_to_bullet(request: MarkdownChunkRequest):
     except Exception as e:
         logger.error(f"Error converting to bullet format: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.post("/documents/pdf-to-bullet")
-async def convert_pdf_to_bullet(file: UploadFile = File(...)):
-    """
-    Full pipeline: Convert PDF to bullet format directly.
-
-    This endpoint:
-    1. Cleans the PDF file
-    2. Converts to markdown (using pre-corrected sample/markdown.md if available)
-    3. Converts markdown to bullet format
-
-    Args:
-        file: PDF file to convert
-
-    Returns:
-        Bullet formatted content
-    """
-    # Validate file extension
-    file_ext = Path(file.filename).suffix.lower()
-    if file_ext != ".pdf":
-        raise HTTPException(
-            status_code=400,
-            detail=f"Only PDF files are supported. Got: {file_ext}"
-        )
-
-    logger.info(f"Converting PDF to bullet: {file.filename}")
-
-    # Save uploaded file temporarily
-    temp_dir = Path("temp")
-    temp_dir.mkdir(exist_ok=True)
-    temp_file = temp_dir / file.filename
-
-    try:
-        # Save file
-        content = await file.read()
-        with open(temp_file, "wb") as f:
-            f.write(content)
-
-        # Step 1: Clean file
-        logger.info(f"Cleaning file: {file.filename}")
-        success, message, cleaned_path = file_cleaner.clean_file(str(temp_file))
-
-        if not success:
-            logger.error(f"File cleaning failed: {message}")
-            raise HTTPException(status_code=400, detail=message)
-
-        logger.info(f"File cleaned: {cleaned_path}")
-
-        # Step 2: Convert to markdown (check for reference file first)
-        reference_markdown_path = Path("sample") / "markdown.md"
-        markdown_content = None
-
-        if reference_markdown_path.exists():
-            logger.info(f"Found reference markdown: {reference_markdown_path}")
-            with open(reference_markdown_path, "r", encoding="utf-8") as f:
-                markdown_content = f.read()
-            logger.info(f"Using reference markdown ({len(markdown_content)} characters)")
-        else:
-            logger.info("Converting PDF to markdown...")
-            markdown_result = markdown_converter.convert(cleaned_path)
-            markdown_content = markdown_result["markdown"]
-            logger.info(f"Extracted markdown ({len(markdown_content)} characters)")
-
-        # Save extracted/reference markdown to markdown_v1.md
-        sample_dir = Path("sample")
-        sample_dir.mkdir(exist_ok=True)
-        markdown_output_path = sample_dir / "markdown_v1.md"
-        with open(markdown_output_path, "w", encoding="utf-8") as f:
-            f.write(markdown_content)
-        logger.info(f"✓ Saved markdown to: {markdown_output_path}")
-
-        # Step 3: Convert to bullet format
-        logger.info("Converting markdown to bullet format...")
-        bullet_content = bullet_converter.convert(markdown_content)
-        logger.info("✓ Converted to bullet format")
-
-        # Save to sample/bullet_v1.md for review
-        bullet_output_path = sample_dir / "bullet_v1.md"
-
-        with open(bullet_output_path, "w", encoding="utf-8") as f:
-            f.write(bullet_content)
-
-        logger.info(f"✓ Saved to: {bullet_output_path}")
-
-        return {
-            "status": "success",
-            "filename": file.filename,
-            "bullet_content": bullet_content,
-            "content_length": len(bullet_content),
-            "output_file": str(bullet_output_path),
-            "message": f"Bullet content saved to {bullet_output_path} for review"
-        }
-
-    except HTTPException:
-        raise
-    except Exception as e:
-        logger.error(f"Error converting PDF to bullet: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
-
-    finally:
-        # Clean up temp file
-        if temp_file.exists():
-            temp_file.unlink()
 
 
 @app.get("/documents/download/{filename}")
