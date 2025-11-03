@@ -1464,7 +1464,7 @@ class MarkdownToBulletConverter:
                 logger.debug(f"Found separator at index {separator_idx}")
                 break
 
-        # Check if row after separator has container sizes
+        # Check if row after separator has sub-headers
         has_multi_row_header = False
         sub_headers = None
         data_start_idx = 2
@@ -1472,11 +1472,13 @@ class MarkdownToBulletConverter:
         if separator_idx is not None and len(table_rows) > separator_idx + 1:
             potential_sub_header = table_rows[separator_idx + 1]
 
-            # Check for container sizes using regex (handles both ' and ' quotes)
-            # Match patterns like: 20', 40', 45', 20', 40', 45' (with Unicode smart quote U+2019)
+            # Check for container sizes OR other sub-headers
+            # Match patterns like: 20', 40', 45' (container sizes) or "Tàu/ Sà lan" (location indicators)
             has_container_size = bool(re.search(r"\d+[''ʼ\u2019]", potential_sub_header))
+            has_location_header = bool(re.search(r"[Tt]àu|[Ss]à lan|[Bb]ãi|[Xx]e", potential_sub_header))
+            has_any_text_in_pipes = len([h for h in potential_sub_header.split('|')[1:-1] if h.strip()]) > 0
 
-            if has_container_size:
+            if has_container_size or has_location_header or (has_any_text_in_pipes and separator_idx == 1):
                 has_multi_row_header = True
                 sub_headers_raw = [h.strip() for h in potential_sub_header.split('|')[1:-1]]
                 sub_headers = [self._clean_header(h) if h.strip() else '' for h in sub_headers_raw]
@@ -1488,6 +1490,7 @@ class MarkdownToBulletConverter:
 
         # Determine table type
         has_tt = 'TT' in (headers[0] if headers else '')
+        has_loai_container = any('loại' in h.lower() or 'container' in h.lower() for i, h in enumerate(headers) if i == 1)
         has_phuong_an = any('phương' in h.lower() or 'phương án' in h.lower() for h in headers)
 
         # Build combined headers if multi-row
@@ -1534,39 +1537,70 @@ class MarkdownToBulletConverter:
                 continue
 
             # Get action/description from appropriate column
-            if has_tt and has_phuong_an:
+            if has_tt and has_loai_container and has_phuong_an:
+                # Format: TT | Loại container | Phương án | Prices...
+                loai_container = cells[1] if len(cells) > 1 else ''
+                action_idx = 2  # Start from Phương án column
+                tt_num = cells[0] if len(cells) > 0 else ''
+            elif has_tt and has_phuong_an:
                 # Format: TT | Phương án | Prices...
+                loai_container = ''
                 action_idx = 1
+                tt_num = cells[0] if len(cells) > 0 else ''
+            elif has_loai_container and has_phuong_an:
+                # Format: Loại container | Phương án | Prices...
+                loai_container = cells[0] if len(cells) > 0 else ''
+                action_idx = 1
+                tt_num = ''
             elif has_phuong_an:
+                loai_container = ''
                 action_idx = 0
+                tt_num = ''
             else:
+                loai_container = ''
                 action_idx = 0
+                tt_num = ''
 
+            # Get the main action value
             action = cells[action_idx] if action_idx < len(cells) else ''
 
             # Clean up action text (remove watermark artifacts)
             action = self._clean_cell_content(action)
+            loai_container = self._clean_cell_content(loai_container)
 
-            if action:
+            if action or loai_container:
                 # Convert arrows in action
                 action = self._convert_arrow(action)
+                loai_container = self._convert_arrow(loai_container)
 
-                # Get actual row number from TT column if exists
-                if has_tt and len(cells) > 0:
-                    try:
-                        row_num = cells[0].strip()
-                    except:
-                        row_num = row_idx + 1
+                # Build the title: include loại container if available
+                if loai_container and loai_container.strip():
+                    if tt_num and tt_num.strip():
+                        title = f"{tt_num}: {loai_container}"
+                    else:
+                        title = loai_container
                 else:
-                    row_num = row_idx + 1
+                    title = action if action else 'Phương án'
+                    action = ''  # Don't duplicate the action
 
                 # Format as boxed phương án (option/solution)
-                result.append(f"┃ PHƯƠNG ÁN {row_num}: {action}")
+                result.append(f"┃ PHƯƠNG ÁN {title}" if title and not title.startswith('PHƯƠNG ÁN') else f"┃ {title if title.startswith('PHƯƠNG ÁN') else 'PHƯƠNG ÁN ' + title}")
                 result.append('┣' + '━' * 70)
+
+                # If we separated loai_container, add action as first item
+                if loai_container and loai_container.strip() and action and action.strip():
+                    result.append(f"┃ • Phương án làm hàng    → {action}")
 
                 # Add prices as sub-bullets with proper alignment
                 prices_added = False
-                for i in range(action_idx + 1, len(cells)):
+                if loai_container and loai_container.strip():
+                    # When we have loai_container, start from action_idx (which includes both action and prices)
+                    start_idx = action_idx + 1
+                else:
+                    # Normal case: all values after action
+                    start_idx = action_idx + 1
+
+                for i in range(start_idx, len(cells)):
                     if i < len(headers) and cells[i] and cells[i].strip():
                         header = headers[i]
                         price = cells[i].strip()
@@ -1580,7 +1614,7 @@ class MarkdownToBulletConverter:
                         prices_added = True
 
                 # Add spacing between options
-                if prices_added:
+                if prices_added or (loai_container and loai_container.strip()):
                     result.append('')
 
         return result
