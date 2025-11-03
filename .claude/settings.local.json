@@ -43,7 +43,10 @@
       "Bash(sample/test_cleaned31_markdown.md )",
       "Bash(\"sample/cleaned_508_QĐ_TCg_Quyết_định_về_việc_ban_hành_Biểu_giá_dịch (29).pdf\" )",
       "Bash(\"sample/cleaned_508_QĐ_TCg_Quyết_định_về_việc_ban_hành_Biểu_giá_dịch (31).pdf\" )",
-      "Bash(sample/extract_from_n8n.json)"
+      "Bash(sample/extract_from_n8n.json)",
+      "Bash(git ls-tree:*)",
+      "Bash(git merge:*)",
+      "Bash(sed:*)"
     ],
     "deny": [],
     "ask": []

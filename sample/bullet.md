@@ -13,9 +13,9 @@ II. CƯỚC TÁC NGHIỆP CONTAINER
 Bảng 01
 ━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Tàu/Sà lan Bãi
+┃ PHƯƠNG ÁN Tàu/Sà lan Bãi
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20'         → 461.160
+┃ • Phương án làm hàng    → 461.160
 ┃ • Container khô 40'         → 677.160
 ┃ • Container khô 45'         → 1.015.200
 ┃ • Container lạnh 20'        → 664.200
@@ -30,7 +30,7 @@ Ghi chú: Bảng 01 chỉ áp dụng cho tàu/sà lan nội địa.
 Bảng 02
 ━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Xe Bãi
+┃ PHƯƠNG ÁN Xe Bãi
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 20'         → 497.000
 ┃ • Container khô 40'         → 882.000
@@ -38,7 +38,7 @@ Bảng 02
 ┃ • Container lạnh 20'        → 646.000
 ┃ • Container lạnh 40' & 45'  → 1.136.000
 
-┃ PHƯƠNG ÁN 2: Hạ container ở tầng trên xuống đất phục vụ kiểm hoá.
+┃ PHƯƠNG ÁN Hạ container ở tầng trên xuống đất phục vụ kiểm hoá.
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 20'         → 298.000
 ┃ • Container khô 40'         → 528.000
@@ -46,7 +46,7 @@ Bảng 02
 ┃ • Container lạnh 20'        → 596.000
 ┃ • Container lạnh 40' & 45'  → 1.018.000
 
-┃ PHƯƠNG ÁN 3: Hạ container xuất từ xe xuống đất phục vụ kiểm hoá.
+┃ PHƯƠNG ÁN Hạ container xuất từ xe xuống đất phục vụ kiểm hoá.
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 20'         → 795.000
 ┃ • Container khô 40'         → 1.410.000
@@ -60,9 +60,9 @@ Bảng 02
 Bảng 03
 ━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Giao/nhận container hàng quá cảnh.
+┃ PHƯƠNG ÁN Giao/nhận container hàng quá cảnh.
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20'         → 955.800
+┃ • Phương án làm hàng    → 955.800
 ┃ • Container khô 40'         → 1.441.800
 ┃ • Container khô 45'         → 1.749.600
 ┃ • Container lạnh 20'        → 1.242.000
@@ -79,74 +79,74 @@ dỡ được tính bằng đơn giá xếp dỡ container hàng thông thườn
 
 • Từ xe xuống bãi hoặc từ bãi lên xe
 
-┃ PHƯƠNG ÁN 1: 5
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Container hàng chuyên dụng
 ┃ • Thỏa thuận                → Tăng 50% đơn giá container hàng thông thường
 
-┃ PHƯƠNG ÁN 2: TT
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Ngày nhập bãi
 ┃ • Thỏa thuận                → Container khô
 
-┃ PHƯƠNG ÁN 5: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 1 - ngày thứ 3
 ┃ • Thỏa thuận                → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 6: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 4 - ngày thứ 6
 ┃ • Thỏa thuận                → 230.000
 ┃ • Thỏa thuận                → 416.000
 
-┃ PHƯƠNG ÁN 7: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 7 - ngày thứ 9
 ┃ • Thỏa thuận                → 348.000
 ┃ • Thỏa thuận                → 627.000
 
-┃ PHƯƠNG ÁN 8: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 10 - ngày thứ 15
 ┃ • Thỏa thuận                → 522.000
 ┃ • Thỏa thuận                → 938.000
 
-┃ PHƯƠNG ÁN 9: 5
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 16 trở đi
 ┃ • Thỏa thuận                → 789.000
 ┃ • Thỏa thuận                → 1.416.000
 
-┃ PHƯƠNG ÁN 10: TT
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Ngày nhập bãi
 ┃ • Thỏa thuận                → Container khô
 
-┃ PHƯƠNG ÁN 13: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 1 - ngày thứ 2
 ┃ • Thỏa thuận                → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 14: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 3 - ngày thứ 4
 ┃ • Thỏa thuận                → 627.000
 ┃ • Thỏa thuận                → 1.118.000
 
-┃ PHƯƠNG ÁN 15: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 5 - ngày thứ 6
 ┃ • Thỏa thuận                → 1.056.000
 ┃ • Thỏa thuận                → 1.875.000
 
-┃ PHƯƠNG ÁN 16: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 7- ngày thứ 9
 ┃ • Thỏa thuận                → 1.490.000
 ┃ • Thỏa thuận                → 2.639.000
 
-┃ PHƯƠNG ÁN 17: 5
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • OOhóm 2 (**)              → Từ ngày thứ 10 trở đi
 ┃ • Thỏa thuận                → 1.925.000
@@ -200,81 +200,74 @@ e. Phụ thu đối với trường hợp hạ bãi container hàng nhập (kể
 container lạnh) chuyển từ các cảng nội địa khác về (ngoài các cảng thuộc hệ thống Tổng công
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng khô thông thường
-┃ • Container 20’             → 1.528.000
-┃ • Container 40’             → 2.279.000
-┃ • Container 45’             → 2.279.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng lạnh thông thường
+┃ • Container 20’ 1.528.000   → 1.993.000
+┃ • Container 40’ 2.279.000   → 2.962.000
+┃ • Container 45’ 2.279.000   → 2.962.000
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng lạnh thông thường
-┃ • Container 20’             → 1.993.000
-┃ • Container 40’             → 2.962.000
-┃ • Container 45’             → 2.962.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng IMDG/OOG nhóm 1/hàng chuyên dụng
+┃ • Container 20’ 1.528.000   → 2.298.000
+┃ • Container 40’ 2.279.000   → 3.428.000
+┃ • Container 45’ 2.279.000   → 3.428.000
 
-┃ PHƯƠNG ÁN 3: 3
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng IMDG/OOG nhóm 1/hàng chuyên dụng
-┃ • Container 20’             → 2.298.000
-┃ • Container 40’             → 3.428.000
-┃ • Container 45’             → 3.428.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng OOG nhóm 2
+┃ • Container 20’ 1.528.000   → Giá thỏa thuận
 
-┃ PHƯƠNG ÁN 4: 4
+┃ PHƯƠNG ÁN Nội dung
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng OOG nhóm 2
-┃ • Container 20’             → Giá thỏa thuận
+┃ • Loại hàng đóng container Hàng khô thông thường → Container khô
+┃ • Container 45’ 2.279.000   → Container lạnh
 
-┃ PHƯƠNG ÁN Nội dung: Nội dung
+┃ PHƯƠNG ÁN Phụ phí giao container chuyển cảng
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Container khô
-┃ • Container 45’             → Container lạnh
+┃ • Loại hàng đóng container Hàng khô thông thường → 286.000
+┃ • Container 20’ 1.528.000   → 428.000
+┃ • Container 40’ 2.279.000   → 497.000
+┃ • Container 45’ 2.279.000   → 286.000
 
-┃ PHƯƠNG ÁN Phụ phí giao container chuyển cảng: Phụ phí giao container chuyển cảng
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → 286.000
-┃ • Container 20’             → 428.000
-┃ • Container 40’             → 497.000
-┃ • Container 45’             → 286.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Loại hàng đóng container
+┃ • Container 20’ 1.528.000   → Container 20’
+┃ • Container 40’ 2.279.000   → Container 40’
+┃ • Container 45’ 2.279.000   → Container 45’
 
-┃ PHƯƠNG ÁN TT: TT
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Loại hàng đóng container
-┃ • Container 20’             → Container 20’
-┃ • Container 40’             → Container 40’
-┃ • Container 45’             → Container 45’
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng khô thông thường
+┃ • Container 20’ 1.528.000   → 1.528.000
+┃ • Container 40’ 2.279.000   → 2.279.000
+┃ • Container 45’ 2.279.000   → 2.279.000
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng khô thông thường
-┃ • Container 20’             → 1.528.000
-┃ • Container 40’             → 2.279.000
-┃ • Container 45’             → 2.279.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng lạnh thông thường
+┃ • Container 20’ 1.528.000   → 1.993.000
+┃ • Container 40’ 2.279.000   → 2.962.000
+┃ • Container 45’ 2.279.000   → 2.962.000
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng lạnh thông thường
-┃ • Container 20’             → 1.993.000
-┃ • Container 40’             → 2.962.000
-┃ • Container 45’             → 2.962.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng IMDG/OOG nhóm 1/hàng chuyên dụng
+┃ • Container 20’ 1.528.000   → 2.298.000
+┃ • Container 40’ 2.279.000   → 3.428.000
+┃ • Container 45’ 2.279.000   → 3.428.000
 
-┃ PHƯƠNG ÁN 3: 3
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng IMDG/OOG nhóm 1/hàng chuyên dụng
-┃ • Container 20’             → 2.298.000
-┃ • Container 40’             → 3.428.000
-┃ • Container 45’             → 3.428.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng OOG nhóm 2
+┃ • Container 20’ 1.528.000   → Giá thỏa thuận
 
-┃ PHƯƠNG ÁN 4: 4
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Hàng OOG nhóm 2
-┃ • Container 20’             → Giá thỏa thuận
-
-┃ PHƯƠNG ÁN TT: TT
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Loại hàng đóng container  → Phương án làm hàng
-┃ • Container 20’             → Container khô
+┃ • Loại hàng đóng container Hàng khô thông thường → Phương án làm hàng
+┃ • Container 20’ 1.528.000   → Container khô
 
 • Từ xe xuống bãi hoặc từ bãi lên xe
 • Từ tàu hoặc sà lan đến bãi hoặc từ bãi xuống tàu hoặc sà lan
@@ -337,61 +330,56 @@ Bảng 09
 Đơn vị tính: đồng/container
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: 2.2
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Cấp rỗng chỉ định số
-┃ • 235.440                   → Có quy định riêng tại Phần II Mục 1.2.4. điểm c
-
-┃ PHƯƠNG ÁN 2: TT
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Phương án làm hàng
-┃ • 235.440                   → Container khô
+┃ • Cấp rỗng thông thường Cấp rỗng chỉ định số → Phương án làm hàng
+┃ • 235.440 Có quy định riêng tại Phần II Mục 1.2.4. điểm c → Container khô
 ┃ • 351.000                   → Container lạnh
 
-┃ PHƯƠNG ÁN 5: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Cấp container rỗng t
+┃ • Cấp rỗng thông thường Cấp rỗng chỉ định số → Cấp container rỗng t
 
-┃ PHƯƠNG ÁN 6: 1.1
+┃ PHƯƠNG ÁN 1.1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Cấp rỗng thông thường.
-┃ • 235.440                   → 478.000
+┃ • Cấp rỗng thông thường Cấp rỗng chỉ định số → Cấp rỗng thông thường.
+┃ • 235.440 Có quy định riêng tại Phần II Mục 1.2.4. điểm c → 478.000
 ┃ • 357.480                   → 745.000
 ┃ • 538.840                   → 969.000
 ┃ • 351.000                   → 627.000
 ┃ • 535.600                   → 963.000
 
-┃ PHƯƠNG ÁN 7: 1.2
+┃ PHƯƠNG ÁN 1.2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Cấp rỗng chỉ định số.
-┃ • 235.440                   → Có quy định riêng tại Phần II mục 1.2.4. điểm c
+┃ • Cấp rỗng thông thường Cấp rỗng chỉ định số → Cấp rỗng chỉ định số.
+┃ • 235.440 Có quy định riêng tại Phần II Mục 1.2.4. điểm c → Có quy định riêng tại Phần II mục 1.2.4. điểm c
 
-┃ PHƯƠNG ÁN 8: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Hạ container rỗng từ xe khách hàng xuống bãi Cảng.
-┃ • 235.440                   → 478.000
+┃ • Cấp rỗng thông thường Cấp rỗng chỉ định số → Hạ container rỗng từ xe khách hàng xuống bãi Cảng.
+┃ • 235.440 Có quy định riêng tại Phần II Mục 1.2.4. điểm c → 478.000
 ┃ • 357.480                   → 745.000
 ┃ • 538.840                   → 969.000
 ┃ • 351.000                   → 627.000
 ┃ • 535.600                   → 963.000
 
-┃ PHƯƠNG ÁN 9: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Hạ container rỗng phục vụ sửa chữa, ráp thiết bị.
-┃ • 235.440                   → 342.000
+┃ • Cấp rỗng thông thường Cấp rỗng chỉ định số → Hạ container rỗng phục vụ sửa chữa, ráp thiết bị.
+┃ • 235.440 Có quy định riêng tại Phần II Mục 1.2.4. điểm c → 342.000
 ┃ • 357.480                   → 491.000
 ┃ • 538.840                   → 683.000
 ┃ • 351.000                   → 441.000
 ┃ • 535.600                   → 640.000
 
-┃ PHƯƠNG ÁN 10: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Cấp rỗng thông thường     → Hạ container rỗng phục vụ kiểm tra độ ẩm
+┃ • Cấp rỗng thông thường Cấp rỗng chỉ định số → Hạ container rỗng phục vụ kiểm tra độ ẩm
 
 • nhưng không được chọn do
 • không đủ tiêu chuẩn. | 242.000 | 366.000 | 491.000 | 311.000 | 472.000 |
 
-┃ PHƯƠNG ÁN 1: Giao/nhận container rỗng quá cảnh
+┃ PHƯƠNG ÁN Giao/nhận container rỗng quá cảnh
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Đối với các container được hạ để kiểm tra và được chọn để cấp đóng hàng. 20’ → 534.600
 ┃ • 478.000 40’               → 799.200
@@ -399,7 +387,7 @@ Bảng 09
 ┃ • 969.000 20’               → 696.600
 ┃ • 627.000 40’ & 45’         → 1.047.600
 
-┃ PHƯƠNG ÁN 2: Loại container
+┃ PHƯƠNG ÁN Loại container
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Đối với các container được hạ để kiểm tra và được chọn để cấp đóng hàng. 20’ → Phương án làm hàng
 
@@ -435,37 +423,35 @@ a. Đối với container rỗng chuyên dụng (Open-top, Flatrack, Tank. ...):
 được tính bằng đơn giá xếp dỡ container rỗng thông thường cộng với phụ thu như sau:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Đóng gạo từ sà lan/ghe vào container (≤ 25 tấn)
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ PHƯƠNG ÁN 1.1: + Loại bao trên 30kg (bao 50kg)
+┃ PHƯƠNG ÁN + Loại bao trên 30kg (bao 50kg)
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • 20’DC                     → 2.246.400
 ┃ • 40’DC                     → 2.889.000
 ┃ • 45’DC                     → -
 
-┃ PHƯƠNG ÁN 1.2: + Loại bao từ 30kg/bao trở xuống (bao 25kg)
+┃ PHƯƠNG ÁN + Loại bao từ 30kg/bao trở xuống (bao 25kg)
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • 20’DC                     → 2.327.400
 ┃ • 40’DC                     → 2.980.800
 ┃ • 45’DC                     → -
 
-┃ PHƯƠNG ÁN 2: Đóng/rút hàng bao từ container xuống sà lan/ghe
+┃ PHƯƠNG ÁN Đóng/rút hàng bao từ container xuống sà lan/ghe
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ PHƯƠNG ÁN 2.1: + Hàng thông thường, không mùi, không độc hại
+┃ PHƯƠNG ÁN + Hàng thông thường, không mùi, không độc hại
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • 20’DC                     → 2.246.400
 ┃ • 40’DC                     → 2.889.000
 ┃ • 45’DC                     → -
 
-┃ PHƯƠNG ÁN 2.2: + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
+┃ PHƯƠNG ÁN + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • 20’DC                     → 3.007.800
 ┃ • 40’DC                     → 4.017.600
 ┃ • 45’DC                     → -
 
-┃ PHƯƠNG ÁN 3: Xả hàng xá từ container xuống sà lan/ghe
+┃ PHƯƠNG ÁN Xả hàng xá từ container xuống sà lan/ghe
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ PHƯƠNG ÁN 3.1: + Hàng thông thường, không mùi, không độc hại
+┃ PHƯƠNG ÁN + Hàng thông thường, không mùi, không độc hại
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • 20’DC                     → 1.533.600
 ┃ • 40’DC                     → -
@@ -555,59 +541,53 @@ Bảng 12
 Đơn vị tính: đồng/container
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 3.2: + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
+┃ PHƯƠNG ÁN Xả hàng bao từ container xuống sà lan / ghe (theo đề nghị của khách hàng)
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 2.187.000
-┃ • 40’DC                     → -
-┃ • 45’DC                     → -
+┃ PHƯƠNG ÁN + Hàng thông thường, không mùi, không độc hại
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • 20’DC 2.187.000           → 2.246.400
+┃ • 40’DC -                   → -
+┃ • 45’DC -                   → -
 
-┃ PHƯƠNG ÁN 4: Xả hàng bao từ container xuống sà lan / ghe (theo đề nghị của khách hàng)
+┃ PHƯƠNG ÁN + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ PHƯƠNG ÁN 4.1: + Hàng thông thường, không mùi, không độc hại
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 2.246.400
-┃ • 40’DC                     → -
-┃ • 45’DC                     → -
+┃ • 20’DC 2.187.000           → 3.007.800
+┃ • 40’DC -                   → -
+┃ • 45’DC -                   → -
 
-┃ PHƯƠNG ÁN 4.2: + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
+┃ PHƯƠNG ÁN Đóng thủ công từ xe khách hàng vào container (chỉ áp dụng cho container đóng chung Booking với mục STT 01 & 02)
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 3.007.800
-┃ • 40’DC                     → -
-┃ • 45’DC                     → -
+┃ PHƯƠNG ÁN + Hàng thông thường, không mùi, không độc hại
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • 20’DC 2.187.000           → 1.225.800
+┃ • 40’DC -                   → 1.733.400
+┃ • 45’DC -                   → 2.138.400
 
-┃ PHƯƠNG ÁN 5: Đóng thủ công từ xe khách hàng vào container (chỉ áp dụng cho container đóng chung Booking với mục STT 01 & 02)
+┃ PHƯƠNG ÁN + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ PHƯƠNG ÁN 5.1: + Hàng thông thường, không mùi, không độc hại
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 1.225.800
-┃ • 40’DC                     → 1.733.400
-┃ • 45’DC                     → 2.138.400
+┃ • 20’DC 2.187.000           → 1.782.000
+┃ • 40’DC -                   → 2.592.000
+┃ • 45’DC -                   → 3.186.000
 
-┃ PHƯƠNG ÁN 5.2: + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
+┃ PHƯƠNG ÁN Rút thủ công từ container xếp lên xe khách hàng (chỉ áp dụng cho container đóng chung Booking với mục STT 01 & 02)
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 1.782.000
-┃ • 40’DC                     → 2.592.000
-┃ • 45’DC                     → 3.186.000
+┃ PHƯƠNG ÁN + Hàng thông thường, không mùi, không độc hại
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • 20’DC 2.187.000           → 1.436.400
+┃ • 40’DC -                   → 1.998.000
+┃ • 45’DC -                   → 2.435.400
 
-┃ PHƯƠNG ÁN 6: Rút thủ công từ container xếp lên xe khách hàng (chỉ áp dụng cho container đóng chung Booking với mục STT 01 & 02)
+┃ PHƯƠNG ÁN + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ PHƯƠNG ÁN 6.1: + Hàng thông thường, không mùi, không độc hại
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 1.436.400
-┃ • 40’DC                     → 1.998.000
-┃ • 45’DC                     → 2.435.400
+┃ • 20’DC 2.187.000           → 2.057.400
+┃ • 40’DC -                   → 2.932.200
+┃ • 45’DC -                   → 3.591.000
 
-┃ PHƯƠNG ÁN 6.2: + Hàng bẩn, có mùi, độc hại, xương súc vật, IMDG
+┃ PHƯƠNG ÁN Đóng/rút sang container (rút từ container này đóng sang container khác) – chỉ áp dụng cho các container đã thực hiện tại STT 01 & 02
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 2.057.400
-┃ • 40’DC                     → 2.932.200
-┃ • 45’DC                     → 3.591.000
-
-┃ PHƯƠNG ÁN 7: Đóng/rút sang container (rút từ container này đóng sang container khác) – chỉ áp dụng cho các container đã thực hiện tại STT 01 & 02
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 1.841.400
-┃ • 40’DC                     → 2.635.200
-┃ • 45’DC                     → 3.088.800
+┃ • 20’DC 2.187.000           → 1.841.400
+┃ • 40’DC -                   → 2.635.200
+┃ • 45’DC -                   → 3.088.800
 
 - Đơn giá trên đã bao gồm phí lấy và trả rỗng trong Cảng, phí đóng/rút hàng và phí
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -699,14 +679,14 @@ Bảng 13a Đơn vị tính: đồng/container
 • đảm bảo trọng lượng xuất
 • tàu | 291.600 | 410.400 | 507.600 |
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ •                           → Đóng thủ công hàng thông thường từ xe vào container (container rỗng có sẵn tại Cát Lái)
 ┃ • Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định tại Bảng 23 –TT.9 20’RF → 1.801.000
 ┃ • Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định tại Bảng 23 –TT.9 40’RF → 2.552.000
 ┃ • Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định tại Bảng 23 –TT.9 45’RF → 2.552.000
 
-┃ PHƯƠNG ÁN 3: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ •                           → Đóng thủ công hàng thủy/hải sản đông lạnh xếp trên pallet quấn nylon
 ┃ • Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định tại Bảng 23 –TT.9 20’RF → 3.130.000
@@ -722,7 +702,7 @@ Bảng 13b
 Đơn vị tính: đồng/container
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN : film đóng container (container rỗng có sẵn tại Cát Lái)
+┃ PHƯƠNG ÁN film đóng container (container rỗng có sẵn tại Cát Lái)
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - Sử dụng công nhân hỗ trợ đóng gói bằng việc
 • dùng thiết bị quấn nylon film cho hàng sau khi
@@ -731,61 +711,61 @@ Bảng 13b
 - Đóng pallet đã được quấn nylon film vào
 • container
 - Chuyển container hàng về bãi chờ xuất |  |  |
-┃ PHƯƠNG ÁN 2: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Đóng ghép hàng vào cùng một container thực hiện tại bãi (container rỗng có sẵn tại Cảng Cát Lái) → Đóng cá ngừ nguyên con vào container (rỗng có sẵn tại Cảng)
 ┃ •                           → 3.614.000
 ┃ •                           → 5.105.000
 ┃ •                           → 5.105.000
 
-┃ PHƯƠNG ÁN 3: 5
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Đóng ghép hàng vào cùng một container thực hiện tại bãi (container rỗng có sẵn tại Cảng Cát Lái) → Đóng/rút thủ công hàng nguy hiểm (IMDG) từ xe vào container hoặc ngược lại (container rỗng có sẵn tại Cảng)
 
-┃ PHƯƠNG ÁN 6: 6
+┃ PHƯƠNG ÁN 6
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Đóng ghép hàng vào cùng một container thực hiện tại bãi (container rỗng có sẵn tại Cảng Cát Lái) → Rút và đóng một phần khối lượng hàng trong container phục vụ kiểm hoá (có xác nhận của Trung tâm Điều độ Cảng)
 
-┃ PHƯƠNG ÁN 11: Cước đảo chuyển (nếu có chuyển vào nhà kiểm hóa thủ công) sẽ được thu bổ sung theo quy định tại Bảng 23 –TT.9
+┃ PHƯƠNG ÁN Cước đảo chuyển (nếu có chuyển vào nhà kiểm hóa thủ công) sẽ được thu bổ sung theo quy định tại Bảng 23 –TT.9
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • khác, container rỗng có sẵn tại Cảng
 • Cát Lái) | 4.012.000 | 5.657.000 | 5.657.000 |
 
-┃ PHƯƠNG ÁN 9: Rút dưới 10% khối lượng hàng trong container để đảm bảo trọng lượng xuất tàu
+┃ PHƯƠNG ÁN Rút dưới 10% khối lượng hàng trong container để đảm bảo trọng lượng xuất tàu
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’RF      → 565.000
 ┃ • Container lạnh 40’RF      → 789.000
 ┃ • Container lạnh 45’RF      → 789.000
 
-┃ PHƯƠNG ÁN 10: Lấy hoặc trả container rỗng từ các Depot ngoài về phục vụ đóng rút hàng tại bãi, Cảng thu thêm phí vận chuyển (đã bao gồm nâng hạ hai đầu) => Theo biểu giá vận chuyển hiện hành
+┃ PHƯƠNG ÁN Lấy hoặc trả container rỗng từ các Depot ngoài về phục vụ đóng rút hàng tại bãi, Cảng thu thêm phí vận chuyển (đã bao gồm nâng hạ hai đầu) => Theo biểu giá vận chuyển hiện hành
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ PHƯƠNG ÁN TT: Ngày nhập bãi
+┃ PHƯƠNG ÁN Ngày nhập bãi
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’RF      → Container khô
 
-┃ PHƯƠNG ÁN 1: Từ ngày thứ 1 - ngày thứ 3
+┃ PHƯƠNG ÁN Từ ngày thứ 1 - ngày thứ 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’RF      → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 2: Từ ngày thứ 4 - ngày thứ 6
+┃ PHƯƠNG ÁN Từ ngày thứ 4 - ngày thứ 6
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’RF      → 230.000
 ┃ • Container lạnh 40’RF      → 416.000
 ┃ • Container lạnh 45’RF      → 491.000
 
-┃ PHƯƠNG ÁN 3: Từ ngày thứ 7 - ngày thứ 9
+┃ PHƯƠNG ÁN Từ ngày thứ 7 - ngày thứ 9
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’RF      → 348.000
 ┃ • Container lạnh 40’RF      → 627.000
 ┃ • Container lạnh 45’RF      → 745.000
 
-┃ PHƯƠNG ÁN 4: Từ ngày thứ 10 - ngày thứ 15
+┃ PHƯƠNG ÁN Từ ngày thứ 10 - ngày thứ 15
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’RF      → 522.000
 ┃ • Container lạnh 40’RF      → 938.000
 ┃ • Container lạnh 45’RF      → 1.118.000
 
-┃ PHƯƠNG ÁN 5: Từ ngày thứ 16 trở đi
+┃ PHƯƠNG ÁN Từ ngày thứ 16 trở đi
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’RF      → 789.000
 ┃ • Container lạnh 40’RF      → 1.416.000
@@ -845,12 +825,12 @@ tính từ ngày container có vị trí trên bãi Cảng Cát Lái cho đến 
 bãi/ trải bãi container sang khu vực kiểm hóa/rút hàng/đóng hàng, cụ thể như sau:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Từ ngày thứ 1 - ngày thứ 2
 ┃ • Container khô 20’         → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Từ ngày thứ 3 - ngày thứ 4
 ┃ • Container khô 20’         → 627.000
@@ -859,7 +839,7 @@ bãi/ trải bãi container sang khu vực kiểm hóa/rút hàng/đóng hàng, 
 ┃ • Container lạnh 20’        → 702.000
 ┃ • Container lạnh 40’ & 45’  → 1.223.000
 
-┃ PHƯƠNG ÁN 3: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Từ ngày thứ 5 - ngày thứ 6
 ┃ • Container khô 20’         → 1.056.000
@@ -868,7 +848,7 @@ bãi/ trải bãi container sang khu vực kiểm hóa/rút hàng/đóng hàng, 
 ┃ • Container lạnh 20’        → 1.161.000
 ┃ • Container lạnh 40’ & 45’  → 2.056.000
 
-┃ PHƯƠNG ÁN 4: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Từ ngày thứ 7- ngày thứ 9
 ┃ • Container khô 20’         → 1.490.000
@@ -877,7 +857,7 @@ bãi/ trải bãi container sang khu vực kiểm hóa/rút hàng/đóng hàng, 
 ┃ • Container lạnh 20’        → 1.627.000
 ┃ • Container lạnh 40’ & 45’  → 2.875.000
 
-┃ PHƯƠNG ÁN 5: 5
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Từ ngày thứ 10 trở đi
 ┃ • Container khô 20’         → 1.925.000
@@ -886,58 +866,58 @@ bãi/ trải bãi container sang khu vực kiểm hóa/rút hàng/đóng hàng, 
 ┃ • Container lạnh 20’        → 2.099.000
 ┃ • Container lạnh 40’ & 45’  → 3.695.000
 
-┃ PHƯƠNG ÁN TT: TT
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Loại container
 ┃ • Container khô 20’         → Đơn giá
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Container 20’
 ┃ • Container khô 20’         → 143.000
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Container 40’ & 45’
 ┃ • Container khô 20’         → 211.000
 
-┃ PHƯƠNG ÁN TT: TT
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Lô hàng
 ┃ • Container khô 20’         → Thời gian cho phép lưu tại bãi rút ruột/kiểm hóa/đóng hàng
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Lô từ 01 - 05 container
 ┃ • Container khô 20’         → 01 ngày
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Lô từ 06 - 10 container
 ┃ • Container khô 20’         → 02 ngày
 
-┃ PHƯƠNG ÁN 3: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Lô từ 11 - 20 container
 ┃ • Container khô 20’         → 03 ngày
 
-┃ PHƯƠNG ÁN 4: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → Lô trên 20 container
 ┃ • Container khô 20’         → 04 ngày
 
-┃ PHƯƠNG ÁN Container khô: Container khô
+┃ PHƯƠNG ÁN Container khô
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → Container lạnh
 
-┃ PHƯƠNG ÁN 20’: 20’
+┃ PHƯƠNG ÁN 20’
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → 40’
 ┃ • Container khô 20’         → 45’
 ┃ • Container khô 40’         → 20’
 ┃ • Container khô 45’         → 40’ & 45’
 
-┃ PHƯƠNG ÁN 88.560: 88.560
+┃ PHƯƠNG ÁN 88.560
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Ngày nhập bãi             → 135.000
 ┃ • Container khô 20’         → 183.600
@@ -1001,47 +981,47 @@ g. Trường hợp đóng/rút các loại hàng có kích thước vượt quá
 tiêu chuẩn, phải sử dụng xe nâng hàng (loại xe nâng từ 05 tấn đến 20 tấn): cước đóng/rút do
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: 183.600
+┃ PHƯƠNG ÁN 183.600
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → 248.400
 ┃ • Container khô 45’         → 318.600
 ┃ • Container lạnh 20’        → 261.000
 ┃ • Container lạnh 40’ & 45’  → 366.000
 
-┃ PHƯƠNG ÁN 2: Container khô
+┃ PHƯƠNG ÁN Container khô
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container lạnh 20’        → Container lạnh
 
-┃ PHƯƠNG ÁN 4: 20’
+┃ PHƯƠNG ÁN 20’
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → 40’
 ┃ • Container khô 45’         → 45’
 ┃ • Container lạnh 20’        → 20’
 ┃ • Container lạnh 40’ & 45’  → 40’ & 45’
 
-┃ PHƯƠNG ÁN 5: 307.800
+┃ PHƯƠNG ÁN 307.800
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → 432.000
 ┃ • Container khô 45’         → 545.400
 ┃ • Container lạnh 20’        → 484.000
 ┃ • Container lạnh 40’ & 45’  → 683.000
 
-┃ PHƯƠNG ÁN 6: TT
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → Loại container
 ┃ • Container khô 45’         → Đơn giá
 
-┃ PHƯƠNG ÁN 8: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → Container 20’
 ┃ • Container khô 45’         → 68.000
 
-┃ PHƯƠNG ÁN 9: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → Container 40’ & 45’
 ┃ • Container khô 45’         → 96.000
 
-┃ PHƯƠNG ÁN 10: Chu trình chuyển soi container
+┃ PHƯƠNG ÁN Chu trình chuyển soi container
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Container khô 40’         → 20’DC
 ┃ • Container khô 45’         → 40’DC
@@ -1134,69 +1114,65 @@ Bảng 21
 Bảng 22 Đơn vị tính: đồng/container
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Chuyển bãi nội bộ
+┃ PHƯƠNG ÁN Đối với container hàng
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi.
-
-┃ PHƯƠNG ÁN 1.1: Đối với container hàng
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 397.000
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → 397.000
 ┃ • 40’DC                     → 559.000
 ┃ • 45’DC                     → 708.000
 ┃ • 20’RF                     → 764.000
 ┃ • 40’RF & 45’RF             → 1.105.000
 
-┃ PHƯƠNG ÁN 1.2: Đối với container rỗng
+┃ PHƯƠNG ÁN Đối với container rỗng
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 298.000
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → 298.000
 ┃ • 40’DC                     → 422.000
 ┃ • 45’DC                     → 546.000
 ┃ • 20’RF                     → 515.000
 ┃ • 40’RF & 45’RF             → 764.000
 
-┃ PHƯƠNG ÁN 1.3: Phục vụ kiểm hoá container hàng (không qua máy soi)
+┃ PHƯƠNG ÁN Phục vụ kiểm hoá container hàng (không qua máy soi)
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 397.000
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → 397.000
 ┃ • 40’DC                     → 559.000
 ┃ • 45’DC                     → 708.000
 ┃ • 20’RF                     → 764.000
 ┃ • 40’RF & 45’RF             → 1.105.000
 
-┃ PHƯƠNG ÁN 1.4: Chuyển bãi rút ruột/kiểm hoá kết hợp qua cân.
+┃ PHƯƠNG ÁN Chuyển bãi rút ruột/kiểm hoá kết hợp qua cân.
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 640.000
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → 640.000
 ┃ • 40’DC                     → 975.000
 ┃ • 45’DC                     → 1.199.000
 ┃ • 20’RF                     → 1.049.000
 ┃ • 40’RF & 45’RF             → 1.596.000
 
-┃ PHƯƠNG ÁN 1.5: Khách hàng yêu cầu chuyển container từ khu tập kết/hạ container để lấy mẫu
+┃ PHƯƠNG ÁN Khách hàng yêu cầu chuyển container từ khu tập kết/hạ container để lấy mẫu
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 397.000
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → 397.000
 ┃ • 40’DC                     → 559.000
 ┃ • 45’DC                     → 708.000
 ┃ • 20’RF                     → 764.000
 ┃ • 40’RF & 45’RF             → 1.105.000
 
-┃ PHƯƠNG ÁN 2: Cước xếp chồng (bó) hoặc xả bó container Flatrack
+┃ PHƯƠNG ÁN Cước xếp chồng (bó) hoặc xả bó container Flatrack
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 435.000
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → 435.000
 ┃ • 40’DC                     → 764.000
 ┃ • 45’DC                     → -
 ┃ • 20’RF                     → -
 ┃ • 40’RF & 45’RF             → -
 
-┃ PHƯƠNG ÁN 3: Trải bãi container rỗng lạnh để phục vụ PTI
+┃ PHƯƠNG ÁN Trải bãi container rỗng lạnh để phục vụ PTI
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → -
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → -
 ┃ • 40’DC                     → -
 ┃ • 45’DC                     → -
 ┃ • 20’RF                     → 286.000
 ┃ • 40’RF & 45’RF             → 466.000
 
-┃ PHƯƠNG ÁN 4: Trải bãi phục vụ đóng hàng nhưng không đóng hàng theo lệnh đã đăng ký
+┃ PHƯƠNG ÁN Trải bãi phục vụ đóng hàng nhưng không đóng hàng theo lệnh đã đăng ký
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 571.000
+┃ • 20’DC - Nâng container từ bãi lên xe trung chuyển. - Trung chuyển. - Hạ container từ xe trung chuyển xuống bãi. → 571.000
 ┃ • 40’DC                     → 845.000
 ┃ • 45’DC                     → 1.093.000
 ┃ • 20’RF                     → 1.037.000
@@ -1255,7 +1231,7 @@ Bảng 23
 
 • chuyển bằng xe của khách
 • hàng) | 242.000 | 416.000 | 491.000 | 286.000 | 491.000 |
-┃ PHƯƠNG ÁN 1: 6.2
+┃ PHƯƠNG ÁN 6.2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Cân container hàng hoặc rỗng (container được trung chuyển bằng xe của Cảng) → Đối với container rỗng
 ┃ • Đơn giá tính cho một lượt cân, không kết hợp chuyển bãi nội bộ → 540.000
@@ -1264,7 +1240,7 @@ Bảng 23
 ┃ •                           → 801.000
 ┃ •                           → 1.254.000
 
-┃ PHƯƠNG ÁN 2: 7
+┃ PHƯƠNG ÁN 7
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Cân container hàng hoặc rỗng (container được trung chuyển bằng xe của Cảng) → Cân xe (không chứa tải) của khách hàng tính cho mỗi lượt cân
 ┃ • Đơn giá tính cho một lượt cân, không kết hợp chuyển bãi nội bộ → 89.000
@@ -1277,7 +1253,7 @@ Bảng 23
 • vụ cân container, đổi Cate,…) | Tính theo số lượng container thực tế được đảo chuyển.
 • dời dịch trong bãi cảng để lấy container của khách hàng
 • (có xác nhận của Trung tâm Điều độ cảng) |  |  |  |  |
-┃ PHƯƠNG ÁN 1: 10
+┃ PHƯƠNG ÁN 10
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Đảo chuyển không sử dụng xe đầu kéo của Cảng → Đối với container phải đổi tàu xuất, đổi cảng chuyển tải phát sinh không do lỗi của Cảng, container có yêu cầu chất xếp đặc biệt, Cảng thu:
 
@@ -1290,21 +1266,13 @@ Bảng 23
 17
 ━━
 
-┃ PHƯƠNG ÁN : Đảo chuyển không sử dụng xe đầu kéo của Cảng
+┃ PHƯƠNG ÁN Đảo chuyển có sử dụng xe đầu kéo của Cảng
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 155.000
-┃ • 40’DC                     → 224.000
-┃ • 45’DC                     → 286.000
-┃ • 20’RF                     → 273.000
-┃ • 40’RF & 45’RF             → 435.000
-
-┃ PHƯƠNG ÁN : Đảo chuyển có sử dụng xe đầu kéo của Cảng
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • 20’DC                     → 397.000
-┃ • 40’DC                     → 559.000
-┃ • 45’DC                     → 708.000
-┃ • 20’RF                     → 764.000
-┃ • 40’RF & 45’RF             → 1.105.000
+┃ • 20’DC 155.000             → 397.000
+┃ • 40’DC 224.000             → 559.000
+┃ • 45’DC 286.000             → 708.000
+┃ • 20’RF 273.000             → 764.000
+┃ • 40’RF & 45’RF 435.000     → 1.105.000
 
 • nhiễm môi trường bãi như
 • sắt phế liệu, máy móc thiết
@@ -1433,45 +1401,45 @@ gian gửi yêu cầu chuyển container sang “Tàu sau” phải trước 17h
 gian gửi yêu cầu chuyển container sang “Tàu sau” phải trước 11h00 ngày hôm sau.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → Container hàng khô thông thường
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → Container hàng lạnh
 
-┃ PHƯƠNG ÁN 3: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → Container hàng nguy hiểm (IMDG), container đặc biệt (open top, flatrack, platform, tank), container quá khổ + nguy hiểm
 
-┃ PHƯƠNG ÁN THỜI GIAN LƯU BÃI: THỜI GIAN LƯU BÃI
+┃ PHƯƠNG ÁN THỜI GIAN LƯU BÃI
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → ĐƠN GIÁ LƯU BÃI CONTAINER
 
-┃ PHƯƠNG ÁN Đến hết ngày thứ 7: Đến hết ngày thứ 7
+┃ PHƯƠNG ÁN Đến hết ngày thứ 7
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → Miễn phí
 
-┃ PHƯƠNG ÁN Từ ngày thứ 8 - ngày thứ 9: Từ ngày thứ 8 - ngày thứ 9
+┃ PHƯƠNG ÁN Từ ngày thứ 8 - ngày thứ 9
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → 41.000
 ┃ • ĐƠN GIÁ LƯU BÃI CONTAINER 20’H → 62.000
 ┃ • ĐƠN GIÁ LƯU BÃI CONTAINER 40’H → 62.000
 
-┃ PHƯƠNG ÁN Từ ngày thứ 10 - ngày thứ 11: Từ ngày thứ 10 - ngày thứ 11
+┃ PHƯƠNG ÁN Từ ngày thứ 10 - ngày thứ 11
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → 82.000
 ┃ • ĐƠN GIÁ LƯU BÃI CONTAINER 20’H → 123.000
 ┃ • ĐƠN GIÁ LƯU BÃI CONTAINER 40’H → 123.000
 
-┃ PHƯƠNG ÁN Từ ngày thứ 12 - ngày thứ 13: Từ ngày thứ 12 - ngày thứ 13
+┃ PHƯƠNG ÁN Từ ngày thứ 12 - ngày thứ 13
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → 109.000
 ┃ • ĐƠN GIÁ LƯU BÃI CONTAINER 20’H → 164.000
 ┃ • ĐƠN GIÁ LƯU BÃI CONTAINER 40’H → 164.000
 
-┃ PHƯƠNG ÁN Từ ngày thứ 14 trở đi: Từ ngày thứ 14 trở đi
+┃ PHƯƠNG ÁN Từ ngày thứ 14 trở đi
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • THỜI GIAN LƯU BÃI         → 164.000
 ┃ • ĐƠN GIÁ LƯU BÃI CONTAINER 20’H → 246.000
@@ -1534,63 +1502,63 @@ Cảng theo yêu cầu của khách hàng.
 + Container rỗng được khách hàng hạ bãi Cảng sau đó cấp cho Khách hàng.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Trong vòng 5 ngày
 ┃ • Loại container 20’        → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Từ 6 ngày – 8 ngày
 ┃ • Loại container 20’        → 118.000
 ┃ • Loại container 40’ & 45’  → 236.000
 
-┃ PHƯƠNG ÁN 3: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Từ 9 ngày – 11 ngày
 ┃ • Loại container 20’        → 236.000
 ┃ • Loại container 40’ & 45’  → 348.000
 
-┃ PHƯƠNG ÁN 4: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Từ 12 ngày – 14 ngày
 ┃ • Loại container 20’        → 348.000
 ┃ • Loại container 40’ & 45’  → 466.000
 
-┃ PHƯƠNG ÁN 5: 5
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Trên 14 ngày
 ┃ • Loại container 20’        → Không tiếp nhận
 
-┃ PHƯƠNG ÁN TT: TT
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Thời gian hạ bãi sớm hơn so với ETA
 ┃ • Loại container 20’        → Loại container
 
-┃ PHƯƠNG ÁN 1: 1
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Trong vòng 2 ngày
 ┃ • Loại container 20’        → Miễn phụ thu
 
-┃ PHƯƠNG ÁN 2: 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Từ 3 ngày – 4 ngày
 ┃ • Loại container 20’        → 236.000
 ┃ • Loại container 40’ & 45’  → 348.000
 
-┃ PHƯƠNG ÁN 3: 3
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Từ 5 ngày – 6 ngày
 ┃ • Loại container 20’        → 348.000
 ┃ • Loại container 40’ & 45’  → 528.000
 
-┃ PHƯƠNG ÁN 4: 4
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Từ 7 ngày – 8 ngày
 ┃ • Loại container 20’        → 528.000
 ┃ • Loại container 40’ & 45’  → 795.000
 
-┃ PHƯƠNG ÁN 5: 5
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ • Thời gian hạ bãi sớm hơn so với ETA → Trên 8 ngày
 ┃ • Loại container 20’        → Không tiếp nhận
@@ -1631,21 +1599,17 @@ Bảng 26 Đơn vị tính : đồng/container/ngày
 Bảng 27 Đơn vị tính : đồng/container/ngày
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Giao/Nhận container hàng
+┃ PHƯƠNG ÁN Giao/Nhận container rỗng
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Thời gian định mức phương tiện lưu trong cảng (phút/ phương tiện) → 100
+┃ • Thời gian định mức phương tiện lưu trong cảng (phút/ phương tiện) 100 → 100
 
-┃ PHƯƠNG ÁN 2: Giao/Nhận container rỗng
+┃ PHƯƠNG ÁN Giao/Nhận container hàng nguy hiểm
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Thời gian định mức phương tiện lưu trong cảng (phút/ phương tiện) → 100
+┃ • Thời gian định mức phương tiện lưu trong cảng (phút/ phương tiện) 100 → 100
 
-┃ PHƯƠNG ÁN 3: Giao/Nhận container hàng nguy hiểm
+┃ PHƯƠNG ÁN Giao/Nhận container hàng quá khổ. quá tải
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Thời gian định mức phương tiện lưu trong cảng (phút/ phương tiện) → 100
-
-┃ PHƯƠNG ÁN 4: Giao/Nhận container hàng quá khổ. quá tải
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Thời gian định mức phương tiện lưu trong cảng (phút/ phương tiện) → 150
+┃ • Thời gian định mức phương tiện lưu trong cảng (phút/ phương tiện) 100 → 150
 
 V. CÁC LOẠI GIÁ DỊCH VỤ KHÁC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1755,25 +1719,21 @@ cổng (thời điểm gate-in) cho đến thời điểm phương tiện ra kh�
 phút làm tròn thành 01 giờ, dưới 30 phút làm tròn thành 0.5 giờ.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Phương tiện vận chuyển container
+┃ PHƯƠNG ÁN Container hàng/rỗng
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Đơn giá                   → 82.000
+┃ • Đơn giá 82.000            → 20’ Khô
 
-┃ PHƯƠNG ÁN 2: Container hàng/rỗng
+┃ PHƯƠNG ÁN Đơn giá
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Đơn giá                   → 20’ Khô
+┃ • Đơn giá 82.000            → 155.000
 
-┃ PHƯƠNG ÁN 4: Đơn giá
+┃ PHƯƠNG ÁN Container rỗng khô/ lạnh
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Đơn giá                   → 155.000
+┃ • Đơn giá 82.000            → 20’
 
-┃ PHƯƠNG ÁN 5: Container rỗng khô/ lạnh
+┃ PHƯƠNG ÁN Đơn giá
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Đơn giá                   → 20’
-
-┃ PHƯƠNG ÁN 7: Đơn giá
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Đơn giá                   → 298.000
+┃ • Đơn giá 82.000            → 298.000
 
 2.4. Giá thu đối với phương tiện lưu trú quá thời gian định mức
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
