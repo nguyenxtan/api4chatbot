@@ -1,137 +1,191 @@
-# Development & Code Review Notes
+# DEVELOPMENT & PIPELINE - api4chatbot
 
-**Purpose**: Keep track of code reviews, technical decisions, and implementation notes for future reference when working on api4chatbot project.
+**Purpose**: Single source of truth for the exact pipeline and technical decisions.
+**Last Updated**: 2025-11-03
+**Status**: LOCKED - Follow this pipeline ONLY
 
 ---
 
-## Current Approaches & Patterns
+## 🎯 FINAL PIPELINE (DO NOT DEVIATE)
 
-### 1. Vietnamese Document Formatting (markdown_to_bullet.py)
-**Last Updated**: 2025-10-29
-**Status**: ✅ Implemented & Tested
-
-**Pattern**: Multi-level heading hierarchy with box drawing characters
 ```
-# Document Title          → Full underline
-## Section               → Section with underline
-### Subsection          → Plain text
-#### Sub-items          → Bullets with indent
-```
-
-**Table Format**: "Phương án" structure with Vietnamese styling
-```
-┃ PHƯƠNG ÁN 1: Description
-┣━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Item → Value
+Official PDF
+    ↓
+markdown.md (cleaned, verified against PDF)
+    ↓
+/documents/bullet API endpoint
+    ↓
+bullet_v4.md (final output)
 ```
 
-**PDF Artifact Handling**:
-- Remove watermark patterns (Vietnamese characters)
-- Clean cell content from PDF extraction garbage
-- Handle PDF-embedded text (single chars with newlines)
-
-**Files Involved**:
-- `src/core/markdown_to_bullet.py` - Main converter
-- `src/core/file_cleaner.py` - Watermark removal
-- `sample/bang_02_bullets.txt` - Expected output format
+### Rules (Non-Negotiable):
+1. **Source of Truth**: Official PDF file
+2. **Intermediate Format**: markdown.md with proper markdown tables (not text-based)
+3. **Data Flow**: Must go through /documents/bullet API (NO manual patching)
+4. **Output**: bullet_v4.md is the only valid output
+5. **extract_from_n8n_v2.json**: Reference only, NOT primary source (text-based format loses data)
 
 ---
 
-## Project Structure Decisions
+## 📋 FILES IN USE
 
-### Documentation Files (Kept)
-- **README.md** - Comprehensive main documentation
-- **START_HERE.md** - Entry point for users (Vietnamese/English)
-- Stored in: `/Users/tannx/Documents/chatbot/api4chatbot/`
+### Keep in Sample Folder:
+- `508_QĐ_TCg_Quyết_định_về_việc_ban_hành_Biểu_giá_dịch.pdf` - Official source document
+- `extract_from_n8n_v2.json` - Reference data (for reference only)
+- `markdown.md` - Cleaned markdown version (verified against PDF)
+- `bullet_v4.md` - Final output from API pipeline
 
-### Documentation Files (Removed)
-- ~~QUICKSTART.md~~ - Removed (duplicate of README)
-- ~~CLEAN_VERSION.md~~ - Removed (outdated cleanup notes)
-
-### Docker Configuration
-- **Dockerfile** - Python 3.11-slim, port 8005
-- **docker-compose.yml** - Single API service with volumes
-- Both files verified from remote: commit `f78da8f`
-
-### Python Source Code
-- 22 Python modules in `src/`
-- Core modules: API, file cleaner, markdown converter, document splitter
-- Extractors: Vietnamese parser, table extractor, metadata
-- Storage, schemas, utilities included
+### Delete from Sample Folder:
+- ❌ `bullet_v3.md` - Old manual version (violates pipeline rule)
+- ❌ `parse_json_to_md.py` - Not needed
+- ❌ `generate_markdown.py` - Not needed
+- ❌ Any other intermediate files
 
 ---
 
-## Technical Notes for Future Work
+## 🔄 STEP-BY-STEP WORKFLOW
 
-### Markdown Converter
-1. **Heading Levels**: H1-H4+ have different formatting
-2. **Table Structure**: Detect "TT" column for numbering
-3. **Arrow Conversion**: Vietnamese directional patterns (Xe ↔ Bãi)
-4. **Notes/Remarks**: Detect with "Ghi chú", "Chú ý", "Lưu ý" keywords
+### When Starting Fresh:
 
-### File Cleaning
-1. Remove watermark text patterns
-2. Handle header/footer with thresholds
-3. Preserve legitimate content boundaries
-4. Clean PDF extraction artifacts
+1. **Start with PDF**
+   ```
+   Source: /Users/tannx/Documents/chatbot/api4chatbot/sample/508_QĐ_TCg_Quyết_định_về_việc_ban_hành_Biểu_giá_dịch.pdf
+   Status: ✓ Already verified - no errors
+   ```
 
-### API Endpoints
-Main endpoints (from `src/api.py`):
-- `/documents/cleanfile` - Remove watermarks
-- `/documents/markdown` - Convert to markdown
-- `/documents/split` - Split by tables
-- `/documents/bullet` - Convert to bullet format
+2. **Use Cleaned markdown.md**
+   ```
+   File: /Users/tannx/Documents/chatbot/api4chatbot/sample/markdown.md
+   Status: ✓ Fixed 2025-11-03
+   - Added missing rows (IMDG, OOG nhóm 1)
+   - Fixed text wrapping issues
+   - Removed orphan headers
+   - Matches PDF exactly
+   ```
 
----
+3. **Call /documents/bullet API**
+   ```
+   Input: markdown.md content
+   Endpoint: POST /documents/bullet
+   Request Body: { "text": "markdown content here" }
+   Output: bullet_v4.md with proper structure
+   ```
 
-## Repository State
-
-**Last Cleanup**: 2025-10-29
-- Removed temp/ directory (17MB)
-- Removed empty git submodules
-- Preserved all source code and essential files
-
-**Git History**:
-- Main development on `main` branch
-- Code reviews and improvements tracked in commits
-- Clean branch merging strategy
+4. **Verify bullet_v4.md**
+   - Bảng 01: All pricing data present
+   - Bảng 02: TT2 with ghi chú notes
+   - Section 1.1.4.a: All 5 container types (IMDG, OOG1, OOG2, OOG+IMDG, chuyên dụng)
 
 ---
 
-## When to Use This File
+## 🛠️ API ENDPOINT DETAILS
 
-✓ Before modifying markdown_to_bullet.py
-✓ When adding new document types
-✓ If extending PDF cleaning logic
-✓ When reviewing API endpoint behavior
-✓ For understanding Vietnamese text patterns
+### /documents/bullet Endpoint
+**Location**: `src/api.py`
+**Request Model**: `BulletRequest` with `text` field
+**Converter Used**: `MarkdownToBulletConverter` from `src/core/markdown_to_bullet.py`
+
+**Auto-Detection Logic**:
+- If has "Bảng XX" markers AND has markdown pipes `|` → use markdown table parser
+- If has "Bảng XX" but NO pipes → use text-based parser (⚠️ data loss risk)
+
+**Current Status**:
+- Input: markdown.md (has proper markdown tables with pipes)
+- Converter path: markdown_tables parser ✓
+- Data loss: NONE ✓
 
 ---
 
-## Quick Reference
+## 📊 DATA INTEGRITY CHECKLIST
 
-**Start Development**:
-```bash
-cd /Users/tannx/Documents/chatbot/api4chatbot
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python run.py
+When using /documents/bullet API:
+
+- [ ] Input file is markdown.md (not extract_from_n8n_v2.json)
+- [ ] markdown.md matches official PDF
+- [ ] Bảng 01 pricing data is present
+- [ ] Bảng 02 TT2 ghi chú is included
+- [ ] Section 1.1.4.a has all 5 container types
+- [ ] No text wrapping or broken lines
+- [ ] No orphan headers
+
+---
+
+## ❌ WHAT NOT TO DO
+
+**FORBIDDEN**:
+1. ❌ Manual patching of bullet_v4.md
+2. ❌ Using extract_from_n8n_v2.json as primary source
+3. ❌ Mixing data from multiple sources
+4. ❌ Creating new markdown versions without PDF verification
+5. ❌ Deviating from this pipeline
+
+**If data is missing**:
+1. Fix the source (markdown.md)
+2. Verify against PDF
+3. Re-run through /documents/bullet API
+4. Do NOT manually patch output
+
+---
+
+## 🔍 TECHNICAL NOTES
+
+### markdown.md Structure
+```
+### 1.1.4. Các trường hợp phụ thu
+### a. Đối với container IMDG, container OOG...
+
+| TT | Loại container | Phương án làm hàng |  |
+| --- | --- | --- | --- |
+|  |  | Tàu/ Sà lan  Bãi | Xe  Bãi |
+| 1 | IMDG | Tăng 50% ... | Tăng 100% ... |
+| 2 | OOG nhóm 1 (*) | Tăng 50% ... | Tăng 200% ... |
+...
 ```
 
-**Run Tests**:
-```bash
-python test_markdown_bullet.py
-python test_api_clean.py
-```
-
-**Check Code**:
-- API: `src/api.py`
-- Markdown: `src/core/markdown_to_bullet.py`
-- File Cleaning: `src/core/file_cleaner.py`
+### Key Points
+- Markdown tables must have pipes `|` for proper parsing
+- No text wrapping (all content on single line)
+- Headers use ### format
+- Table structure: Header row → separator → data rows
 
 ---
 
-**Format**: Keep this file focused on technical decisions and patterns
-**Location**: `/Users/tannx/Documents/chatbot/.claude/DEVELOPMENT.md`
-**Review**: Before major code changes or feature additions
+## 📝 BEFORE EVERY CODE SESSION
+
+Read this section before coding:
+
+1. **What is the pipeline?**
+   - PDF → markdown.md → /documents/bullet API → bullet_v4.md
+
+2. **Is markdown.md clean?**
+   - Check: matches PDF exactly (verify table 1.1.4.a has 5 rows)
+
+3. **Are we using the right API endpoint?**
+   - Check: POST /documents/bullet with markdown.md content
+
+4. **Will the output be correct?**
+   - Check: converter detects markdown tables (has pipes)
+   - Result: markdown_tables parser used, no data loss
+
+---
+
+## 🎓 IMPORTANT LEARNING POINTS
+
+**Why This Pipeline?**
+1. PDF is official source (100% trustworthy)
+2. markdown.md is verified (matches PDF exactly)
+3. /documents/bullet API enforces data flow rules
+4. No manual patching = data integrity guaranteed
+5. Single source of truth = no confusion
+
+**Why NOT extract_from_n8n_v2.json?**
+- Text-based format loses table structure
+- Auto-detection chooses text-based parser
+- Results in missing data (IMDG, OOG nhóm 1 rows)
+- Higher risk of data loss
+
+---
+
+**Version**: 1.0 (LOCKED)
+**Created**: 2025-11-03
+**Status**: Ready for implementation
