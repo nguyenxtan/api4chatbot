@@ -54,8 +54,6 @@ Bảng 02
 ┃ • Container lạnh 20'        → 1.242.000
 ┃ • Container lạnh 40' & 45'  → 2.155.000
 
-ⓘ Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định dưới đây tại Bảng 23 –TT.9
-
 1.1.3. Tác nghiệp đối với container quá cảnh hàng thông thường
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -739,8 +737,6 @@ Bảng 13b
 ┃ • Container lạnh 40’RF      → 789.000
 ┃ • Container lạnh 45’RF      → 789.000
 
-ⓘ Cước đảo chuyển (nếu có) sẽ được thu bổ sung theo quy định tại Bảng 23 –TT.9
-
 ┃ PHƯƠNG ÁN Lấy hoặc trả container rỗng từ các Depot ngoài về phục vụ đóng rút hàng tại bãi, Cảng thu thêm phí vận chuyển (đã bao gồm nâng hạ hai đầu) => Theo biểu giá vận chuyển hiện hành
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ┃ PHƯƠNG ÁN Ngày nhập bãi
@@ -1165,8 +1161,6 @@ Bảng 22 Đơn vị tính: đồng/container
 ┃ • 45’DC                     → -
 ┃ • 20’RF                     → -
 ┃ • 40’RF & 45’RF             → -
-
-ⓘ Cước gập/dựng vách container Flatrack tính bằng 50% cước bó hoặc xả bó.
 
 ┃ PHƯƠNG ÁN Trải bãi container rỗng lạnh để phục vụ PTI
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -71,131 +71,221 @@ Bảng 03
 ┃ • Container lạnh 40' & 45'  → 1.868.400
 
 1.1.4. Các trường hợp phụ thu
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 a. Đối với container IMDG, container OOG, container hàng chuyên dụng đơn giá xếp
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 dỡ được tính bằng đơn giá xếp dỡ container hàng thông thường cộng với phụ thu như sau:
-
-Phương án làm hàng
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ TT 1: IMDG
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Tàu/Sà lan → Bãi  → Tăng 50% đơn giá container hàng thông thường
-┃ • Xe → Bãi          → Tăng 100% đơn giá container hàng thông thường
+• Từ xe xuống bãi hoặc từ bãi lên xe
 
-┃ TT 2: OOG nhóm 1 (*)
+┃ PHƯƠNG ÁN 5
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Tàu/Sà lan → Bãi  → Tăng 50% đơn giá container hàng thông thường
-┃ • Xe → Bãi          → Tăng 200% đơn giá container hàng thông thường
+┃ • OOhóm 2 (**)              → Container hàng chuyên dụng
+┃ • Thỏa thuận                → Tăng 50% đơn giá container hàng thông thường
 
-┃ TT 3: OOG nhóm 2 (**)
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Tàu/Sà lan → Bãi  → Thỏa thuận
-┃ • Xe → Bãi          → Thỏa thuận
+┃ • OOhóm 2 (**)              → Ngày nhập bãi
+┃ • Thỏa thuận                → Container khô
 
-┃ TT 4: OOG + IMDG
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Tàu/Sà lan → Bãi  → Bằng tổng phụ thu của container OOG và IMDG
-┃ • Xe → Bãi          → Bằng tổng phụ thu của container OOG và IMDG
+┃ • OOhóm 2 (**)              → Từ ngày thứ 1 - ngày thứ 3
+┃ • Thỏa thuận                → Miễn phụ thu
 
-┃ TT 5: Container hàng chuyên dụng
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Tàu/Sà lan → Bãi  → Tăng 50% đơn giá container hàng thông thường
+┃ • OOhóm 2 (**)              → Từ ngày thứ 4 - ngày thứ 6
+┃ • Thỏa thuận                → 230.000
+┃ • Thỏa thuận                → 416.000
 
-• b. Đối với container lạnh chứa hàng khô thông thường và không cắm điện: phí xếp dỡ
+┃ PHƯƠNG ÁN 3
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 7 - ngày thứ 9
+┃ • Thỏa thuận                → 348.000
+┃ • Thỏa thuận                → 627.000
+
+┃ PHƯƠNG ÁN 4
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 10 - ngày thứ 15
+┃ • Thỏa thuận                → 522.000
+┃ • Thỏa thuận                → 938.000
+
+┃ PHƯƠNG ÁN 5
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 16 trở đi
+┃ • Thỏa thuận                → 789.000
+┃ • Thỏa thuận                → 1.416.000
+
+┃ PHƯƠNG ÁN TT
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Ngày nhập bãi
+┃ • Thỏa thuận                → Container khô
+
+┃ PHƯƠNG ÁN 1
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 1 - ngày thứ 2
+┃ • Thỏa thuận                → Miễn phụ thu
+
+┃ PHƯƠNG ÁN 2
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 3 - ngày thứ 4
+┃ • Thỏa thuận                → 627.000
+┃ • Thỏa thuận                → 1.118.000
+
+┃ PHƯƠNG ÁN 3
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 5 - ngày thứ 6
+┃ • Thỏa thuận                → 1.056.000
+┃ • Thỏa thuận                → 1.875.000
+
+┃ PHƯƠNG ÁN 4
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 7- ngày thứ 9
+┃ • Thỏa thuận                → 1.490.000
+┃ • Thỏa thuận                → 2.639.000
+
+┃ PHƯƠNG ÁN 5
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • OOhóm 2 (**)              → Từ ngày thứ 10 trở đi
+┃ • Thỏa thuận                → 1.925.000
+┃ • Thỏa thuận                → 3.384.000
+
+b. Đối với container lạnh chứa hàng khô thông thường và không cắm điện: phí xếp dỡ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 sẽ được tính như đối với container hàng lạnh.
-• c. Đối với container hàng hạ bãi chờ xuất tàu ở Cảng, nếu không xuất tàu mà được lấy
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+c. Đối với container hàng hạ bãi chờ xuất tàu ở Cảng, nếu không xuất tàu mà được lấy
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 ra khỏi Cảng theo yêu cầu của khách hàng, Cảng thu như giao nguyên/rút ruột container hàng
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 nhập lên phương tiện của khách hàng cộng với cước đảo chuyển theo quy định tại Bảng 23-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 TT.9.
-• d. Phụ thu phí nâng tại bãi đối với container hàng (không áp dụng đối với container quá
+━━━━━
+
+d. Phụ thu phí nâng tại bãi đối với container hàng (không áp dụng đối với container quá
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 cảnh):
+━━━━━━
+
  Đối với container hàng thông thường, container hàng chuyên dụng: tính từ ngày có
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 vị trí trên bãi Cảng:
+━━━━━━━━━━━━━━━━━━━━━
+
 Bảng 04
+━━━━━━━━━
+
+Đơn vị tính: đồng/container
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ Đối với container IMDG, container OOG tính từ ngày có vị trí trên bãi Cảng:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Bảng 05 Đơn vị tính: đồng/container
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+e. Phụ thu đối với trường hợp hạ bãi container hàng nhập (kể cả container khô và
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Từ ngày thứ 1 - ngày thứ 3
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng    → Miễn phụ thu
-
-┃ TT 2: Từ ngày thứ 4 - ngày thứ 6
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 230.000
-┃ • Container khô 40’         → 416.000
-┃ • Container khô 45’         → 491.000
-┃ • Container lạnh 20’        → 348.000
-┃ • Container lạnh 40’ & 45’  → 627.000
-
-┃ TT 3: Từ ngày thứ 7 - ngày thứ 9
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 348.000
-┃ • Container khô 40’         → 627.000
-┃ • Container khô 45’         → 745.000
-┃ • Container lạnh 20’        → 522.000
-┃ • Container lạnh 40’ & 45’  → 938.000
-
-┃ TT 4: Từ ngày thứ 10 - ngày thứ 15
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 522.000
-┃ • Container khô 40’         → 938.000
-┃ • Container khô 45’         → 1.118.000
-┃ • Container lạnh 20’        → 789.000
-┃ • Container lạnh 40’ & 45’  → 1.416.000
-
-┃ TT 1: Từ ngày thứ 16 trở đi
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 789.000
-┃ • Container khô 40’         → 1.416.000
-┃ • Container khô 45’         → 1.683.000
-┃ • Container lạnh 20’        → 1.180.000
-┃ • Container lạnh 40’ & 45’  → 2.130.000
-
-Bảng 05
+container lạnh) chuyển từ các cảng nội địa khác về (ngoài các cảng thuộc hệ thống Tổng công
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ PHƯƠNG ÁN 1: Từ ngày thứ 1 - ngày thứ 2
+┃ PHƯƠNG ÁN 2
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Phương án làm hàng    → Miễn phụ thu
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng lạnh thông thường
+┃ • Container 20’ 1.528.000   → 1.993.000
+┃ • Container 40’ 2.279.000   → 2.962.000
+┃ • Container 45’ 2.279.000   → 2.962.000
 
-┃ TT 2: Từ ngày thứ 3 - ngày thứ 4
+┃ PHƯƠNG ÁN 3
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 627.000
-┃ • Container khô 40’         → 1.118.000
-┃ • Container khô 45’         → 1.329.000
-┃ • Container lạnh 20’        → 702.000
-┃ • Container lạnh 40’ & 45’  → 1.223.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng IMDG/OOG nhóm 1/hàng chuyên dụng
+┃ • Container 20’ 1.528.000   → 2.298.000
+┃ • Container 40’ 2.279.000   → 3.428.000
+┃ • Container 45’ 2.279.000   → 3.428.000
 
-┃ TT 3: Từ ngày thứ 5 - ngày thứ 6
+┃ PHƯƠNG ÁN 4
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 1.056.000
-┃ • Container khô 40’         → 1.875.000
-┃ • Container khô 45’         → 2.223.000
-┃ • Container lạnh 20’        → 1.161.000
-┃ • Container lạnh 40’ & 45’  → 2.056.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng OOG nhóm 2
+┃ • Container 20’ 1.528.000   → Giá thỏa thuận
 
-┃ TT 4: Từ ngày thứ 7- ngày thứ 9
+┃ PHƯƠNG ÁN Nội dung
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 1.490.000
-┃ • Container khô 40’         → 2.639.000
-┃ • Container khô 45’         → 3.117.000
-┃ • Container lạnh 20’        → 1.627.000
-┃ • Container lạnh 40’ & 45’  → 2.875.000
+┃ • Loại hàng đóng container Hàng khô thông thường → Container khô
+┃ • Container 45’ 2.279.000   → Container lạnh
 
-┃ TT 1: Từ ngày thứ 10 trở đi
+┃ PHƯƠNG ÁN Phụ phí giao container chuyển cảng
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-┃ • Container khô 20’         → 1.925.000
-┃ • Container khô 40’         → 3.384.000
-┃ • Container khô 45’         → 4.012.000
-┃ • Container lạnh 20’        → 2.099.000
-┃ • Container lạnh 40’ & 45’  → 3.695.000
+┃ • Loại hàng đóng container Hàng khô thông thường → 286.000
+┃ • Container 20’ 1.528.000   → 428.000
+┃ • Container 40’ 2.279.000   → 497.000
+┃ • Container 45’ 2.279.000   → 286.000
 
-┃ TT 2: e. Phụ thu đối với trường hợp hạ bãi container hàng nhập (kể cả container khô và container lạnh) chuyển từ các cảng nội địa khác về (ngoài các cảng thuộc hệ thống Tổng công
+┃ PHƯƠNG ÁN TT
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • Loại hàng đóng container Hàng khô thông thường → Loại hàng đóng container
+┃ • Container 20’ 1.528.000   → Container 20’
+┃ • Container 40’ 2.279.000   → Container 40’
+┃ • Container 45’ 2.279.000   → Container 45’
 
-┃ TT 6: ty Tân cảng Sài Gòn) mà Cảng có thể tiếp nhận được theo chính sách tiếp nhận hiện hành và có thời gian lưu bãi tại cảng nội địa khác không quá 10 ngày đối với container thường; không quá 05 ngày đối với container hàng nguy hiểm kể từ ngày nhập vào lãnh thổ Việt Nam:
+┃ PHƯƠNG ÁN 1
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng khô thông thường
+┃ • Container 20’ 1.528.000   → 1.528.000
+┃ • Container 40’ 2.279.000   → 2.279.000
+┃ • Container 45’ 2.279.000   → 2.279.000
+
+┃ PHƯƠNG ÁN 2
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng lạnh thông thường
+┃ • Container 20’ 1.528.000   → 1.993.000
+┃ • Container 40’ 2.279.000   → 2.962.000
+┃ • Container 45’ 2.279.000   → 2.962.000
+
+┃ PHƯƠNG ÁN 3
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng IMDG/OOG nhóm 1/hàng chuyên dụng
+┃ • Container 20’ 1.528.000   → 2.298.000
+┃ • Container 40’ 2.279.000   → 3.428.000
+┃ • Container 45’ 2.279.000   → 3.428.000
+
+┃ PHƯƠNG ÁN 4
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • Loại hàng đóng container Hàng khô thông thường → Hàng OOG nhóm 2
+┃ • Container 20’ 1.528.000   → Giá thỏa thuận
+
+┃ PHƯƠNG ÁN TT
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃ • Loại hàng đóng container Hàng khô thông thường → Phương án làm hàng
+┃ • Container 20’ 1.528.000   → Container khô
+
+• Từ xe xuống bãi hoặc từ bãi lên xe
+• Từ tàu hoặc sà lan đến bãi hoặc từ bãi xuống tàu hoặc sà lan
+• Từ xe xuống bãi hoặc từ bãi lên xe
+
+6
+━
+
+ty Tân cảng Sài Gòn) mà Cảng có thể tiếp nhận được theo chính sách tiếp nhận hiện hành và
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+có thời gian lưu bãi tại cảng nội địa khác không quá 10 ngày đối với container thường; không
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+quá 05 ngày đối với container hàng nguy hiểm kể từ ngày nhập vào lãnh thổ Việt Nam:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Bảng 06
 ━━━━━━━━━
