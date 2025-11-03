@@ -307,14 +307,64 @@ class MarkdownToBulletConverter:
 
             # Check if this is a table-like structure without "Bảng XX" header
             # This includes tables in section 1.1.4 (like mục a, b, c with implicit tables)
-            # Pattern: "Phương án" line followed by "TT Loại container" line
+            # Special case: IMDG/OOG table with "Tàu/ Sà lan  Bãi Xe  Bãi" headers
             is_table_start = False
-            if line.strip() and 'Phương án' in line:
+
+            # Case 1: "Tàu/ Sà lan" or "Xe" header line (IMDG/OOG sub-headers)
+            # CHECK THIS FIRST before other patterns!
+            if ('Tàu' in line and '/' in line and 'Sà lan' in line) or ('Xe' in line and 'Bãi' in line and 'Phương án' not in line.lower()):
+                # This is the sub-header line for IMDG/OOG table
+                # Look back to find the "TT Loại container" header
+                table_lines_temp = []
+                for back_idx in range(max(0, i-3), i+1):
+                    table_lines_temp.append(lines[back_idx])
+
+                # Now collect data rows going forward
+                is_table_start = True
+                potential_table = table_lines_temp  # Include headers
+                temp_i = i + 1
+                has_row_numbers = False
+                has_prices = False
+
+                while temp_i < len(lines) and len(potential_table) < 50:
+                    next_line = lines[temp_i]
+
+                    # Stop at next major section or table
+                    if self._is_section_heading(next_line) or self._is_subsection_heading(next_line):
+                        break
+                    if re.match(r'^\s*Bảng\s+\d+', next_line):
+                        break
+                    if re.match(r'^[a-z]+\.\s+', next_line):
+                        break
+
+                    potential_table.append(next_line)
+
+                    # Check for table indicators
+                    if re.match(r'^\s*\d+\s+', next_line):
+                        has_row_numbers = True
+                    if 'Thỏa thuận' in next_line or 'Tăng' in next_line:
+                        has_prices = True
+
+                    temp_i += 1
+
+                # If this looks like a table, parse it
+                if has_row_numbers and has_prices:
+                    table_num = 'N/A'
+                    table_bullets = self._parse_text_table(potential_table, table_num)
+                    result.extend(table_bullets)
+                    i = temp_i - 1  # -1 because loop will increment
+                    is_table_start = False
+                    continue
+                else:
+                    is_table_start = False
+
+            # Case 2: "Phương án" line followed by "TT Loại container"
+            if line.strip() and 'Phương án' in line and not is_table_start:
                 # Check next line for "TT Loại"
                 if i + 1 < len(lines) and 'TT' in lines[i + 1] and 'Loại' in lines[i + 1]:
                     is_table_start = True
 
-            if is_table_start:
+            if is_table_start and ('TT' in line or 'Phương án' in line):
                 # Collect potential table lines
                 potential_table = [line]
                 temp_i = i + 1
@@ -482,18 +532,31 @@ class MarkdownToBulletConverter:
                 # Check if prices are text-based (contain non-numeric words) vs numeric prices
                 has_text_prices = any(price and not re.match(r'^\d+[\d.]*$', str(price).strip()) for price in prices if price)
 
+                # Check if this is a "Tàu/Sà lan" type table (IMDG/OOG)
+                is_tau_xe_table = any('Tàu' in col or 'Xe' in col for col in col_names)
+
                 if has_text_prices:
-                    # Text-based prices (like "Tăng 50%", "Thỏa thuận") - use PHƯƠNG ÁN format
-                    result.append(f"┃ PHƯƠNG ÁN {row_num}: {description}")
+                    # Text-based prices (like "Tăng 50%", "Thỏa thuận")
+                    # Use TT format if it's a Tàu/Xe table (IMDG/OOG), otherwise PHƯƠNG ÁN
+                    if is_tau_xe_table:
+                        result.append(f"┃ TT {row_num}: {description}")
+                    else:
+                        result.append(f"┃ PHƯƠNG ÁN {row_num}: {description}")
                     result.append('┣' + '━' * 70)
 
-                    # Add text prices as sub-bullets
+                    # Add text prices as sub-bullets with column names
                     if prices:
                         for col_idx, price in enumerate(prices):
-                            if col_idx == 0:
-                                result.append(f"┃ • Phương án làm hàng    → {price}")
+                            if col_idx < len(col_names):
+                                col_name = col_names[col_idx]
+                                # Format: "Tàu/Sà lan → Bãi" or "Xe" etc
+                                if 'Tàu' in col_name or 'Xe' in col_name:
+                                    # Add " → Bãi" suffix if not present
+                                    if '→' not in col_name and 'Bãi' not in col_name:
+                                        col_name = col_name + ' → Bãi'
+                                result.append(f"┃ • {col_name:30} → {price}")
                             else:
-                                result.append(f"┃ •                      → {price}")
+                                result.append(f"┃ •                              → {price}")
                     result.append('')
                 else:
                     # Numeric prices - use TT format (original behavior)
@@ -529,9 +592,11 @@ class MarkdownToBulletConverter:
         """
         Extract column headers from table lines.
         Returns (type_headers, size_headers) like ("Container khô Container lạnh", "20' 40' 45' 20' 40' & 45'")
+        Also handles special sub-headers like "Tàu/ Sà lan  Bãi" and "Xe  Bãi"
         """
         type_header = ""
         size_header_parts = []
+        sub_headers = []
 
         for line in table_lines[1:6]:  # Look in first 5 lines after table title
             line = line.strip()
@@ -542,8 +607,11 @@ class MarkdownToBulletConverter:
             if re.match(r'^\d+\s+', line):
                 continue
 
+            # Check for sub-headers like "Tàu/ Sà lan  Bãi" and "Xe  Bãi"
+            if re.search(r'(Tàu|Sà\s*lan|Xe|Bãi)', line) and 'phương án' not in line.lower():
+                sub_headers.append(line)
             # Check if this is the size line (contains multiple size patterns)
-            if re.search(r"\d+[''ʼ\u2019]", line):
+            elif re.search(r"\d+[''ʼ\u2019]", line):
                 size_header_parts.append(line)  # Append instead of overwrite
             # Check if this is the type line (contains khô or lạnh)
             elif 'khô' in line.lower() or 'lạnh' in line.lower():
@@ -552,6 +620,10 @@ class MarkdownToBulletConverter:
         # Join multi-line size headers with space
         size_header = ' '.join(size_header_parts) if size_header_parts else ""
 
+        # If we found sub-headers, use them instead of size_header
+        if sub_headers:
+            size_header = ' '.join(sub_headers)
+
         return (type_header, size_header)
 
     def _build_column_names(self, headers_tuple: Tuple[str, str]) -> List[str]:
@@ -559,6 +631,43 @@ class MarkdownToBulletConverter:
         type_header, size_header = headers_tuple
         columns = []
 
+        # Check if this is a "Tàu/ Sà lan  Bãi" and "Xe  Bãi" type header (IMDG/OOG table)
+        if 'Tàu' in size_header or 'Xe' in size_header:
+            # Parse sub-headers for IMDG/OOG operations
+            # Clean up special characters from PDF extraction (\uf0f3, etc.)
+            cleaned_header = re.sub(r'[\uf0f3\uf02d•\-\s]+', ' ', size_header).strip()
+
+            # Try to split on multiple spaces or the word "Xe"
+            # Pattern: "Tàu/ Sà lan ... Bãi" followed by "Xe ... Bãi"
+            # Look for the pattern "Bãi" followed by spaces and "Xe"
+            parts = re.split(r'Bãi\s+(?=Xe)', cleaned_header)
+
+            for i, part in enumerate(parts):
+                part = part.strip()
+                if not part:
+                    continue
+
+                # Add back "Bãi" if it was removed (except for last part if no Xe after)
+                if i < len(parts) - 1 and not part.endswith('Bãi'):
+                    part = part + ' Bãi'
+                elif i == len(parts) - 1 and not part.startswith('Tàu') and not part.startswith('Xe'):
+                    part = part + ' Bãi'
+
+                # Normalize whitespace
+                part = ' '.join(part.split())
+                if part:
+                    columns.append(part)
+
+            # If we got columns, return them
+            if columns:
+                # Ensure we have exactly 2 columns for Tàu/Xe tables
+                while len(columns) < 2:
+                    columns.append("Bãi")
+                return columns[:2]  # Return only first 2 columns
+            else:
+                return ["Tàu/Sà lan → Bãi", "Xe → Bãi"]
+
+        # Original logic for Container khô/lạnh sizing
         # Extract all sizes from size header
         all_sizes = re.findall(r"(\d+[''ʼ\u2019](?:\s*&\s*\d+[''ʼ\u2019])?)", size_header)
 
