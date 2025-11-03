@@ -55,10 +55,7 @@
 ### 1.1.4. Các trường hợp phụ thu
 
 
-### a. Đối với container IMDG, container OOG, container hàng chuyên dụng đơn giá xếp
-
-
-### dỡ được tính bằng đơn giá xếp dỡ container hàng thông thường cộng với phụ thu như sau:
+### a. Đối với container IMDG, container OOG, container hàng chuyên dụng đơn giá xếp dỡ được tính bằng đơn giá xếp dỡ container hàng thông thường cộng với phụ thu như sau:
 
 
 <!-- Page 4 -->
@@ -66,17 +63,15 @@
 | TT | Loại container | Phương án làm hàng |  |
 | --- | --- | --- | --- |
 |  |  | Tàu/ Sà lan  Bãi | Xe  Bãi |
+| 1 | IMDG | Tăng 50% đơn giá container hàng thông thường | Tăng 100% đơn giá container hàng thông thường |
+| 2 | OOG nhóm 1 (*) | Tăng 50% đơn giá container hàng thông thường | Tăng 200% đơn giá container hàng thông thường |
 | 3 | OOG nhóm 2 (**) | Thỏa thuận | Thỏa thuận |
-| 4 | OOG + IMDG | Bằng tổng phụ thu của
-container OOG và IMDG | Bằng tổng phụ thu của container
-OOG và IMDG |
-| 5 | Container hàng
-chuyên dụng | Tăng 50% đơn giá container hàng thông thường |  |
+| 4 | OOG + IMDG | Bằng tổng phụ thu của container OOG và IMDG | Bằng tổng phụ thu của container OOG và IMDG |
+| 5 | Container hàng chuyên dụng | Tăng 50% đơn giá container hàng thông thường | Tăng 50% đơn giá container hàng thông thường |
 
 | TT | Ngày nhập bãi | Container khô |  |  | Container lạnh |  |
 | --- | --- | --- | --- | --- | --- | --- |
-|  |  | 20’ | 40’ | 45’ | 20’ | 40’ &
-45’ |
+|  |  | 20’ | 40’ | 45’ | 20’ | 40’ & 45’ |
 | 1 | Từ ngày thứ 1 - ngày thứ 3 | Miễn phụ thu |  |  |  |  |
 | 2 | Từ ngày thứ 4 - ngày thứ 6 | 230.000 | 416.000 | 491.000 | 348.000 | 627.000 |
 | 3 | Từ ngày thứ 7 - ngày thứ 9 | 348.000 | 627.000 | 745.000 | 522.000 | 938.000 |
@@ -92,15 +87,8 @@ chuyên dụng | Tăng 50% đơn giá container hàng thông thường |  |
 | 4 | Từ ngày thứ 7- ngày thứ 9 | 1.490.000 | 2.639.000 | 3.117.000 | 1.627.000 | 2.875.000 |
 | 5 | Từ ngày thứ 10 trở đi | 1.925.000 | 3.384.000 | 4.012.000 | 2.099.000 | 3.695.000 |
 
-### 5
 
-
-Biểu giá dịch vụ tại cảng Tân Cảng  Cát Lái từ ngày 10/3/2025
-
-### b. Đối với container lạnh chứa hàng khô thông thường và không cắm điện: phí xếp dỡ
-
-
-### sẽ được tính như đối với container hàng lạnh.
+### b. Đối với container lạnh chứa hàng khô thông thường và không cắm điện: phí xếp dỡ sẽ được tính như đối với container hàng lạnh.
 
 
 ### c. Đối với container hàng hạ bãi chờ xuất tàu ở Cảng, nếu không xuất tàu mà được lấy
