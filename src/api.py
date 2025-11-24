@@ -186,27 +186,15 @@ async def convert_to_markdown(
             else:
                 logger.warning(f"File cleaning skipped, using original: {message}")
 
-        # Check if reference markdown.md exists (for PDFs with encoding issues)
-        reference_markdown_path = Path("sample") / "markdown.md"
-        markdown_content = None
-        markdown_source = "extracted"
-
-        if reference_markdown_path.exists():
-            logger.info(f"Found reference markdown: {reference_markdown_path}")
-            with open(reference_markdown_path, "r", encoding="utf-8") as f:
-                markdown_content = f.read()
-            markdown_source = "reference"
-            logger.info(f"Using reference markdown ({len(markdown_content)} characters)")
-        else:
-            # Convert to markdown from file
-            logger.info("Converting file to markdown...")
-            markdown_result = markdown_converter.convert(str(file_to_convert))
-            markdown_content = markdown_result["markdown"]
-            logger.info(f"Extracted markdown ({len(markdown_content)} characters)")
+        # Convert to markdown from file
+        logger.info("Converting file to markdown...")
+        markdown_result = markdown_converter.convert(str(file_to_convert))
+        markdown_content = markdown_result["markdown"]
+        logger.info(f"Extracted markdown ({len(markdown_content)} characters)")
 
         metadata = {
             "source_file": str(file_to_convert),
-            "markdown_source": markdown_source,
+            "markdown_source": "extracted",
         }
 
         # Save to sample/markdown_v1.md for review
@@ -225,7 +213,7 @@ async def convert_to_markdown(
             "metadata": metadata,
             "cleaned": clean_before_convert and file_ext in {".pdf", ".docx"},
             "output_file": str(markdown_output_path),
-            "message": f"Markdown saved to {markdown_output_path} (from {markdown_source})"
+            "message": f"Markdown saved to {markdown_output_path}"
         }
 
     except Exception as e:
