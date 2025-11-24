@@ -4,7 +4,7 @@ FastAPI application for the document chunking pipeline.
 from pathlib import Path
 from typing import Optional
 from fastapi import FastAPI, UploadFile, File, HTTPException
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from loguru import logger
 import re
 from pydantic import BaseModel
@@ -390,7 +390,7 @@ async def convert_to_html(
         clean_before_convert: Clean file before conversion (PDF/DOCX only)
 
     Returns:
-        HTML content and file path
+        HTML content rendered as page
     """
     allowed_extensions = {".pdf", ".docx", ".doc", ".csv", ".pptx", ".txt"}
     file_ext = Path(file.filename).suffix.lower()
@@ -442,13 +442,7 @@ async def convert_to_html(
 
             logger.info(f"✓ Converted CSV to HTML: {output_path}")
 
-            return {
-                "status": "success",
-                "filename": file.filename,
-                "format": "html",
-                "output_file": str(output_path),
-                "message": f"CSV converted to HTML and saved to {output_path}"
-            }
+            return HTMLResponse(content=html_content, status_code=200)
 
         # For other formats: convert to markdown first, then to HTML
         logger.info("Converting file to markdown...")
@@ -470,13 +464,7 @@ async def convert_to_html(
 
         logger.info(f"✓ Converted to HTML: {output_path}")
 
-        return {
-            "status": "success",
-            "filename": file.filename,
-            "format": "html",
-            "output_file": str(output_path),
-            "message": f"Document converted to HTML and saved to {output_path}"
-        }
+        return HTMLResponse(content=html_content, status_code=200)
 
     except Exception as e:
         logger.error(f"Error converting to HTML: {e}", exc_info=True)
