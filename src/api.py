@@ -12,6 +12,7 @@ from src.core.stage1_markdown import MarkdownConverter
 from src.core.file_cleaner import FileCleaner
 from src.core.document_splitter import DocumentSplitter
 from src.core.markdown_to_bullet import MarkdownToBulletConverter
+from src.core.html_converter import HtmlConverter
 from src.schemas.schema_loader import get_schema_loader
 
 
@@ -28,6 +29,7 @@ markdown_converter = MarkdownConverter()
 file_cleaner = FileCleaner()
 document_splitter = DocumentSplitter()
 bullet_converter = MarkdownToBulletConverter()
+html_converter = HtmlConverter()
 
 # Configure logging
 logger.add("logs/api.log", rotation="500 MB", retention="10 days", level="INFO")
@@ -371,6 +373,119 @@ async def list_cleaned_files():
         "total": len(files),
         "files": files
     }
+
+
+@app.post("/documents/html")
+async def convert_to_html(
+    file: UploadFile = File(...),
+    clean_before_convert: bool = True
+):
+    """
+    Convert document to HTML format.
+
+    Supports: PDF, DOCX, DOC, CSV, PPTX, TXT
+
+    Args:
+        file: Document file to convert
+        clean_before_convert: Clean file before conversion (PDF/DOCX only)
+
+    Returns:
+        HTML content and file path
+    """
+    allowed_extensions = {".pdf", ".docx", ".doc", ".csv", ".pptx", ".txt"}
+    file_ext = Path(file.filename).suffix.lower()
+
+    if file_ext not in allowed_extensions:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type. Allowed: {', '.join(allowed_extensions)}. Got: {file_ext}"
+        )
+
+    logger.info(f"Converting to HTML: {file.filename}")
+
+    # Save uploaded file temporarily
+    temp_dir = Path("temp")
+    temp_dir.mkdir(exist_ok=True)
+    temp_file = temp_dir / file.filename
+
+    try:
+        # Save file
+        content = await file.read()
+        with open(temp_file, "wb") as f:
+            f.write(content)
+
+        # Clean file if requested
+        file_to_convert = temp_file
+        if clean_before_convert and file_ext in {".pdf", ".docx"}:
+            logger.info(f"Cleaning file before conversion: {file.filename}")
+            success, message, cleaned_path = file_cleaner.clean_file(str(temp_file))
+
+            if success and cleaned_path:
+                file_to_convert = Path(cleaned_path)
+                logger.info(f"Using cleaned file: {cleaned_path}")
+            else:
+                logger.warning(f"File cleaning skipped, using original: {message}")
+
+        # Special handling for CSV
+        if file_ext == ".csv":
+            csv_content = file_to_convert.read_text(encoding="utf-8")
+            html_content = html_converter.csv_to_html(csv_content)
+
+            # Save HTML
+            output_dir = Path("sample")
+            output_dir.mkdir(exist_ok=True)
+            html_filename = f"{Path(file.filename).stem}.html"
+            output_path = output_dir / html_filename
+
+            with open(output_path, "w", encoding="utf-8") as f:
+                f.write(html_content)
+
+            logger.info(f"✓ Converted CSV to HTML: {output_path}")
+
+            return {
+                "status": "success",
+                "filename": file.filename,
+                "format": "html",
+                "output_file": str(output_path),
+                "message": f"CSV converted to HTML and saved to {output_path}"
+            }
+
+        # For other formats: convert to markdown first, then to HTML
+        logger.info("Converting file to markdown...")
+        markdown_result = markdown_converter.convert(str(file_to_convert))
+        markdown_content = markdown_result["markdown"]
+
+        # Convert markdown to HTML
+        metadata = markdown_result.get("metadata", {})
+        html_content = html_converter.markdown_to_html(markdown_content, metadata)
+
+        # Save HTML
+        output_dir = Path("sample")
+        output_dir.mkdir(exist_ok=True)
+        html_filename = f"{Path(file.filename).stem}.html"
+        output_path = output_dir / html_filename
+
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+
+        logger.info(f"✓ Converted to HTML: {output_path}")
+
+        return {
+            "status": "success",
+            "filename": file.filename,
+            "format": "html",
+            "output_file": str(output_path),
+            "message": f"Document converted to HTML and saved to {output_path}"
+        }
+
+    except Exception as e:
+        logger.error(f"Error converting to HTML: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+    finally:
+        # Clean up temp file
+        if temp_file.exists():
+            temp_file.unlink()
 
 
 @app.get("/health")
